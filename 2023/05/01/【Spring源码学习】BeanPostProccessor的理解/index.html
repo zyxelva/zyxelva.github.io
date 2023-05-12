@@ -1,0 +1,821 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zyxelva">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="BeanPostProcessor 接口类型实例是针对某种特定功能的埋点，在这个点会根据接口类型来过滤掉不关注这个点的其他类，只有真正关注的类才会在这个点进行相应的功能实现。 前言Spring 初始化核心流程spring容器初始化的核心方法AbstractApplicationContext#refresh，  refresh Spring 初始化核心流程入口 prepareRefresh ① 准">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Spring源码学习】BeanPostProccessor的理解">
+<meta property="og:url" content="https://zyxelva.github.io/2023/05/01/%E3%80%90Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E3%80%91BeanPostProccessor%E7%9A%84%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Kezade的技术博客">
+<meta property="og:description" content="BeanPostProcessor 接口类型实例是针对某种特定功能的埋点，在这个点会根据接口类型来过滤掉不关注这个点的其他类，只有真正关注的类才会在这个点进行相应的功能实现。 前言Spring 初始化核心流程spring容器初始化的核心方法AbstractApplicationContext#refresh，  refresh Spring 初始化核心流程入口 prepareRefresh ① 准">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyxelva.github.io/img/Spring.jpeg">
+<meta property="article:published_time" content="2023-05-01T06:31:50.000Z">
+<meta property="article:modified_time" content="2023-05-11T13:41:00.128Z">
+<meta property="article:author" content="zyxelva">
+<meta property="article:tag" content="源码">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zyxelva.github.io/img/Spring.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>【Spring源码学习】BeanPostProccessor的理解 - Kezade的技术博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/macpanel.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zyxelva.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  <meta name="referrer" content="same-origin"/>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Kezade的技术博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/photos/">
+                <i class="iconfont icon-images"></i>
+                <span>相册</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/post.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【Spring源码学习】BeanPostProccessor的理解"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-01 14:31" pubdate>
+          2023年5月1日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          20k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          165 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">【Spring源码学习】BeanPostProccessor的理解</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>BeanPostProcessor 接口类型实例是针对某种特定功能的埋点，在这个点会根据接口类型来过滤掉不关注这个点的其他类，只有真正关注的类才会在这个点进行相应的功能实现。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="Spring-初始化核心流程"><a href="#Spring-初始化核心流程" class="headerlink" title="Spring 初始化核心流程"></a>Spring 初始化核心流程</h2><p>spring容器初始化的核心方法AbstractApplicationContext#refresh，</p>
+<ul>
+<li>refresh Spring 初始化核心流程入口<ul>
+<li>prepareRefresh ① 准备此上下文用于刷新，设置启动时间和active标志，初始化属性</li>
+<li>obtainFreshBeanFactory ② 创建 BeanFactory 已经跟踪过的源码流程</li>
+<li>prepareBeanFactory ③ 设置 BeanFactory 的基本属性</li>
+<li>postProcessBeanFactory ④ 子类处理自定义的BeanFactoryPostProcess</li>
+<li>invokeBeanFactoryPostProcessors ⑤ 调用所有的BeanFactoryPostProcessor <strong>本节主要跟踪的源码流程</strong></li>
+<li>registerBeanPostProcessors ⑥ 注册，把实现了BeanPostProcessor接口的类实例化，加到BeanFactory <strong>本节主要跟踪的源码流程</strong></li>
+<li>initMessageSource ⑦ 初始化上下文中的资源文件，如国际化文件的处理等</li>
+<li>initApplicationEventMulticaster ⑧ 初始化上下文的事件传播器</li>
+<li>onRefresh ⑨ 给子类扩展初始化其他Bean，springboot 中用来做内嵌 tomcat 启动</li>
+<li>registerListeners ⑩ 在所有bean中查找监听 bean，然后注册到广播器中</li>
+<li>finishBeanFactoryInitialization ⑪ 初始化所有的单例Bean、ioc、BeanPostProcessor的执行、Aop入口</li>
+<li>finishRefresh ⑫ 完成刷新过程，发布相应的事件</li>
+</ul>
+</li>
+</ul>
+<h1 id="一、invokeBeanFactoryPostProcessors"><a href="#一、invokeBeanFactoryPostProcessors" class="headerlink" title="一、invokeBeanFactoryPostProcessors()"></a>一、invokeBeanFactoryPostProcessors()</h1><h2 id="1-作用"><a href="#1-作用" class="headerlink" title="1.作用"></a>1.作用</h2><p>invokeBeanFactoryPostProcessors方法，负责激活各种 BeanFactory 处理器，以及两个核心接口的调用：</p>
+<ul>
+<li><p>BeanDefinitionRegistryPostProcessor<br>实际完成了对其实现类中postProcessBeanDefinitionRegistry方法的调用，完成对BeanDefinition的新增、修改</p>
+</li>
+<li><p>BeanFactoryPostProcessor<br>实际完成了对其实现类中postProcessBeanFactory方法的调用；</p>
+</li>
+</ul>
+<h2 id="2-源码跟踪"><a href="#2-源码跟踪" class="headerlink" title="2.源码跟踪"></a>2.源码跟踪</h2><h3 id="2-1-AbstractApplicationContext-invokeBeanFactoryPostProcessors"><a href="#2-1-AbstractApplicationContext-invokeBeanFactoryPostProcessors" class="headerlink" title="2.1.AbstractApplicationContext.invokeBeanFactoryPostProcessors()"></a>2.1.AbstractApplicationContext.invokeBeanFactoryPostProcessors()</h3><figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-vn1z1llhkbsd6v"></i><span>java</span><div class="collapse show" id="collapse-vn1z1llhkbsd6v"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//AbstractApplicationContext</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">invokeBeanFactoryPostProcessors</span><span class="hljs-params">(ConfigurableListableBeanFactory beanFactory)</span> &#123;<br>	<span class="hljs-comment">//委派给PostProcessorRegistrationDelegate去处理</span><br>	PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(beanFactory, getBeanFactoryPostProcessors());<br><br>	<span class="hljs-comment">// Detect a LoadTimeWeaver and prepare for weaving, if found in the meantime</span><br>	<span class="hljs-comment">// (e.g. through an @Bean method registered by ConfigurationClassPostProcessor)</span><br>	<span class="hljs-keyword">if</span> (beanFactory.getTempClassLoader() == <span class="hljs-literal">null</span> &amp;&amp; beanFactory.containsBean(LOAD_TIME_WEAVER_BEAN_NAME)) &#123;<br>		beanFactory.addBeanPostProcessor(<span class="hljs-keyword">new</span> <span class="hljs-title class_">LoadTimeWeaverAwareProcessor</span>(beanFactory));<br>		beanFactory.setTempClassLoader(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ContextTypeMatchClassLoader</span>(beanFactory.getBeanClassLoader()));<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></div></figure>
+
+<h3 id="2-2-PostProcessorRegistrationDelegate-invokeBeanFactoryPostProcessors"><a href="#2-2-PostProcessorRegistrationDelegate-invokeBeanFactoryPostProcessors" class="headerlink" title="2.2.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors()"></a>2.2.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors()</h3><figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-41wmmslhkbsd6v"></i><span>java</span><div class="collapse show" id="collapse-41wmmslhkbsd6v"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">invokeBeanFactoryPostProcessors</span><span class="hljs-params">(ConfigurableListableBeanFactory beanFactory, List&lt;BeanFactoryPostProcessor&gt; beanFactoryPostProcessors)</span> &#123;<br>	<span class="hljs-comment">// Invoke BeanDefinitionRegistryPostProcessors first, if any.</span><br>	Set&lt;String&gt; processedBeans = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<br>	<span class="hljs-keyword">if</span> (beanFactory <span class="hljs-keyword">instanceof</span> BeanDefinitionRegistry) &#123;<br>		<span class="hljs-type">BeanDefinitionRegistry</span> <span class="hljs-variable">registry</span> <span class="hljs-operator">=</span> (BeanDefinitionRegistry) beanFactory;<br>		List&lt;BeanFactoryPostProcessor&gt; regularPostProcessors = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>		List&lt;BeanDefinitionRegistryPostProcessor&gt; registryProcessors = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>		<span class="hljs-keyword">for</span> (BeanFactoryPostProcessor postProcessor : beanFactoryPostProcessors) &#123;<br>			<span class="hljs-keyword">if</span> (postProcessor <span class="hljs-keyword">instanceof</span> BeanDefinitionRegistryPostProcessor) &#123;<br>				<span class="hljs-type">BeanDefinitionRegistryPostProcessor</span> <span class="hljs-variable">registryProcessor</span> <span class="hljs-operator">=</span><br>						(BeanDefinitionRegistryPostProcessor) postProcessor;<br>				registryProcessor.postProcessBeanDefinitionRegistry(registry);<br>				registryProcessors.add(registryProcessor);<br>			&#125;<br>			<span class="hljs-keyword">else</span> &#123;<br>				regularPostProcessors.add(postProcessor);<br>			&#125;<br>		&#125;<br><br>		<span class="hljs-comment">// Do not initialize FactoryBeans here: We need to leave all regular beans</span><br>		<span class="hljs-comment">// uninitialized to let the bean factory post-processors apply to them!</span><br>		<span class="hljs-comment">// Separate between BeanDefinitionRegistryPostProcessors that implement</span><br>		<span class="hljs-comment">// PriorityOrdered, Ordered, and the rest.</span><br>		List&lt;BeanDefinitionRegistryPostProcessor&gt; currentRegistryProcessors = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br><br>		<span class="hljs-comment">//获取实现了BeanDefinitionRegistryPostProcessor接口的所有类的BeanDefinition对象的beanName</span><br>		<span class="hljs-comment">// 1、最先调用的是实现了 PriorityOrdered 接口的所有BeanDefinitionRegistryPostProcessor</span><br>		<span class="hljs-comment">// 中的 postProcessBeanDefinitionRegistry的方法</span><br>		<span class="hljs-comment">// First, invoke the BeanDefinitionRegistryPostProcessors that implement PriorityOrdered.</span><br>		String[] postProcessorNames =<br>				beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);<br>		<span class="hljs-keyword">for</span> (String ppName : postProcessorNames) &#123;<br>			<span class="hljs-comment">// 判断是否实现了排序接口 PriorityOrdered</span><br>			<span class="hljs-keyword">if</span> (beanFactory.isTypeMatch(ppName, PriorityOrdered.class)) &#123;<br>				currentRegistryProcessors.add(beanFactory.getBean(ppName, BeanDefinitionRegistryPostProcessor.class));<br>				processedBeans.add(ppName);<br>			&#125;<br>		&#125;<br>		<span class="hljs-comment">//排序</span><br>		sortPostProcessors(currentRegistryProcessors, beanFactory);<br>		registryProcessors.addAll(currentRegistryProcessors);<br>		<span class="hljs-comment">//调用过程</span><br>		invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);<br>		currentRegistryProcessors.clear();<br>		<span class="hljs-comment">// 2、其次调用的是实现了 Ordered 接口的所有BeanDefinitionRegistryPostProcessor</span><br>		<span class="hljs-comment">// 中的 postProcessBeanDefinitionRegistry的方法</span><br>		<span class="hljs-comment">// Next, invoke the BeanDefinitionRegistryPostProcessors that implement Ordered.</span><br>		postProcessorNames = beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);<br>		<span class="hljs-keyword">for</span> (String ppName : postProcessorNames) &#123;<br>			<span class="hljs-comment">//判断是否是实现的Ordered接口</span><br>			<span class="hljs-keyword">if</span> (!processedBeans.contains(ppName) &amp;&amp; beanFactory.isTypeMatch(ppName, Ordered.class)) &#123;<br>				currentRegistryProcessors.add(beanFactory.getBean(ppName, BeanDefinitionRegistryPostProcessor.class));<br>				processedBeans.add(ppName);<br>			&#125;<br>		&#125;<br>		sortPostProcessors(currentRegistryProcessors, beanFactory);<br>		registryProcessors.addAll(currentRegistryProcessors);<br>		invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);<br>		currentRegistryProcessors.clear();<br><br>		<span class="hljs-comment">// 3、最后调用的是没实现排序接口的所有实现BeanDefinitionRegistryPostProcessor接口</span><br>		<span class="hljs-comment">// 中的 postProcessBeanDefinitionRegistry的方法</span><br>		<span class="hljs-comment">// Finally, invoke all other BeanDefinitionRegistryPostProcessors until no further ones appear.</span><br>		<span class="hljs-type">boolean</span> <span class="hljs-variable">reiterate</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;<br>		<span class="hljs-keyword">while</span> (reiterate) &#123;<br>			reiterate = <span class="hljs-literal">false</span>;<br>			postProcessorNames = beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);<br>			<span class="hljs-keyword">for</span> (String ppName : postProcessorNames) &#123;<br>				<span class="hljs-keyword">if</span> (!processedBeans.contains(ppName)) &#123;<br>					currentRegistryProcessors.add(beanFactory.getBean(ppName, BeanDefinitionRegistryPostProcessor.class));<br>					processedBeans.add(ppName);<br>					reiterate = <span class="hljs-literal">true</span>;<br>				&#125;<br>			&#125;<br>			sortPostProcessors(currentRegistryProcessors, beanFactory);<br>			registryProcessors.addAll(currentRegistryProcessors);<br>			invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);<br>			currentRegistryProcessors.clear();<br>		&#125;<br><br>		<span class="hljs-comment">//调用postProcessBeanFactory方法</span><br>		<span class="hljs-comment">// Now, invoke the postProcessBeanFactory callback of all processors handled so far.</span><br>		invokeBeanFactoryPostProcessors(registryProcessors, beanFactory);<br>		invokeBeanFactoryPostProcessors(regularPostProcessors, beanFactory);<br>	&#125;<br><br>	<span class="hljs-keyword">else</span> &#123;<br>		<span class="hljs-comment">// Invoke factory processors registered with the context instance.</span><br>		invokeBeanFactoryPostProcessors(beanFactoryPostProcessors, beanFactory);<br>	&#125;<br>	<span class="hljs-comment">//获取实现了BeanFactoryPostProcessor接口的类，获取beanDefinition的名称</span><br>	<span class="hljs-comment">// Do not initialize FactoryBeans here: We need to leave all regular beans</span><br>	<span class="hljs-comment">// uninitialized to let the bean factory post-processors apply to them!</span><br>	String[] postProcessorNames =<br>			beanFactory.getBeanNamesForType(BeanFactoryPostProcessor.class, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);<br><br>	<span class="hljs-comment">// Separate between BeanFactoryPostProcessors that implement PriorityOrdered,</span><br>	<span class="hljs-comment">// Ordered, and the rest.</span><br>	List&lt;BeanFactoryPostProcessor&gt; priorityOrderedPostProcessors = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>	List&lt;String&gt; orderedPostProcessorNames = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>	List&lt;String&gt; nonOrderedPostProcessorNames = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>	<span class="hljs-keyword">for</span> (String ppName : postProcessorNames) &#123;<br>		<span class="hljs-keyword">if</span> (processedBeans.contains(ppName)) &#123;<br>			<span class="hljs-comment">// skip - already processed in first phase above</span><br>		&#125;<br>		<span class="hljs-comment">//实现了PriorityOrdered接口的</span><br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (beanFactory.isTypeMatch(ppName, PriorityOrdered.class)) &#123;<br>			priorityOrderedPostProcessors.add(beanFactory.getBean(ppName, BeanFactoryPostProcessor.class));<br>		&#125;<br>		<span class="hljs-comment">//实现了Ordered接口的</span><br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (beanFactory.isTypeMatch(ppName, Ordered.class)) &#123;<br>			orderedPostProcessorNames.add(ppName);<br>		&#125;<br>		<span class="hljs-keyword">else</span> &#123;<br>			<span class="hljs-comment">//没实现接口的</span><br>			nonOrderedPostProcessorNames.add(ppName);<br>		&#125;<br>	&#125;<br><br>	<span class="hljs-comment">//排序</span><br>	<span class="hljs-comment">// First, invoke the BeanFactoryPostProcessors that implement PriorityOrdered.</span><br>	sortPostProcessors(priorityOrderedPostProcessors, beanFactory);<br>	<span class="hljs-comment">//调用</span><br>	invokeBeanFactoryPostProcessors(priorityOrderedPostProcessors, beanFactory);<br><br>	<span class="hljs-comment">// Next, invoke the BeanFactoryPostProcessors that implement Ordered.</span><br>	List&lt;BeanFactoryPostProcessor&gt; orderedPostProcessors = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(orderedPostProcessorNames.size());<br>	<span class="hljs-keyword">for</span> (String postProcessorName : orderedPostProcessorNames) &#123;<br>		orderedPostProcessors.add(beanFactory.getBean(postProcessorName, BeanFactoryPostProcessor.class));<br>	&#125;<br>	sortPostProcessors(orderedPostProcessors, beanFactory);<br>	invokeBeanFactoryPostProcessors(orderedPostProcessors, beanFactory);<br><br>	<span class="hljs-comment">// Finally, invoke all other BeanFactoryPostProcessors.</span><br>	List&lt;BeanFactoryPostProcessor&gt; nonOrderedPostProcessors = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(nonOrderedPostProcessorNames.size());<br>	<span class="hljs-keyword">for</span> (String postProcessorName : nonOrderedPostProcessorNames) &#123;<br>		nonOrderedPostProcessors.add(beanFactory.getBean(postProcessorName, BeanFactoryPostProcessor.class));<br>	&#125;<br>	invokeBeanFactoryPostProcessors(nonOrderedPostProcessors, beanFactory);<br><br>	<span class="hljs-comment">// Clear cached merged bean definitions since the post-processors might have</span><br>	<span class="hljs-comment">// modified the original metadata, e.g. replacing placeholders in values...</span><br>	beanFactory.clearMetadataCache();<br>&#125;<br></code></pre></td></tr></table></div></figure>
+<h3 id="2-3-invokeBeanDefinitionRegistryPostProcessors"><a href="#2-3-invokeBeanDefinitionRegistryPostProcessors" class="headerlink" title="2.3.invokeBeanDefinitionRegistryPostProcessors()"></a>2.3.invokeBeanDefinitionRegistryPostProcessors()</h3><p>调用BeanDefinitionRegistryPostProcessor的postProcessBeanDefinitionRegistry()方法，完成对BeanDefinition的新增、修改</p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-3awn6ylhkbsd6v"></i><span>java</span><div class="collapse show" id="collapse-3awn6ylhkbsd6v"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">invokeBeanDefinitionRegistryPostProcessors</span><span class="hljs-params">(</span><br><span class="hljs-params">		Collection&lt;? extends BeanDefinitionRegistryPostProcessor&gt; postProcessors, BeanDefinitionRegistry registry)</span> &#123;<br><br>	<span class="hljs-keyword">for</span> (BeanDefinitionRegistryPostProcessor postProcessor : postProcessors) &#123;<br>		postProcessor.postProcessBeanDefinitionRegistry(registry);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></div></figure>
+
+<h3 id="2-4-invokeBeanFactoryPostProcessors"><a href="#2-4-invokeBeanFactoryPostProcessors" class="headerlink" title="2.4.invokeBeanFactoryPostProcessors()"></a>2.4.invokeBeanFactoryPostProcessors()</h3><p>调用BeanFactoryPostProcessor的postProcessBeanFactory()方法，完成对BeanFactory的修改</p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-dehhq9lhkbsd6v"></i><span>java</span><div class="collapse show" id="collapse-dehhq9lhkbsd6v"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">invokeBeanFactoryPostProcessors</span><span class="hljs-params">(</span><br><span class="hljs-params">		Collection&lt;? extends BeanFactoryPostProcessor&gt; postProcessors, ConfigurableListableBeanFactory beanFactory)</span> &#123;<br><br>	<span class="hljs-keyword">for</span> (BeanFactoryPostProcessor postProcessor : postProcessors) &#123;<br>		postProcessor.postProcessBeanFactory(beanFactory);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></div></figure>
+
+<h1 id="二、registerBeanPostProcessors"><a href="#二、registerBeanPostProcessors" class="headerlink" title="二、registerBeanPostProcessors()"></a>二、registerBeanPostProcessors()</h1><p>registerBeanPostProcessors方法主要把实现了BeanPostProcessor接口的类实例化，并且加入到BeanFactory中</p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-yeahlclhkbsd6v"></i><span>java</span><div class="collapse show" id="collapse-yeahlclhkbsd6v"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">registerBeanPostProcessors</span><span class="hljs-params">(</span><br><span class="hljs-params">		ConfigurableListableBeanFactory beanFactory, AbstractApplicationContext applicationContext)</span> &#123;<br>	<span class="hljs-comment">//拿到工程里面所有实现了BeanPostProcessor接口的类，获取到BeanDefinition的名称</span><br>	String[] postProcessorNames = beanFactory.getBeanNamesForType(BeanPostProcessor.class, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);<br><br>	<span class="hljs-comment">// Register BeanPostProcessorChecker that logs an info message when</span><br>	<span class="hljs-comment">// a bean is created during BeanPostProcessor instantiation, i.e. when</span><br>	<span class="hljs-comment">// a bean is not eligible for getting processed by all BeanPostProcessors.</span><br>	<span class="hljs-comment">//beanFactory.getBeanPostProcessorCount()会得到默认容器中注册的 BeanPostProcessor 个数，实际就是调用 List&lt;BeanPostProcessor&gt; beanPostProcessors = new CopyOnWriteArrayList&lt;&gt;()的size()方法，默认的容器注册的 BeanPostProcessor 有：</span><br>	<span class="hljs-comment">//ApplicationContextAwarePostProcessor</span><br>	<span class="hljs-comment">//ApplicationListenerDetector</span><br>	<span class="hljs-comment">//ConfigurationClassPostProcessor</span><br>	<span class="hljs-comment">//PostProcessorRegistrationDelegate</span><br>	<span class="hljs-type">int</span> <span class="hljs-variable">beanProcessorTargetCount</span> <span class="hljs-operator">=</span> beanFactory.getBeanPostProcessorCount() + <span class="hljs-number">1</span> + postProcessorNames.length;<br>	beanFactory.addBeanPostProcessor(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BeanPostProcessorChecker</span>(beanFactory, beanProcessorTargetCount));<br><br>	<span class="hljs-comment">// Separate between BeanPostProcessors that implement PriorityOrdered,</span><br>	<span class="hljs-comment">// Ordered, and the rest.</span><br>	List&lt;BeanPostProcessor&gt; priorityOrderedPostProcessors = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>	List&lt;BeanPostProcessor&gt; internalPostProcessors = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>	List&lt;String&gt; orderedPostProcessorNames = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>	List&lt;String&gt; nonOrderedPostProcessorNames = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>	<span class="hljs-comment">//提前实例化BeanPostProcessor类型的bean，然后bean进行排序</span><br>	<span class="hljs-keyword">for</span> (String ppName : postProcessorNames) &#123;<br>		<span class="hljs-keyword">if</span> (beanFactory.isTypeMatch(ppName, PriorityOrdered.class)) &#123;<br>			<span class="hljs-comment">//getBean是实例化方法，后面我们在讲bean实例化过程是会着重讲到</span><br>			<span class="hljs-type">BeanPostProcessor</span> <span class="hljs-variable">pp</span> <span class="hljs-operator">=</span> beanFactory.getBean(ppName, BeanPostProcessor.class);<br>			priorityOrderedPostProcessors.add(pp);<br>			<span class="hljs-comment">//判断类型是否是MergedBeanDefinitionPostProcessor，如果是则代码是内部使用的</span><br>			<span class="hljs-keyword">if</span> (pp <span class="hljs-keyword">instanceof</span> MergedBeanDefinitionPostProcessor) &#123;<br>				internalPostProcessors.add(pp);<br>			&#125;<br>		&#125;<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (beanFactory.isTypeMatch(ppName, Ordered.class)) &#123;<br>			orderedPostProcessorNames.add(ppName);<br>		&#125;<br>		<span class="hljs-keyword">else</span> &#123;<br>			nonOrderedPostProcessorNames.add(ppName);<br>		&#125;<br>	&#125;<br><br>	<span class="hljs-comment">// First, register the BeanPostProcessors that implement PriorityOrdered.</span><br>	sortPostProcessors(priorityOrderedPostProcessors, beanFactory);<br>	<span class="hljs-comment">//注册到BeanFactory中</span><br>	registerBeanPostProcessors(beanFactory, priorityOrderedPostProcessors);<br><br>	<span class="hljs-comment">// Next, register the BeanPostProcessors that implement Ordered.</span><br>	List&lt;BeanPostProcessor&gt; orderedPostProcessors = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(orderedPostProcessorNames.size());<br>	<span class="hljs-keyword">for</span> (String ppName : orderedPostProcessorNames) &#123;<br>		<span class="hljs-type">BeanPostProcessor</span> <span class="hljs-variable">pp</span> <span class="hljs-operator">=</span> beanFactory.getBean(ppName, BeanPostProcessor.class);<br>		orderedPostProcessors.add(pp);<br>		<span class="hljs-keyword">if</span> (pp <span class="hljs-keyword">instanceof</span> MergedBeanDefinitionPostProcessor) &#123;<br>			internalPostProcessors.add(pp);<br>		&#125;<br>	&#125;<br>	sortPostProcessors(orderedPostProcessors, beanFactory);<br>	registerBeanPostProcessors(beanFactory, orderedPostProcessors);<br><br>	<span class="hljs-comment">// Now, register all regular BeanPostProcessors.</span><br>	List&lt;BeanPostProcessor&gt; nonOrderedPostProcessors = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(nonOrderedPostProcessorNames.size());<br>	<span class="hljs-keyword">for</span> (String ppName : nonOrderedPostProcessorNames) &#123;<br>		<span class="hljs-type">BeanPostProcessor</span> <span class="hljs-variable">pp</span> <span class="hljs-operator">=</span> beanFactory.getBean(ppName, BeanPostProcessor.class);<br>		nonOrderedPostProcessors.add(pp);<br>		<span class="hljs-keyword">if</span> (pp <span class="hljs-keyword">instanceof</span> MergedBeanDefinitionPostProcessor) &#123;<br>			internalPostProcessors.add(pp);<br>		&#125;<br>	&#125;<br>	registerBeanPostProcessors(beanFactory, nonOrderedPostProcessors);<br><br>	<span class="hljs-comment">// Finally, re-register all internal BeanPostProcessors.</span><br>	sortPostProcessors(internalPostProcessors, beanFactory);<br>	registerBeanPostProcessors(beanFactory, internalPostProcessors);<br><br>	<span class="hljs-comment">// Re-register post-processor for detecting inner beans as ApplicationListeners,</span><br>	<span class="hljs-comment">// moving it to the end of the processor chain (for picking up proxies etc).</span><br>	beanFactory.addBeanPostProcessor(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ApplicationListenerDetector</span>(applicationContext));<br>&#125;<br></code></pre></td></tr></table></div></figure>
+
+<p>进入registerBeanPostProcessors()方法，注册过程</p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-b6se59lhkbsd6v"></i><span>java</span><div class="collapse show" id="collapse-b6se59lhkbsd6v"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 注册当前的 BeanPostProcessor</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">registerBeanPostProcessors</span><span class="hljs-params">(</span><br><span class="hljs-params">		ConfigurableListableBeanFactory beanFactory, List&lt;BeanPostProcessor&gt; postProcessors)</span> &#123;<br><br>	<span class="hljs-keyword">for</span> (BeanPostProcessor postProcessor : postProcessors) &#123;<br>		<span class="hljs-comment">// 添加到List&lt;BeanPostProcessor&gt; beanPostProcessors</span><br>		beanFactory.addBeanPostProcessor(postProcessor);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></div></figure>
+
+<h1 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h1><p>invokeBeanFactoryPostProcessors和registerBeanPostProcessors两个方法的处理流程基本一致，都分别对实现接口的类实例化调用：</p>
+<ul>
+<li>首先对实现 PriorityOrdered 接口的 beanPostProcessors 排序调用</li>
+<li>其次对实现 Ordered 接口的 beanPostProcessors 排序调用</li>
+<li>最后对没有实现排序接口的 beanPostProcessors 调用</li>
+</ul>
+<h2 id="1-BeanPostProcessor"><a href="#1-BeanPostProcessor" class="headerlink" title="1.BeanPostProcessor"></a>1.BeanPostProcessor</h2><p>BeanPostProcessor有两个方法，</p>
+<ul>
+<li>postProcessBeforeInitialization</li>
+<li>postProcessAfterInitialization。</li>
+</ul>
+<p>它们分别在任何bean初始化回调之前或之后执行（例如InitializingBean的afterPropertiesSet方法或自定义init-method方法之前或者之后）， 在这个时候该bean的属性值已经填充完成了，并且我们返回的bean实例可能已经是原始实例的包装类型了。例如返回一个FactoryBean。</p>
+<p>在本章开头，我们也说过，BeanPostProcessor 接口类型的实例是针对某种特定功能的埋点，在这个点会根据接口类型来过滤掉不关注这个点的其他类，只有真正关注的类才会在这个点进行相应的功能实现。现在来总结下这些埋点。</p>
+<h3 id="1-1-获取有-Autowired-注解的构造函数埋点"><a href="#1-1-获取有-Autowired-注解的构造函数埋点" class="headerlink" title="1.1.获取有@Autowired 注解的构造函数埋点"></a>1.1.获取有@Autowired 注解的构造函数埋点</h3><ul>
+<li>过滤的接口类型是：SmartInstantiationAwareBeanPostProcessor</li>
+<li>调用的方法是：determineCandidateConstructors</li>
+</ul>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-snybiulhkbsd6v"></i><span>java</span><div class="collapse show" id="collapse-snybiulhkbsd6v"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//AbstractAutowireCapableBeanFactory</span><br><span class="hljs-keyword">protected</span> BeanWrapper <span class="hljs-title function_">createBeanInstance</span><span class="hljs-params">(String beanName, RootBeanDefinition mbd, <span class="hljs-meta">@Nullable</span> Object[] args)</span> &#123;<br><span class="hljs-comment">//......省略部分代码</span><br><span class="hljs-comment">//寻找当前正在实例化的bean中有@Autowired注解的构造函数</span><br>		Constructor&lt;?&gt;[] ctors = determineConstructorsFromBeanPostProcessors(beanClass, beanName);<br>		<span class="hljs-keyword">if</span> (ctors != <span class="hljs-literal">null</span> || mbd.getResolvedAutowireMode() == AUTOWIRE_CONSTRUCTOR ||<br>				mbd.hasConstructorArgumentValues() || !ObjectUtils.isEmpty(args)) &#123;<br>			<span class="hljs-comment">//如果ctors不为空，就说明构造函数上有@Autowired注解</span><br>			<span class="hljs-keyword">return</span> autowireConstructor(beanName, mbd, ctors, args);<br>		&#125;<br><span class="hljs-comment">//......省略部分代码</span><br>&#125;<br><br><span class="hljs-keyword">protected</span> Constructor&lt;?&gt;[] determineConstructorsFromBeanPostProcessors(<span class="hljs-meta">@Nullable</span> Class&lt;?&gt; beanClass, String beanName)<br>		<span class="hljs-keyword">throws</span> BeansException &#123;<br>	<span class="hljs-keyword">if</span> (beanClass != <span class="hljs-literal">null</span> &amp;&amp; hasInstantiationAwareBeanPostProcessors()) &#123;<br>		<span class="hljs-comment">// 拿到 BeanPostProcessor 的所有接口，遍历</span><br>		<span class="hljs-keyword">for</span> (BeanPostProcessor bp : getBeanPostProcessors()) &#123;<br>			<span class="hljs-keyword">if</span> (bp <span class="hljs-keyword">instanceof</span> SmartInstantiationAwareBeanPostProcessor) &#123;<br>				<span class="hljs-type">SmartInstantiationAwareBeanPostProcessor</span> <span class="hljs-variable">ibp</span> <span class="hljs-operator">=</span> (SmartInstantiationAwareBeanPostProcessor) bp;<br>				<span class="hljs-comment">// 获取到有@Autowired注解信息的构造函数</span><br>				Constructor&lt;?&gt;[] ctors = ibp.determineCandidateConstructors(beanClass, beanName);<br>				<span class="hljs-keyword">if</span> (ctors != <span class="hljs-literal">null</span>) &#123;<br>					<span class="hljs-keyword">return</span> ctors;<br>				&#125;<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br></code></pre></td></tr></table></div></figure>
+
+<p>而这个SmartInstantiationAwareBeanPostProcessor智能实例化Bean的后处理器，主要提供了三个方法：</p>
+<ul>
+<li>predictBeanType：预测从此处理器的postProcessBeforeInstantiation回调最终返回的bean的类型。</li>
+<li>determineCandidateConstructors：确定合适的实例化Bean的构造函数。</li>
+<li>getEarlyBeanReference：获取提早暴露的Bean的引用，提早暴露的Bean就是只完成了实例化，还未完成属性赋值和初始化的Bean。</li>
+</ul>
+<h3 id="1-2-收集-Resource-Autowired-Value-PostConstruct，-PreDestroy-注解的方法和属性埋点"><a href="#1-2-收集-Resource-Autowired-Value-PostConstruct，-PreDestroy-注解的方法和属性埋点" class="headerlink" title="1.2.收集@Resource@Autowired@Value@PostConstruct，@PreDestroy 注解的方法和属性埋点"></a>1.2.收集@Resource@Autowired@Value@PostConstruct，@PreDestroy 注解的方法和属性埋点</h3><ul>
+<li>过滤的接口类型是：MergedBeanDefinitionPostProcessor</li>
+<li>调用的方法是：postProcessMergedBeanDefinition</li>
+</ul>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-gutulylhkbsd6v"></i><span>java</span><div class="collapse show" id="collapse-gutulylhkbsd6v"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//AbstractAutowireCapableBeanFactory</span><br><span class="hljs-keyword">protected</span> Object <span class="hljs-title function_">doCreateBean</span><span class="hljs-params">(String beanName, RootBeanDefinition mbd, <span class="hljs-meta">@Nullable</span> Object[] args)</span> <span class="hljs-keyword">throws</span> BeanCreationException &#123;<br><span class="hljs-comment">//......省略部分代码</span><br><span class="hljs-keyword">synchronized</span> (mbd.postProcessingLock) &#123;<br>			<span class="hljs-keyword">if</span> (!mbd.postProcessed) &#123;<br>				<span class="hljs-keyword">try</span> &#123;<br>					<span class="hljs-comment">//CommonAnnotationBeanPostProcessor  支持了@PostConstruct，@PreDestroy,@Resource注解</span><br>					<span class="hljs-comment">//AutowiredAnnotationBeanPostProcessor 支持 @Autowired,@Value注解</span><br>					<span class="hljs-comment">//BeanPostProcessor接口的典型运用，这里要理解这个接口</span><br>					<span class="hljs-comment">//对类中注解的装配过程</span><br>					<span class="hljs-comment">//重要程度5，必须看</span><br>					applyMergedBeanDefinitionPostProcessors(mbd, beanType, beanName);<br>				&#125;<br>				<span class="hljs-keyword">catch</span> (Throwable ex) &#123;<br>					<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BeanCreationException</span>(mbd.getResourceDescription(), beanName,<br>							<span class="hljs-string">&quot;Post-processing of merged bean definition failed&quot;</span>, ex);<br>				&#125;<br>				mbd.postProcessed = <span class="hljs-literal">true</span>;<br>			&#125;<br>		&#125;<br><br><span class="hljs-comment">//......省略部分代码</span><br>&#125;<br><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">applyMergedBeanDefinitionPostProcessors</span><span class="hljs-params">(RootBeanDefinition mbd, Class&lt;?&gt; beanType, String beanName)</span> &#123;<br>	<span class="hljs-keyword">for</span> (BeanPostProcessor bp : getBeanPostProcessors()) &#123;<br>		<span class="hljs-keyword">if</span> (bp <span class="hljs-keyword">instanceof</span> MergedBeanDefinitionPostProcessor) &#123;<br>			<span class="hljs-type">MergedBeanDefinitionPostProcessor</span> <span class="hljs-variable">bdp</span> <span class="hljs-operator">=</span> (MergedBeanDefinitionPostProcessor) bp;<br>			bdp.postProcessMergedBeanDefinition(mbd, beanType, beanName);<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></div></figure>
+<h3 id="1-3-循环依赖解决中bean-的提前暴露埋点"><a href="#1-3-循环依赖解决中bean-的提前暴露埋点" class="headerlink" title="1.3.循环依赖解决中bean 的提前暴露埋点"></a>1.3.循环依赖解决中bean 的提前暴露埋点</h3><ul>
+<li>过滤的接口类型是：SmartInstantiationAwareBeanPostProcessor</li>
+<li>调用的方法是：getEarlyBeanReference</li>
+</ul>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-fwwhl6lhkbsd6v"></i><span>java</span><div class="collapse show" id="collapse-fwwhl6lhkbsd6v"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">protected</span> Object <span class="hljs-title function_">getEarlyBeanReference</span><span class="hljs-params">(String beanName, RootBeanDefinition mbd, Object bean)</span> &#123;<br>	<span class="hljs-type">Object</span> <span class="hljs-variable">exposedObject</span> <span class="hljs-operator">=</span> bean;<br>	<span class="hljs-keyword">if</span> (!mbd.isSynthetic() &amp;&amp; hasInstantiationAwareBeanPostProcessors()) &#123;<br>		<span class="hljs-keyword">for</span> (BeanPostProcessor bp : getBeanPostProcessors()) &#123;<br>			<span class="hljs-keyword">if</span> (bp <span class="hljs-keyword">instanceof</span> SmartInstantiationAwareBeanPostProcessor) &#123;<br>				<span class="hljs-type">SmartInstantiationAwareBeanPostProcessor</span> <span class="hljs-variable">ibp</span> <span class="hljs-operator">=</span> (SmartInstantiationAwareBeanPostProcessor) bp;<br>				exposedObject = ibp.getEarlyBeanReference(exposedObject, beanName);<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> exposedObject;<br>&#125;<br></code></pre></td></tr></table></div></figure>
+
+<h3 id="1-4-阻止依赖注入埋点"><a href="#1-4-阻止依赖注入埋点" class="headerlink" title="1.4.阻止依赖注入埋点"></a>1.4.阻止依赖注入埋点</h3><ul>
+<li>过滤的接口类型是：InstantiationAwareBeanPostProcessor</li>
+<li>调用的方法是：postProcessAfterInstantiation</li>
+</ul>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-dchb78lhkbsd6v"></i><span>java</span><div class="collapse show" id="collapse-dchb78lhkbsd6v"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//AbstractAutowireCapableBeanFactory</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">populateBean</span><span class="hljs-params">(String beanName, RootBeanDefinition mbd, <span class="hljs-meta">@Nullable</span> BeanWrapper bw)</span> &#123;<br><span class="hljs-comment">//......省略部分代码</span><br><span class="hljs-comment">//这里很有意思，写接口可以让所有类都不能依赖注入</span><br>		<span class="hljs-keyword">if</span> (!mbd.isSynthetic() &amp;&amp; hasInstantiationAwareBeanPostProcessors()) &#123;<br>			<span class="hljs-keyword">for</span> (BeanPostProcessor bp : getBeanPostProcessors()) &#123;<br>				<span class="hljs-keyword">if</span> (bp <span class="hljs-keyword">instanceof</span> InstantiationAwareBeanPostProcessor) &#123;<br>					<span class="hljs-type">InstantiationAwareBeanPostProcessor</span> <span class="hljs-variable">ibp</span> <span class="hljs-operator">=</span> (InstantiationAwareBeanPostProcessor) bp;<br>					<span class="hljs-keyword">if</span> (!ibp.postProcessAfterInstantiation(bw.getWrappedInstance(), beanName)) &#123;<br>						<span class="hljs-keyword">return</span>;<br>					&#125;<br>				&#125;<br>			&#125;<br>		&#125;<br><span class="hljs-comment">//......省略部分代码</span><br>&#125;<br></code></pre></td></tr></table></div></figure>
+<h3 id="1-5-IOC-x2F-DI-依赖注入埋点"><a href="#1-5-IOC-x2F-DI-依赖注入埋点" class="headerlink" title="1.5.IOC&#x2F;DI 依赖注入埋点"></a>1.5.IOC&#x2F;DI 依赖注入埋点</h3><ul>
+<li>过滤的接口类型是：InstantiationAwareBeanPostProcessor</li>
+<li>调用的方法是：postProcessProperties(新版本)</li>
+</ul>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-su4y93lhkbsd6v"></i><span>java</span><div class="collapse show" id="collapse-su4y93lhkbsd6v"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//AbstractAutowireCapableBeanFactory</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">populateBean</span><span class="hljs-params">(String beanName, RootBeanDefinition mbd, <span class="hljs-meta">@Nullable</span> BeanWrapper bw)</span> &#123;<br><span class="hljs-comment">//......省略部分代码</span><br><span class="hljs-comment">//重点看这个if代码块，重要程度 5</span><br>		<span class="hljs-keyword">if</span> (hasInstAwareBpps) &#123;<br>			<span class="hljs-keyword">if</span> (pvs == <span class="hljs-literal">null</span>) &#123;<br>				pvs = mbd.getPropertyValues();<br>			&#125;<br>			<span class="hljs-keyword">for</span> (BeanPostProcessor bp : getBeanPostProcessors()) &#123;<br>				<span class="hljs-keyword">if</span> (bp <span class="hljs-keyword">instanceof</span> InstantiationAwareBeanPostProcessor) &#123;<br>					<span class="hljs-type">InstantiationAwareBeanPostProcessor</span> <span class="hljs-variable">ibp</span> <span class="hljs-operator">=</span> (InstantiationAwareBeanPostProcessor) bp;<br>					<span class="hljs-comment">//依赖注入过程，@Resource @Autowired的支持</span><br>					<span class="hljs-type">PropertyValues</span> <span class="hljs-variable">pvsToUse</span> <span class="hljs-operator">=</span> ibp.postProcessProperties(pvs, bw.getWrappedInstance(), beanName);<br>					<span class="hljs-keyword">if</span> (pvsToUse == <span class="hljs-literal">null</span>) &#123;<br>						<span class="hljs-keyword">if</span> (filteredPds == <span class="hljs-literal">null</span>) &#123;<br>							filteredPds = filterPropertyDescriptorsForDependencyCheck(bw, mbd.allowCaching);<br>						&#125;<br>						<span class="hljs-comment">//老版本用这个完成依赖注入过程，@Autowired的支持</span><br>						pvsToUse = ibp.postProcessPropertyValues(pvs, filteredPds, bw.getWrappedInstance(), beanName);<br>						<span class="hljs-keyword">if</span> (pvsToUse == <span class="hljs-literal">null</span>) &#123;<br>							<span class="hljs-keyword">return</span>;<br>						&#125;<br>					&#125;<br>					pvs = pvsToUse;<br>				&#125;<br>			&#125;<br>		&#125;<br>	<span class="hljs-comment">//......省略部分代码</span><br>&#125;<br></code></pre></td></tr></table></div></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/" class="category-chain-item">Spring源码学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%BA%90%E7%A0%81/">#源码</a>
+      
+        <a href="/tags/Spring/">#Spring</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【Spring源码学习】BeanPostProccessor的理解</div>
+      <div>https://zyxelva.github.io/2023/05/01/【Spring源码学习】BeanPostProccessor的理解/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zyxelva</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/01/%E3%80%90Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E3%80%91FactoryBean-%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%8E%A5%E5%8F%A3/" title="【Spring源码学习】FactoryBean 类型的接口">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【Spring源码学习】FactoryBean 类型的接口</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/05/01/%E3%80%90Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E3%80%91Spring-Bean%E7%9A%84%E9%94%80%E6%AF%81/" title="【Spring源码学习】Spring Bean的销毁">
+                        <span class="hidden-mobile">【Spring源码学习】Spring Bean的销毁</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="lv-container" data-id="city" data-uid="MTAyMC81ODQyNi8zNDg4OQ==">
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#lv-container', function() {
+        Fluid.utils.createScript('https://cdn-city.livere.com/js/embed.dist.js');
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script src="/js/backgroundsize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundsize.css" />
+  <!-- hexo injector body_end end --></body>
+</html>

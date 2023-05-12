@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zyxelva">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言上一篇【MyBatis源码学习】Sql解析中，我主要梳理了sql的源码解析过程，本章我通过同样的一个例子，来仔细瞧瞧sql是怎样执行下来的。主要分为三个步骤：  动态代理生成mapper sql执行 结果集处理  还是通过同样的例子来开始本章的源码sql执行过程跟踪。 java123456789101112@Test&#x2F;&#x2F; 程序员喜欢的风格public void quickStart() thr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【MyBatis源码学习】Sql执行">
+<meta property="og:url" content="https://zyxelva.github.io/2023/04/30/%E3%80%90Mybatis%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E3%80%91Sql%E6%89%A7%E8%A1%8C/index.html">
+<meta property="og:site_name" content="Kezade的技术博客">
+<meta property="og:description" content="前言上一篇【MyBatis源码学习】Sql解析中，我主要梳理了sql的源码解析过程，本章我通过同样的一个例子，来仔细瞧瞧sql是怎样执行下来的。主要分为三个步骤：  动态代理生成mapper sql执行 结果集处理  还是通过同样的例子来开始本章的源码sql执行过程跟踪。 java123456789101112@Test&#x2F;&#x2F; 程序员喜欢的风格public void quickStart() thr">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zyxelva.github.io/img/MyBatis.jpeg">
+<meta property="article:published_time" content="2023-04-30T02:19:16.000Z">
+<meta property="article:modified_time" content="2023-05-11T13:41:00.125Z">
+<meta property="article:author" content="zyxelva">
+<meta property="article:tag" content="MyBatis">
+<meta property="article:tag" content="源码">
+<meta property="article:tag" content="SQL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zyxelva.github.io/img/MyBatis.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>【MyBatis源码学习】Sql执行 - Kezade的技术博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/macpanel.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zyxelva.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  <meta name="referrer" content="same-origin"/>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Kezade的技术博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/photos/">
+                <i class="iconfont icon-images"></i>
+                <span>相册</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/post.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【MyBatis源码学习】Sql执行"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-30 10:19" pubdate>
+          2023年4月30日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          54 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">【MyBatis源码学习】Sql执行</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>上一篇<a href="https://zyxelva.github.io/2023/04/30/%E3%80%90Mybatis%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E3%80%91Sql%E8%A7%A3%E6%9E%90/">【MyBatis源码学习】Sql解析</a>中，我主要梳理了sql的源码解析过程，本章我通过同样的一个例子，来仔细瞧瞧sql是怎样执行下来的。主要分为三个步骤：</p>
+<ul>
+<li>动态代理生成mapper</li>
+<li>sql执行</li>
+<li>结果集处理</li>
+</ul>
+<p>还是通过同样的例子来开始本章的源码sql执行过程跟踪。</p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-abtsd8lhkbsd6u"></i><span>java</span><div class="collapse show" id="collapse-abtsd8lhkbsd6u"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-comment">// 程序员喜欢的风格</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">quickStart</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-comment">// 2.获取sqlSession</span><br>    <span class="hljs-type">SqlSession</span> <span class="hljs-variable">sqlSession</span> <span class="hljs-operator">=</span> sqlSessionFactory.openSession();<br>    <span class="hljs-comment">// 3.获取对应mapper</span><br>    <span class="hljs-type">TUserMapper</span> <span class="hljs-variable">mapper</span> <span class="hljs-operator">=</span> sqlSession.getMapper(TUserMapper.class);<br>    <span class="hljs-comment">// 4.执行查询语句并返回单条数据</span><br>    <span class="hljs-type">TUser</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> mapper.selectByPrimaryKey(<span class="hljs-number">2</span>);<br>    System.out.println(user);<br>&#125;<br><br></code></pre></td></tr></table></div></figure>
+<h1 id="一、动态代理生成mapper"><a href="#一、动态代理生成mapper" class="headerlink" title="一、动态代理生成mapper"></a>一、动态代理生成mapper</h1><p>我们直接从这句开始跟下源码：</p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-knqg8ilhkbsd6u"></i><span>java</span><div class="collapse show" id="collapse-knqg8ilhkbsd6u"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">TUserMapper</span> <span class="hljs-variable">mapper</span> <span class="hljs-operator">=</span> sqlSession.getMapper(TUserMapper.class);<br></code></pre></td></tr></table></div></figure>
+<p>断点调式开始<br><img src="https://img-blog.csdnimg.cn/20210322102317495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload><br>我们看到SqlSession实例是DefaultSqlSession，点进去看看getMapper:<br><img src="https://img-blog.csdnimg.cn/20210322102447860.png" srcset="/img/loading.gif" lazyload><br>进入的是“大管家”Configuration的getMapper.<br><img src="https://img-blog.csdnimg.cn/20210322102558173.png" srcset="/img/loading.gif" lazyload></p>
+<p>而真正给出接口代理类的是MapperRegistry.<img src="https://img-blog.csdnimg.cn/20210322102754132.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload><br>点进去看看mapperProxyFactory.newInstance(sqlSession)具体生成实例的代码：</p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-rmsscnlhkbsd6u"></i><span>java</span><div class="collapse show" id="collapse-rmsscnlhkbsd6u"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// MapperProxyFactory</span><br><span class="hljs-comment">// 生成一个 MapperProxy对象</span><br>  <span class="hljs-meta">@SuppressWarnings(&quot;unchecked&quot;)</span><br>  <span class="hljs-keyword">protected</span> T <span class="hljs-title function_">newInstance</span><span class="hljs-params">(MapperProxy&lt;T&gt; mapperProxy)</span> &#123;<br>    <span class="hljs-keyword">return</span> (T) Proxy.newProxyInstance(mapperInterface.getClassLoader(), <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[] &#123; mapperInterface &#125;, mapperProxy);<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> T <span class="hljs-title function_">newInstance</span><span class="hljs-params">(SqlSession sqlSession)</span> &#123;<br>    <span class="hljs-keyword">final</span> MapperProxy&lt;T&gt; mapperProxy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MapperProxy</span>&lt;&gt;(sqlSession, mapperInterface, methodCache);<br>    <span class="hljs-keyword">return</span> newInstance(mapperProxy);<br>  &#125;<br></code></pre></td></tr></table></div></figure>
+<p>发现，运用的正是JDK动态代理。<br>梳理下该过程的时序图，如下：<br><img src="https://img-blog.csdnimg.cn/20210322110043730.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload></p>
+<h1 id="二、sql执行"><a href="#二、sql执行" class="headerlink" title="二、sql执行"></a>二、sql执行</h1><p>通过一中的过程，我们可以得到一个接口的mapperProxy动态代理对象了。sql的执行过程就是从MapperProxy的invoke方法开始的。<br><img src="https://img-blog.csdnimg.cn/20210322110414703.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload><br><img src="https://img-blog.csdnimg.cn/20210322110853190.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload><br>先去缓存中看看是否已经有了现成的MapperMethod，没有才回去new一个出来。<br>接下来，调用 MapperMethod 中的execute方法。<br><img src="https://img-blog.csdnimg.cn/20210322111101131.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload><br>本例中，执行的是一个查询语句，进入case SELECT分支</p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-4o6948lhkbsd6u"></i><span>java</span><div class="collapse show" id="collapse-4o6948lhkbsd6u"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-keyword">case</span> SELECT: <span class="hljs-comment">// 如果是查询语句</span><br>        <span class="hljs-keyword">if</span> (method.returnsVoid() &amp;&amp; method.hasResultHandler()) &#123; <span class="hljs-comment">// 返回为void，且有结果处理器</span><br>          <span class="hljs-comment">// 使用结果处理器执行查询</span><br>          executeWithResultHandler(sqlSession, args);<br>          result = <span class="hljs-literal">null</span>;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (method.returnsMany()) &#123; <span class="hljs-comment">// 多条结果查询</span><br>          result = executeForMany(sqlSession, args);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (method.returnsMap()) &#123; <span class="hljs-comment">// map结果查询</span><br>          result = executeForMap(sqlSession, args);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (method.returnsCursor()) &#123; <span class="hljs-comment">// 游标类型结果查询</span><br>          result = executeForCursor(sqlSession, args);<br>        &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 单条结果查询</span><br>          <span class="hljs-comment">// 将参数顺序与实参对应好</span><br>          <span class="hljs-type">Object</span> <span class="hljs-variable">param</span> <span class="hljs-operator">=</span> method.convertArgsToSqlCommandParam(args);<br>          result = sqlSession.selectOne(command.getName(), param);<br>          <span class="hljs-keyword">if</span> (method.returnsOptional()<br>              &amp;&amp; (result == <span class="hljs-literal">null</span> || !method.getReturnType().equals(result.getClass()))) &#123;<br>            result = Optional.ofNullable(result);<br>          &#125;<br>        &#125;<br>        <span class="hljs-keyword">break</span>;<br></code></pre></td></tr></table></div></figure>
+<p>我们可以看到，根据返回的结果类型，进入不同的处理逻辑，主要有</p>
+<ul>
+<li>返回为void</li>
+<li>返回多条结果</li>
+<li>返回map结果</li>
+<li>返回单条结果</li>
+</ul>
+<p>返回值为空的情况下，直接返回 result &#x3D; null。其余几种情况内部都调用了sqlSession 中的selectList 方法。这里我们以selectOne为例。<br>convertArgsToSqlCommandParam()前面我们在<a target="_blank" rel="noopener" href="https://blog.csdn.net/kezade/article/details/114801993">【Mybatis源码学习】参数解析</a>做过说明，主要进行参数的顺序映射解析。这里不做赘述。直接看看DefaultSqlSession.selectOne方法。</p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-6xzd67lhkbsd6u"></i><span>java</span><div class="collapse show" id="collapse-6xzd67lhkbsd6u"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> &lt;T&gt; T <span class="hljs-title function_">selectOne</span><span class="hljs-params">(String statement, Object parameter)</span> &#123;<br>    <span class="hljs-comment">// Popular vote was to return null on 0 results and throw exception on too many.</span><br>    List&lt;T&gt; list = <span class="hljs-built_in">this</span>.selectList(statement, parameter);<br>    <span class="hljs-keyword">if</span> (list.size() == <span class="hljs-number">1</span>) &#123;<br>      <span class="hljs-keyword">return</span> list.get(<span class="hljs-number">0</span>);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (list.size() &gt; <span class="hljs-number">1</span>) &#123;<br>      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TooManyResultsException</span>(<span class="hljs-string">&quot;Expected one result (or null) to be returned by selectOne(), but found: &quot;</span> + list.size());<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>  &#125;<br></code></pre></td></tr></table></div></figure>
+<p>如果selectList查询返回1条，则直接返回；如果返回多条则抛出异常，否则直接返回null。<br>点进去看看selectList方法。</p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-9hw3tglhkbsd6u"></i><span>java</span><div class="collapse show" id="collapse-9hw3tglhkbsd6u"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 查询结果列表</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> &lt;E&gt; 返回的列表元素的类型</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> statement SQL语句</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> parameter 参数对象</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> rowBounds  翻页限制条件</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@return</span> 结果对象列表</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> &lt;E&gt; List&lt;E&gt; <span class="hljs-title function_">selectList</span><span class="hljs-params">(String statement, Object parameter, RowBounds rowBounds)</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>      <span class="hljs-comment">// 获取查询语句</span><br>      <span class="hljs-type">MappedStatement</span> <span class="hljs-variable">ms</span> <span class="hljs-operator">=</span> configuration.getMappedStatement(statement);<br>      <span class="hljs-comment">// 交由执行器进行查询</span><br>      <span class="hljs-keyword">return</span> executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESULT_HANDLER);<br>    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>      <span class="hljs-keyword">throw</span> ExceptionFactory.wrapException(<span class="hljs-string">&quot;Error querying database.  Cause: &quot;</span> + e, e);<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>      ErrorContext.instance().reset();<br>    &#125;<br>  &#125;<br></code></pre></td></tr></table></div></figure>
+<p>这里说明下，mybatis默认是开启了二级缓存的，所以这里executor其实是CachingExecutor.我们可以在创建sqlSession中看看Configuration中创建执行器时的代码：<br><img src="https://img-blog.csdnimg.cn/20210322135551582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload><br>要关闭二级缓存，我们可以在mybatis-config.xml中显示配置，如下：</p>
+<figure class="highlight xml"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-8dyqg4lhkbsd6u"></i><span>xml</span><div class="collapse show" id="collapse-8dyqg4lhkbsd6u"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 二级缓存开关，默认为开启--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">setting</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;cacheEnabled&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;false&quot;</span>/&gt;</span><br></code></pre></td></tr></table></div></figure>
+<p>关闭二级缓存，我们回到selectList方法中，继续跟下这段代码的执行过程：</p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-yl05khlhkbsd6u"></i><span>java</span><div class="collapse show" id="collapse-yl05khlhkbsd6u"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESULT_HANDLER)<br></code></pre></td></tr></table></div></figure>
+<p>executor这里为SimpleExecutor，其首先调用的是BaseExecutor的query方法。<br><img src="https://img-blog.csdnimg.cn/2021032214023869.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-gicxqklhkbsd6u"></i><span>java</span><div class="collapse show" id="collapse-gicxqklhkbsd6u"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 查询数据库中的数据</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> ms 映射语句</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> parameter 参数对象</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> rowBounds 翻页限制条件</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> resultHandler 结果处理器</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> key 缓存的键</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> boundSql 查询语句</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> &lt;E&gt; 结果类型</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@return</span> 结果列表</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@throws</span> SQLException</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-meta">@SuppressWarnings(&quot;unchecked&quot;)</span><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> &lt;E&gt; List&lt;E&gt; <span class="hljs-title function_">query</span><span class="hljs-params">(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, CacheKey key, BoundSql boundSql)</span> <span class="hljs-keyword">throws</span> SQLException &#123;<br>    ErrorContext.instance().resource(ms.getResource()).activity(<span class="hljs-string">&quot;executing a query&quot;</span>).object(ms.getId());<br>    <span class="hljs-keyword">if</span> (closed) &#123;<br>      <span class="hljs-comment">// 执行器已经关闭</span><br>      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ExecutorException</span>(<span class="hljs-string">&quot;Executor was closed.&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (queryStack == <span class="hljs-number">0</span> &amp;&amp; ms.isFlushCacheRequired()) &#123; <span class="hljs-comment">// 新的查询栈且要求清除缓存</span><br>      <span class="hljs-comment">// 新的查询栈，故清除本地缓存，即清除一级缓存</span><br>      clearLocalCache();<br>    &#125;<br>    List&lt;E&gt; list;<br>    <span class="hljs-keyword">try</span> &#123;<br>      queryStack++;<br>      <span class="hljs-comment">// 尝试从本地缓存获取结果</span><br>      list = resultHandler == <span class="hljs-literal">null</span> ? (List&lt;E&gt;) localCache.getObject(key) : <span class="hljs-literal">null</span>;<br>      <span class="hljs-keyword">if</span> (list != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-comment">// 本地缓存中有结果，则对于CALLABLE语句还需要绑定到IN/INOUT参数上</span><br>        handleLocallyCachedOutputParameters(ms, key, parameter, boundSql);<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 本地缓存没有结果，故需要查询数据库</span><br>        list = queryFromDatabase(ms, parameter, rowBounds, resultHandler, key, boundSql);<br>      &#125;<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>      queryStack--;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (queryStack == <span class="hljs-number">0</span>) &#123;<br>      <span class="hljs-comment">// 懒加载操作的处理</span><br>      <span class="hljs-keyword">for</span> (DeferredLoad deferredLoad : deferredLoads) &#123;<br>        deferredLoad.load();<br>      &#125;<br>      <span class="hljs-comment">// issue #601</span><br>      deferredLoads.clear();<br>      <span class="hljs-comment">// 如果本地缓存的作用域为STATEMENT，则立刻清除本地缓存</span><br>      <span class="hljs-keyword">if</span> (configuration.getLocalCacheScope() == LocalCacheScope.STATEMENT) &#123;<br>        <span class="hljs-comment">// issue #482</span><br>        clearLocalCache();<br>      &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> list;<br>  &#125;<br></code></pre></td></tr></table></div></figure>
+<p>先从一级缓存中查询是否已有结果，没有则才去查询数据库。我们直接看查询数据库的部分，也就是方法queryFromDatabase().<br><img src="https://img-blog.csdnimg.cn/20210322141109713.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload><br>进入doQuery()方法，发现这里是个模版方法，由于前面提到我们此处的执行器为SimpleExecutor，所以这个方法来到了SimpleExecutor的doQuery()方法.</p>
+<p><img src="https://img-blog.csdnimg.cn/20210322141449815.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload><br>如上，该方法主要有三步：</p>
+<ul>
+<li>新建一个StatementHandler</li>
+<li>获取Statement</li>
+<li>StatementHandler.query（实际调用的是PreparedStatementHandler）获取查询结果。</li>
+</ul>
+<p>我们看看prepareStatement方法。</p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-d6di6hlhkbsd6u"></i><span>java</span><div class="collapse show" id="collapse-d6di6hlhkbsd6u"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-comment">//SimpleExcutor</span><br> <span class="hljs-keyword">private</span> Statement <span class="hljs-title function_">prepareStatement</span><span class="hljs-params">(StatementHandler handler, Log statementLog)</span> <span class="hljs-keyword">throws</span> SQLException &#123;<br>   Statement stmt;<br><span class="hljs-comment">//获取数据库连接</span><br>   <span class="hljs-type">Connection</span> <span class="hljs-variable">connection</span> <span class="hljs-operator">=</span> getConnection(statementLog);<br>   <span class="hljs-comment">//创建Statement</span><br>   stmt = handler.prepare(connection);<br>   <span class="hljs-comment">//为Statement设置IN参数</span><br>   handler.parameterize(stmt);<br>   <span class="hljs-keyword">return</span> stmt;<br> &#125;<br><br></code></pre></td></tr></table></div></figure>
+<p>经典的流程：获取数据库连接；创建Statement; 为Statement设置IN参数。再看第三步执行语句：</p>
+<figure class="highlight java"><i class="iconfont icon-github-fill" type="button" data-toggle="collapse" data-target="#collapse-f80h3llhkbsd6u"></i><span>java</span><div class="collapse show" id="collapse-f80h3llhkbsd6u"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-comment">//PreparedStatementHandler</span><br> <span class="hljs-keyword">public</span> &lt;E&gt; List&lt;E&gt; <span class="hljs-title function_">query</span><span class="hljs-params">(Statement statement, ResultHandler resultHandler)</span> <span class="hljs-keyword">throws</span> SQLException &#123;<br>   <span class="hljs-type">PreparedStatement</span> <span class="hljs-variable">ps</span> <span class="hljs-operator">=</span> (PreparedStatement) statement;<br><span class="hljs-comment">// 执行SQL</span><br>   ps.execute();<br><span class="hljs-comment">// 处理执行结果</span><br>   <span class="hljs-keyword">return</span> resultSetHandler.&lt;E&gt; handleResultSets(ps);<br> &#125;<br><br></code></pre></td></tr></table></div></figure>
+<p>查询完毕，总结一下这个过程的时序图，一目了然：<br><img src="https://img-blog.csdnimg.cn/20210322151224922.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload></p>
+<h1 id="三、结果集处理"><a href="#三、结果集处理" class="headerlink" title="三、结果集处理"></a>三、结果集处理</h1><p>结果集的映射，这部分我会在下一篇详细的跟进。Game over.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/MyBatis%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/" class="category-chain-item">MyBatis源码学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/MyBatis/">#MyBatis</a>
+      
+        <a href="/tags/%E6%BA%90%E7%A0%81/">#源码</a>
+      
+        <a href="/tags/SQL/">#SQL</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【MyBatis源码学习】Sql执行</div>
+      <div>https://zyxelva.github.io/2023/04/30/【Mybatis源码学习】Sql执行/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zyxelva</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/30/%E3%80%90Mybatis%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E3%80%91Mybatis%E4%B8%8ESpring%E6%95%B4%E5%90%88/" title="【MyBatis源码学习】MyBatis与Spring整合">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【MyBatis源码学习】MyBatis与Spring整合</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/30/%E3%80%90Mybatis%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E3%80%91Sql%E8%A7%A3%E6%9E%90/" title="【MyBatis源码学习】Sql解析">
+                        <span class="hidden-mobile">【MyBatis源码学习】Sql解析</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="lv-container" data-id="city" data-uid="MTAyMC81ODQyNi8zNDg4OQ==">
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#lv-container', function() {
+        Fluid.utils.createScript('https://cdn-city.livere.com/js/embed.dist.js');
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script src="/js/backgroundsize.js"></script>
+  <link defer rel="stylesheet" href="/css/backgroundsize.css" />
+  <!-- hexo injector body_end end --></body>
+</html>
