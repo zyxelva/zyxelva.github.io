@@ -24,16 +24,16 @@ class Photo {
 class PhotoGroup {
     constructor() {
         this.name = '';
-        this.children = [];
+        this.photos = [];
     }
 }
 
 function createPlotIconsData() {
     let allPlots = [];
     let allPlotGroups = [];
-
+    console.log("dirname: " + __dirname);
     const plotJsonFile = path.join(__dirname, './photosInfo.json');
-    const plotGroupJsonFile = path.join(__dirname, './photos.json');
+    const plotGroupJsonFile = path.join(__dirname+ "/../_data", './galleries.json');
 
     if (fs.existsSync(plotJsonFile)) {
         allPlots = JSON.parse(fs.readFileSync(plotJsonFile, {encoding: "utf8"}));
@@ -68,10 +68,12 @@ function createPlotIconsData() {
                     if (!group) {
                         group = new PhotoGroup();
                         group.name = dirName;
+                        group.cover = dirName + "/" + subfileName;
+                        group.description = dirName;
                         allPlotGroups.push(group);
                         console.log(`RD: createPlotIconsData -> new group`, group);
                     }
-                    group.children.push(plot.iconID);
+                    group.photos.push(plot.dirName + "/" + plot.fileName);
                 }
             });
         }
