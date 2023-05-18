@@ -22,7 +22,7 @@
     
     <style>
         body{
-            background-image: url(https://cdn.jsdelivr.net/gh/zyxelva/picgo/images/Taeyeon/taeyeon62.jpg);
+            background-image: url(https://cdn.jsdelivr.net/gh/zyxelva/picgo/images/wallpaper/43616-105.jpg);
             background-repeat:no-repeat;
             background-size: 100% 100%;
             background-attachment:fixed;
@@ -174,6 +174,17 @@
   
   <li class="hide-on-med-and-down nav-item">
     
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
     <a href="/contact" class="waves-effect waves-light">
       
       <i class="fas fa-comments" style="zoom: 0.6;"></i>
@@ -190,17 +201,6 @@
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
       <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
     </a>
     
   </li>
@@ -292,6 +292,17 @@
         
         <li class="m-nav-item">
 	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
 		<a href="/contact" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-comments"></i>
@@ -308,17 +319,6 @@
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
 		</a>
           
         </li>
@@ -449,10 +449,9 @@
 </script>
 <script>
     
-      var bannerUrl = "https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/medias/featureimages/" + Math.floor(Math.random() * 24) + '.jpg';
+      var bannerUrl = "https://cdn.jsdelivr.net/gh/zyxelva/picgo/images/Taeyeon/Taeyeon520.jpg";
     
     $('.bg-cover.about-cover').css('background-image', 'url(' + bannerUrl + ')');
-
 </script>
 
 
@@ -590,41 +589,64 @@
                     
 
                     
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
 
-                    
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/dplayer/DPlayer.min.css">
-<div class="video-player">
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
     
-    <div class="title center-align">
-        <i class="fas fa-video-camera"></i>&nbsp;&nbsp;泰妍新歌《Nights into Days》我独自前行 MV
-    </div>
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="music-player">
+    
+        <div class="title center-align">
+            <i class="fas fa-music"></i>&nbsp;&nbsp;听听音乐
+        </div>
     
     <div class="row">
-		
-			<iframe src='//player.bilibili.com/player.html?aid=478694630&bvid=BV1mT411R7p7&cid=992575073&page=1' scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" align="middle"  style="height: 400px;" width="100%"> </iframe>
-		
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='false'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/dplayer/DPlayer.min.js"></script>
-<script>
-    $(function () {
-        new DPlayer({
-            container: document.getElementById('dplayer'),
-            autoplay: 'false' === 'true',
-            theme: '#42b983',
-            loop: 'false' === 'true',
-            lang: 'zh-CN' === 'zh-CN' ? 'zh-cn' : 'en',
-            preload: 'auto',
-            volume: Number('0.7'),
-            video: {
-                url: '',
-                pic: '',
-                thumbnails: ''
-            }
-        });
-    });
-</script>
+<script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/aplayer/Meting.min.js"></script>
+
+                        
 
                     
 
@@ -746,6 +768,190 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/posts/1837626065.html">
+                        <div class="card-image">
+                            
+                            <img src="/medias/Netty.png" class="responsive-img" alt="【Netty学习】2.Java原生网络编程">
+                            
+                            <span class="card-title">【Netty学习】2.Java原生网络编程</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+1 常见术语1.1 SocketSocket 是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接口。在设计模式 中，Socket 其实就是一个门面模式，它把复杂的 TCP&#x2F;IP 协议族隐藏在 Socket 接口后
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-18
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Netty%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    Netty学习
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Netty/">
+                            <span class="chip bg-color">Netty</span>
+                        </a>
+                        
+                        <a href="/tags/BIO/">
+                            <span class="chip bg-color">BIO</span>
+                        </a>
+                        
+                        <a href="/tags/NIO/">
+                            <span class="chip bg-color">NIO</span>
+                        </a>
+                        
+                        <a href="/tags/AIO/">
+                            <span class="chip bg-color">AIO</span>
+                        </a>
+                        
+                        <a href="/tags/IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/">
+                            <span class="chip bg-color">IO多路复用</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/4286590179.html">
+                        <div class="card-image">
+                            
+                            <img src="/medias/LeetCode.jpg" class="responsive-img" alt="【LeetCode】15. 三数之和">
+                            
+                            <span class="card-title">【LeetCode】15. 三数之和</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+1.问题给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k ，同时还满足 nums[i] + nums[j] + nums[k] 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/LeetCode/">
+                            <span class="chip bg-color">LeetCode</span>
+                        </a>
+                        
+                        <a href="/tags/%E7%AE%97%E6%B3%95/">
+                            <span class="chip bg-color">算法</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                            <span class="chip bg-color">双指针</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/2798825052.html">
+                        <div class="card-image">
+                            
+                            <img src="/medias/LeetCode.jpg" class="responsive-img" alt="【LeetCode】1. 两数之和">
+                            
+                            <span class="card-title">【LeetCode】1. 两数之和</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+1. 问题给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target的那 两个 整数，并返回它们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/LeetCode/">
+                            <span class="chip bg-color">LeetCode</span>
+                        </a>
+                        
+                        <a href="/tags/%E7%AE%97%E6%B3%95/">
+                            <span class="chip bg-color">算法</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
+                            <span class="chip bg-color">哈希表</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/posts/3253867670.html">
                         <div class="card-image">
                             
@@ -813,6 +1019,58 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/posts/824710590.html">
+                        <div class="card-image">
+                            
+                            <img src="/medias/zookeeper.png" class="responsive-img" alt="【Zookeeper学习】3.Zookeeper基础">
+                            
+                            <span class="card-title">【Zookeeper学习】3.Zookeeper基础</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1 为什么学习 Zookeeper应该重点掌握分布式环境的演进过程，从一个单节点开始，慢慢过渡到分布式，为什么单节点不行，传统一个 tomcat 打天下有什么有点，缺点又是什么，当一个 tomcat 搞不定的时候，分布式的架构图又是什么样的
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-15
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Zookeeper%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    Zookeeper学习
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Zookeeper/">
+                            <span class="chip bg-color">Zookeeper</span>
+                        </a>
+                        
+                        <a href="/tags/ZNode/">
+                            <span class="chip bg-color">ZNode</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/posts/1339151935.html">
                         <div class="card-image">
                             
@@ -844,6 +1102,10 @@
                                 
                                 <a href="/categories/Zookeeper%E5%AD%A6%E4%B9%A0/" class="post-category">
                                     Zookeeper学习
+                                </a>
+                                
+                                <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    分布式系统
                                 </a>
                                 
                                 
@@ -884,6 +1146,10 @@
                         
                         <a href="/tags/%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8/">
                             <span class="chip bg-color">本地消息表</span>
+                        </a>
+                        
+                        <a href="/tags/Paxos%E7%AE%97%E6%B3%95/">
+                            <span class="chip bg-color">Paxos算法</span>
                         </a>
                         
                     </div>
@@ -1241,20 +1507,20 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
-                            <span class="chip bg-color">二叉树</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                            <span class="chip bg-color">数据结构</span>
-                        </a>
-                        
                         <a href="/tags/LeetCode/">
                             <span class="chip bg-color">LeetCode</span>
                         </a>
                         
                         <a href="/tags/%E7%AE%97%E6%B3%95/">
                             <span class="chip bg-color">算法</span>
+                        </a>
+                        
+                        <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                            <span class="chip bg-color">二叉树</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                            <span class="chip bg-color">数据结构</span>
                         </a>
                         
                         <a href="/tags/Java/">
@@ -1267,316 +1533,6 @@
                         
                         <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/">
                             <span class="chip bg-color">单调栈</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/3323994670.html">
-                        <div class="card-image">
-                            
-                            <img src="/medias/LeetCode.jpg" class="responsive-img" alt="【LeetCode】617. 合并二叉树">
-                            
-                            <span class="card-title">【LeetCode】617. 合并二叉树</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-
-1.问题给你两棵二叉树： root1 和 root2 。
-想象一下，当你将其中一棵覆盖到另一棵之上时，两棵树上的一些节点将会重叠（而另一些不会）。你需要将这两棵树合并成一棵新二叉树。合并的规则是：如果两个节点重叠，那么将这两个节点的值相
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-13
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                </a>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/LeetCode/" class="post-category">
-                                    LeetCode
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
-                            <span class="chip bg-color">二叉树</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                            <span class="chip bg-color">数据结构</span>
-                        </a>
-                        
-                        <a href="/tags/LeetCode/">
-                            <span class="chip bg-color">LeetCode</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%AE%97%E6%B3%95/">
-                            <span class="chip bg-color">算法</span>
-                        </a>
-                        
-                        <a href="/tags/Java/">
-                            <span class="chip bg-color">Java</span>
-                        </a>
-                        
-                        <a href="/tags/DFS/">
-                            <span class="chip bg-color">DFS</span>
-                        </a>
-                        
-                        <a href="/tags/BFS/">
-                            <span class="chip bg-color">BFS</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/1796339359.html">
-                        <div class="card-image">
-                            
-                            <img src="/medias/LeetCode.jpg" class="responsive-img" alt="【LeetCode】235. 二叉搜索树的最近公共祖先">
-                            
-                            <span class="card-title">【LeetCode】235. 二叉搜索树的最近公共祖先</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-
-1. 问题给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
-百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-13
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                </a>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/LeetCode/" class="post-category">
-                                    LeetCode
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
-                            <span class="chip bg-color">二叉树</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                            <span class="chip bg-color">数据结构</span>
-                        </a>
-                        
-                        <a href="/tags/LeetCode/">
-                            <span class="chip bg-color">LeetCode</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%AE%97%E6%B3%95/">
-                            <span class="chip bg-color">算法</span>
-                        </a>
-                        
-                        <a href="/tags/Java/">
-                            <span class="chip bg-color">Java</span>
-                        </a>
-                        
-                        <a href="/tags/DFS/">
-                            <span class="chip bg-color">DFS</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/3195241813.html">
-                        <div class="card-image">
-                            
-                            <img src="/medias/LeetCode.jpg" class="responsive-img" alt="【LeetCode】236. 二叉树的最近公共祖先">
-                            
-                            <span class="card-title">【LeetCode】236. 二叉树的最近公共祖先</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-
-1.问题给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
-百度百科中最近公共祖先的定义为：“对于有根树 T 的两个节点 p、q，最近公共祖先表示为一个节点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-13
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                </a>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/LeetCode/" class="post-category">
-                                    LeetCode
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
-                            <span class="chip bg-color">二叉树</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                            <span class="chip bg-color">数据结构</span>
-                        </a>
-                        
-                        <a href="/tags/LeetCode/">
-                            <span class="chip bg-color">LeetCode</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%AE%97%E6%B3%95/">
-                            <span class="chip bg-color">算法</span>
-                        </a>
-                        
-                        <a href="/tags/Java/">
-                            <span class="chip bg-color">Java</span>
-                        </a>
-                        
-                        <a href="/tags/DFS/">
-                            <span class="chip bg-color">DFS</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/3513331422.html">
-                        <div class="card-image">
-                            
-                            <img src="/medias/LeetCode.jpg" class="responsive-img" alt="【LeetCode】637. 二叉树的层平均值">
-                            
-                            <span class="card-title">【LeetCode】637. 二叉树的层平均值</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-
-1.问题给定一个非空二叉树的根节点 root , 以数组的形式返回每一层节点的平均值。与实际答案相差 10-5 以内的答案可以被接受。
-示例 1
-
-输入：root &#x3D; [3,9,20,null,null,15,7]输出：[3.
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-12
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                </a>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/LeetCode/" class="post-category">
-                                    LeetCode
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
-                            <span class="chip bg-color">二叉树</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                            <span class="chip bg-color">数据结构</span>
-                        </a>
-                        
-                        <a href="/tags/LeetCode/">
-                            <span class="chip bg-color">LeetCode</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%AE%97%E6%B3%95/">
-                            <span class="chip bg-color">算法</span>
-                        </a>
-                        
-                        <a href="/tags/Java/">
-                            <span class="chip bg-color">Java</span>
-                        </a>
-                        
-                        <a href="/tags/DFS/">
-                            <span class="chip bg-color">DFS</span>
-                        </a>
-                        
-                        <a href="/tags/BFS/">
-                            <span class="chip bg-color">BFS</span>
                         </a>
                         
                     </div>
@@ -1601,7 +1557,7 @@
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 4</div>
+            <div class="center-align b-text-gray">1 / 5</div>
         </div>
         <div class="col s6 m4 l4">
             
@@ -1619,60 +1575,6 @@
 
     <footer class="page-footer bg-color">
     
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/aplayer/Meting.min.js"></script>
-
-    
 
     <div class="container row center-align"
          style="margin-bottom: 15px !important;">
@@ -1688,7 +1590,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">74k</span>
+                        class="white-color">82.7k</span>
             
             
             

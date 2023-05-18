@@ -1,0 +1,1542 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="【Netty学习】2.Java原生网络编程, Back-End Dev Java">
+    <meta name="description" content="
+
+1 常见术语1.1 SocketSocket 是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接口。在设计模式 中，Socket 其实就是一个门面模式，它把复杂的 TCP&amp;#x2F;IP 协议族隐藏在 Socket 接口后">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>【Netty学习】2.Java原生网络编程 | Kezade</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/medias/avatar.png">
+    
+    <style>
+        body{
+            background-image: url(https://cdn.jsdelivr.net/gh/zyxelva/picgo/images/wallpaper/43616-105.jpg);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/css/matery.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/css/my.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/css/reward.css">
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/medias/avatar.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Kezade</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/medias/avatar.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Kezade</div>
+        <div class="logo-desc">
+            
+            7 年 Java 开发经验，其中 3 年以上大型系统架构设计经验，以及 2 年以上的团队管理经验 | 具有分布式、高并发、高可用、大数据量的系统架构设计以及研发经验 | 对 Zookeeper、Netty、Dubbo、Spring Cloud、 Spring 等开源框架源码有过深入研究，并且有一定的框架定制开发经验
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-archive"></i>
+			
+			归档
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/Netty.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">【Netty学习】2.Java原生网络编程</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Netty/">
+                                <span class="chip bg-color">Netty</span>
+                            </a>
+                        
+                            <a href="/tags/BIO/">
+                                <span class="chip bg-color">BIO</span>
+                            </a>
+                        
+                            <a href="/tags/NIO/">
+                                <span class="chip bg-color">NIO</span>
+                            </a>
+                        
+                            <a href="/tags/AIO/">
+                                <span class="chip bg-color">AIO</span>
+                            </a>
+                        
+                            <a href="/tags/IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/">
+                                <span class="chip bg-color">IO多路复用</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Netty%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                Netty学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-05-18
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    16 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <meta name="referrer" content="no-referrer">
+
+<h1 id="1-常见术语"><a href="#1-常见术语" class="headerlink" title="1 常见术语"></a>1 常见术语</h1><h2 id="1-1-Socket"><a href="#1-1-Socket" class="headerlink" title="1.1 Socket"></a>1.1 Socket</h2><p><code>Socket</code> 是应用层与 <code>TCP/IP 协议族</code>通信的中间软件抽象层，它是一组<strong>接口</strong>。在设计模式 中，Socket 其实就是一个<code>门面模式</code>，它把复杂的 TCP&#x2F;IP 协议族隐藏在 Socket 接口后面，对用户来说，一组简单的接口就是全部，让 Socket 去组织数据，以符合指定的协议。</p>
+<blockquote>
+<p><strong>主机 A</strong> 的应用程序要能和<strong>主机 B</strong> 的应用程序通信，必须通过 Socket 建立连接，而<strong>建立 Socket 连接</strong>必须需要底层 <code>TCP/IP协议</code>来建立 <code>TCP 连接</code>。建立 TCP 连接需要底层 <code>IP 协议</code>来<strong>寻址</strong>网络中的主机。我们知道网络层使用的 IP 协议可以帮助我们根据 IP 地址来找到目标主机，但是一台主机上可能运行着多个应用程序，如何才能与指定的应用程序通信就要通过 <code>TCP 或 UPD</code> 的地址也就是<code>端口号</code>来指定。这样就可以通过一个 Socket 实例<strong>唯一</strong>代表一个主机上的一个应用程序的通信链路了。</p>
+</blockquote>
+<h2 id="1-2-短连接"><a href="#1-2-短连接" class="headerlink" title="1.2 短连接"></a>1.2 短连接</h2><p>短连接过程：连接-&gt;传输数据-&gt;关闭连接。</p>
+<blockquote>
+<p>传统 <code>HTTP</code> 是<code>无状态的</code>，浏览器和服务器每进行一次 HTTP 操作，就建立一次连接，但任务结束就中断连接。</p>
+</blockquote>
+<blockquote>
+<p>也可以这样说：短连接是指 SOCKET 连接后，发送后，接收完数据后马上断开连接。</p>
+</blockquote>
+<h2 id="1-3-长连接"><a href="#1-3-长连接" class="headerlink" title="1.3 长连接"></a>1.3 长连接</h2><p>过程：连接-&gt;传输数据-&gt;保持连接 -&gt; 传输数据-&gt; 。。。 -&gt;关闭连接。</p>
+<blockquote>
+<p>长连接指建立 SOCKET 连接后不管是否使用都<strong>保持连接</strong>。</p>
+</blockquote>
+<p>什么时候用长连接，短连接?</p>
+<p>长连接多用于操作频繁，点对点的通讯，而且连接数不能太多的情况。每个 TCP 连接都需要<code>三次握手</code>，这需要时间，如果每个操作都是先连接，再操作的话那么处理速度会降低很多，所以每个操作完后都不断开，下次处理时直接发送数据包就 OK 了，不用建立 TCP 连接。</p>
+<p>例如：<code>数据库的连接</code>用<code>长连接</code>， 如果用短连接频繁的通信会造成 socket 错误，而且频繁的 socket 创建也是对资源的浪费。</p>
+<p>而像WEB网站的<code>HTTP服务</code>一般都用<code>短链接</code>，因为长连接对于服务端来说会耗费一定的资源，而像 WEB 网站这么频繁的成千上万甚至上亿客户端的连接用短连接会更省一些资源。</p>
+<p>总之，长连接和短连接的选择要视情况而定。</p>
+<h1 id="2-通用常识"><a href="#2-通用常识" class="headerlink" title="2 通用常识"></a>2 通用常识</h1><h2 id="2-1-服务端"><a href="#2-1-服务端" class="headerlink" title="2.1 服务端"></a>2.1 服务端</h2><p>在通信编程里<strong>提供服务</strong>的叫<code>服务端</code>。</p>
+<h2 id="2-2-客户端"><a href="#2-2-客户端" class="headerlink" title="2.2 客户端"></a>2.2 客户端</h2><p>连接服务端<strong>使用服务</strong>的叫<code>客户端</code>。</p>
+<h2 id="2-3-三件事"><a href="#2-3-三件事" class="headerlink" title="2.3 三件事"></a>2.3 三件事</h2><p>在通信编程里，我们关注的其实也就是三个事情：</p>
+<ul>
+<li>连接(客户端连接服务器，服务器等待和接收连接)</li>
+<li>读网络数据</li>
+<li>写网络数据</li>
+</ul>
+<p>服务端<code>提供 IP</code> 和<code>监听端口</code>，客户端通过连接操作向服务端监听的地址<code>发起连接请求</code>， 通过<code>三次握手</code>连接，如果连接成功建立，双方就可以通过套接字进行通信。</p>
+<h1 id="3-IO模型-1"><a href="#3-IO模型-1" class="headerlink" title="3 IO模型[^1]"></a>3 IO模型[^1]</h1><p>目前常用的<code>IO通信模型</code>包括四种（这里说的都是<code>网络IO</code>）：<code>阻塞式同步IO</code>、<code>非阻塞式同步IO</code>、<code>IO多路复用</code>、和真正的<code>异步IO</code>。这些IO模式都是要靠<code>操作系统</code>进行支持，<code>应用程序</code>只是提供相应的<code>实现</code>，对操作系统进行<code>调用</code>。</p>
+<ul>
+<li><code>阻塞IO</code> 和 <code>非阻塞IO</code></li>
+</ul>
+<p>这两个概念是<strong>程序级别</strong>的。主要描述的是程序<code>请求</code>操作系统IO操作后，如果IO资源没有准备好，那么<strong>程序该如何处理的问题</strong>: 前者等待；后者继续执行(并且使用线程一直<code>轮询</code>，直到有IO资源准备好了)。</p>
+<ul>
+<li><code>同步IO</code> 和 <code>非同步IO</code></li>
+</ul>
+<p>这两个概念是<strong>操作系统级别</strong>的。主要描述的是操作系统在收到程序请求IO操作后，如果IO资源没有准备好，该<strong>如何响应程序的问题</strong>: 前者不响应，直到IO资源准备好以后；后者返回一个标记(好让程序和自己知道以后的数据往哪里通知)，当IO资源准备好以后，再用<code>事件机制</code>返回给程序。</p>
+<h2 id="3-1-BIO"><a href="#3-1-BIO" class="headerlink" title="3.1 BIO"></a>3.1 BIO</h2><p>BIO就是：blocking IO.<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/BIO.png" alt="BIO"></p>
+<p><code>应用程序</code><strong>请求IO操作</strong>，并一直等待处理结果；<code>操作系统</code>同时也进行<strong>IO操作</strong>，并等待设备的处理结果；可以看出，应用程序的请求线程和操作系统的内核线程都是等待状态。</p>
+<ul>
+<li><p>优点</p>
+<blockquote>
+<p>应用的程序开发非常<strong>简单</strong>,在阻塞等待数据期间，用户线程挂起；在阻塞期间，用户线程基本不会占用CPU资源。</p>
+</blockquote>
+</li>
+<li><p>缺点</p>
+<blockquote>
+<p>一个线程维护一个连接的IO操作。在并发量小的情况下，这样做没有什么问题。但是，当在<strong>高并发</strong>的应用场景下，需要<strong>大量</strong>的线程来维护大量的网络连接，内存、线程切换<strong>开销会非常巨大</strong>。</p>
+</blockquote>
+</li>
+<li><p>适用场景</p>
+<blockquote>
+<p>适用于<code>连接数目比较小</code>且<code>固定</code>的架构，这种方式对服务器资源要求比较高，并发局限于应用中，JDK1.4以前的唯一选择，但程序直观简单易理解.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="3-2-NIO"><a href="#3-2-NIO" class="headerlink" title="3.2 NIO"></a>3.2 NIO</h2><p>NIO: Non-Blocking IO.<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/NIO.png" alt="NIO"></p>
+<p><code>应用程序</code><strong>请求IO</strong>，并且<strong>不用</strong>一直<strong>等待</strong>返回结果就去做其他事情。隔一定的周期，再去<strong>询问</strong>操作系统上次IO操作有没有结果，直到某一次询问从操作系统拿到IO结果；<code>操作系统</code>内核线程在进行<strong>IO操作</strong>时，还是处理一直<strong>等待</strong>设备返回操作结果的状态。</p>
+<ul>
+<li><p>特点</p>
+<blockquote>
+<p><code>应用程序</code>的线程需要不断地进行<code>IO系统调用</code>，<code>轮询</code>数据是否已经准备好，如果没有准备好，就继续轮询，直到完成IO系统调用为止。</p>
+</blockquote>
+</li>
+<li><p>优点</p>
+<blockquote>
+<p>每次发起的IO系统调用，在内核等待数据过程中可以<code>立即返回</code>。用户线程<strong>不会阻塞</strong>，实时性较好，适用于<strong>连接数目多且连接比较短</strong>（轻操作）的架构，比如<code>聊天服务器</code>，并发局限于应用中，编程比较复杂，JDK1.4开始支持。 </p>
+</blockquote>
+</li>
+<li><p>缺点</p>
+<blockquote>
+<p>不断地轮询内核，这将<strong>占用大量的CPU时间</strong>，效率低下。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="3-3-IO多路复用"><a href="#3-3-IO多路复用" class="headerlink" title="3.3 IO多路复用"></a>3.3 IO多路复用</h2><p>指的是一个<code>进程/线程</code>可以<strong>同时监视</strong>多个<code>文件描述符</code>（一个网络连接，操作系统底层使用一个文件描述符来表示），一旦其中的一个或者多个文件描述符<code>可读或者可写</code>，系统内核就<code>通知</code>该进程&#x2F;线程。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/IO-Multiplexing.png" alt="IO Multiplexing"></p>
+<ul>
+<li>特点<blockquote>
+<p>IO多路复用模型建立在操作系统的基础设施之上，即操作系统的内核必须能够提供多路分离的系统调用，比如select&#x2F;epoll。</p>
+</blockquote>
+</li>
+<li>优点<blockquote>
+<p>与一个线程维护一个连接的阻塞IO模式相比，使用select&#x2F;epoll的最大优势在于，<code>一个选择器</code>查询线程可以<strong>同时</strong>处理成<strong>千上万个连接</strong>，系统<code>不必创建</code>大量的线程，也<code>不必维护</code>这些线程，从而大大<strong>减小了系统的开销</strong>。</p>
+</blockquote>
+</li>
+<li>缺点<blockquote>
+<p>本质上，select&#x2F;epoll系统调用是<code>阻塞式的</code>，属于<code>同步IO</code>。都需要在读写事件就绪后，由<code>系统调用</code>本身负责进行读写，也就是说这个<code>读写过程是阻塞的</code>。</p>
+</blockquote>
+</li>
+</ul>
+<p>目前流行的IO多路复用实现主要包括四种: <code>select</code>、<code>poll</code>、<code>epoll</code>、<code>kqueue</code>。</p>
+<blockquote>
+<p>IO多路复用技术最适用的是<strong>“高并发”</strong>场景，所谓高并发是指1毫秒内至少同时有上千个连接请求准备好。其他情况下IO多路复用技术发挥不出来它的优势。另一方面，使用JAVA NIO进行功能实现，相对于传统的Socket套接字实现要复杂一些，所以实际应用中，需要根据自己的业务需求进行技术选择。</p>
+</blockquote>
+<h2 id="3-4-AIO"><a href="#3-4-AIO" class="headerlink" title="3.4 AIO"></a>3.4 AIO</h2><p>异步IO则是采用“订阅-通知”模式: 即应用程序向操作系统注册IO监听，然后继续做自己的事情。当操作系统发生IO事件，并且准备好数据后，在主动通知应用程序，触发相应的函数。<br><img src="https://img-blog.csdn.net/20150929202423057" alt="AIO"></p>
+<ul>
+<li><p>特点</p>
+<blockquote>
+<p>适用于<strong>连接数目多且连接比较长</strong>（重操作）的架构，比如<code>相册服务器</code>，充分调用OS参与并发操作，编程比较复杂，JDK7开始支持</p>
+</blockquote>
+</li>
+<li><p>特点</p>
+<blockquote>
+<p>在内核<code>等待数据</code>和<code>复制数据</code>的两个阶段，用户线程<strong>都不是阻塞的</strong>。用户线程需要接收内核的IO操作完成的事件，或者用户线程需要<code>注册</code>一个IO操作完成的<code>回调函数</code></p>
+</blockquote>
+</li>
+<li><p>缺点</p>
+<blockquote>
+<p>应用程序仅需要进行<strong>事件的注册与接收</strong>，其余的工作都留给了操作系统，也就是说，需要底层内核提供支持。Windows系统下通过IOCP实现了真正的异步IO。而在Linux系统下，异步IO模型在2.6版本才引入，目前并不完善，其底层实现仍使用epoll，与IO多路复用相同，因此在性能上没有明显的优势。</p>
+</blockquote>
+</li>
+</ul>
+<p>参见大神的讲解<a target="_blank" rel="noopener" href="https://yinwj.blog.csdn.net/article/details/48784375">架构设计：系统间通信（5）——IO通信模型和JAVA实践 下篇</a>。</p>
+<h1 id="4-原生网络编程"><a href="#4-原生网络编程" class="headerlink" title="4 原生网络编程"></a>4 原生网络编程</h1><h2 id="4-1-BIO"><a href="#4-1-BIO" class="headerlink" title="4.1 BIO"></a>4.1 BIO</h2><p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/BIO2.png" alt="BIO"></p>
+<ul>
+<li>应用-RPC<blockquote>
+<p>RPC（Remote Procedure Call 远程过程调用） 框架，是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络的技术。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/RPC.png" alt="RPC"></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="4-2-NIO"><a href="#4-2-NIO" class="headerlink" title="4.2 NIO"></a>4.2 NIO</h2><h3 id="4-2-1-重要概念"><a href="#4-2-1-重要概念" class="headerlink" title="4.2.1 重要概念"></a>4.2.1 重要概念</h3><ul>
+<li><p>Selector 选择器</p>
+<ul>
+<li>一个IO事件的查询器。</li>
+<li>作用：一个线程可以查询多个通道的IO事件的就绪状态。</li>
+<li>最大优势：系统开销小，系统不必为每一个网络连接（文件描述符）创建进程&#x2F;线程，从而大大减小了系统的开销。</li>
+</ul>
+</li>
+<li><p>Channel 管道</p>
+<ul>
+<li>相当于OIO(Old IO的 socket)；OIO有两个流：<code>输入流</code>，<code>输出流</code>。</li>
+<li>NIO中网络连接使用channel，且只有一个，双工的。</li>
+</ul>
+</li>
+<li><p>Buffer 缓冲区</p>
+<ul>
+<li>应用程序与通道（Channel）主要的交互操作，就是进行数据的<code>read读取</code>和<code>write写入</code>。</li>
+<li>通道的读取，就是将数据从通道读取到缓冲区中。</li>
+<li>通道的写入，就是将数据从缓冲区中写入到通道中。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/IO-Multiplexing-Flow.png" alt="IO Multiplexing Flow"></p>
+<h3 id="4-2-2-NIO-之Reactor-模式"><a href="#4-2-2-NIO-之Reactor-模式" class="headerlink" title="4.2.2 NIO 之Reactor 模式"></a>4.2.2 NIO 之Reactor 模式</h3><blockquote>
+<p>“好莱坞法则”（不要调用我，让我来调用你）：具体事件处理程序不调用反应器，而向反应器注册一个事件处理器，表示自己对某些事件感兴趣，有时间来了，具体事件处理程序通过事件处理器对某个指定的事件发生做出反应。</p>
+</blockquote>
+<ul>
+<li><p>Acceptor</p>
+<ul>
+<li>处理客户端新连接，并分派请求到处理器链中。</li>
+</ul>
+</li>
+<li><p>Reactor</p>
+<ul>
+<li>负责监听和分配事件，将I&#x2F;O事件分派给对应的Handler。</li>
+<li>新的事件包含连接建立就绪、读就绪、写就绪等。</li>
+</ul>
+</li>
+<li><p>Handler</p>
+<ul>
+<li>将自身与事件绑定，执行非阻塞读&#x2F;写任务，完成channel的读入，完成处理业务逻辑后，负责将结果写出channel。</li>
+<li>可用资源池来管理。</li>
+</ul>
+</li>
+</ul>
+<p><code>单Reactor-单线程</code></p>
+<blockquote>
+<p>前台接待员和服务员是同一个人，全程为顾客服务.</p>
+</blockquote>
+<ul>
+<li>过程<ul>
+<li>服务器端的 <code>Reactor</code> 是<strong>一个线程对象</strong>，该线程会启动事件循环，并使用 <code>Selector(选择器)</code>来实现 <code>IO多路复用</code>。<code>注册</code>一个 <code>Acceptor事件处理器</code>到 Reactor 中，Acceptor 事件处理器所关注的事件是 <code>ACCEPT事件</code>，这样 Reactor 会<code>监听</code>客户端向服务器端发起的<code>连接请求事件</code>(ACCEPT 事件)。</li>
+<li>客户端向服务器端发起一个<code>连接请求</code>，Reactor<code>监听</code>到了该 <code>ACCEPT事件</code>的发生并将该 ACCEPT 事件派发给相应的 <code>Acceptor处理器</code>来进行处理。Acceptor 处理器通过 <code>accept()方法</code>得到与这个客户端对应的<code>连接(SocketChannel)</code>，然后将该连接所关注的 <code>READ事件</code>以及对应的 <code>READ事件处理器</code><strong>注册</strong>到 Reactor 中，这样一来 Reactor 就会监听该连接的 READ 事件了。</li>
+<li>当 Reactor <strong>监听</strong>到有<code>读或者写事件</code>发生时，将相关的事件派发给对应的处理器进行处理。比如，读处理器会通过 <code>SocketChannel</code> 的 <code>read()</code>方法读取数据，此时 read()操作可以直接读取到数据，而不会堵塞与等待可读的数据到来。</li>
+<li>每当处理完所有<strong>就绪的、感兴趣的</strong> <code>I/O 事件</code>后，Reactor 线程会<strong>再次</strong>执行 <code>select()</code>阻塞等待新的事件就绪并将其分派给对应处理器进行处理。</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意</strong>，Reactor 的单线程模式的单线程主要是针对于 <code>I/O 操作</code>而言，也就是所有的 I&#x2F;O 的 <code>accept()</code>、<code>read()</code>、<code>write()</code>以及 <code>connect()</code>操作都在<strong>一个线程</strong>上完成的。<br>但在目前的单线程 Reactor 模式中，不仅 <code>I/O 操作</code>在该 Reactor 线程上，连<code>非 I/O 的业务操作</code>也在该线程上进行处理了，这可能会大大<strong>延迟</strong> I&#x2F;O 请求的响应。所以我们应该将非 I&#x2F;O 的业务逻辑操作从 Reactor 线程上卸载，以此来加速 Reactor 线程对 I&#x2F;O 请求的响应。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Single-Reactor-Mono-Thread.png" alt="单Reactor-单线程"></p>
+<p><code>单Reactor-多线程</code></p>
+<blockquote>
+<p>1个前台接待员，多个服务员，接待员只负责接待.</p>
+</blockquote>
+<ul>
+<li><p>将非I&#x2F;O 操作从Reactor线程中移出转交给工作者线程池来执行.</p>
+</li>
+<li><p>对于<code>高负载</code>、<code>大并发</code>或<code>大数据量</code>的应用场景却<code>不合适</code>.</p>
+</li>
+<li><p>使用线程池的优势</p>
+<ul>
+<li>通过<strong>重用</strong>现有的线程而不是创建新线程，可以在处理多个请求时分摊在<code>线程创建</code>和<code>销毁</code>过程产生的<code>巨大开销</code>。</li>
+<li>另一个额外的好处是，当请求到达时，工作线程通常已经存在，因此<strong>不会</strong>由于等待创建线程而延迟任务的执行，从而<strong>提高了响应性</strong>。</li>
+<li>通过适当调整线程池的大小，可以创建足够多的线程以便处理器<strong>保持忙碌状态</strong>。 同时还可以防止过多线程相互竞争资源而使应用程序耗尽内存或失败。</li>
+</ul>
+</li>
+</ul>
+<p>改进的版本中，所以的 <code>I/O 操作</code>依旧由<strong>一个 Reactor</strong> 来完成，包括 I&#x2F;O 的 <code>accept()</code>、<code>read()</code>、 <code>write()</code>以及 <code>connect()</code>操作。</p>
+<p>对于一些<strong>小容量</strong>应用场景，可以使用单线程模型。但是对于<code>高负载</code>、<code>大并发</code>或<code>大数据量</code>的应用场景却不合适，<strong>主要原因</strong>如下:</p>
+<ul>
+<li>一个 <code>NIO 线程</code><strong>同时处理</strong>成百上千的链路，性能上<strong>无法支撑</strong>，即便 NIO 线程的 CPU 负荷达到100%，也<strong>无法满足</strong>海量消息的读取和发送;</li>
+<li>当 <code>NIO 线程</code>负载过重之后，处理速度将变慢，这会导致大量客户端<code>连接超时</code>，超时之后往往会进行<code>重发</code>，这<strong>更加重</strong>了 NIO 线程的负载，最终会导致<code>大量消息积压</code>和<code>处理超时</code>， 成为系统的性能瓶颈。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Single-Reactor-Multi-Thread.png" alt="单Reactor-多线程"></p>
+<p><code>主从多线程Reactor模式</code></p>
+<blockquote>
+<p>1个大堂经理，多个前台接待员，多个服务员.</p>
+</blockquote>
+<ul>
+<li><p>过程</p>
+<ul>
+<li><strong>注册</strong>一个 <code>Acceptor 事件处理器</code>到 <code>mainReactor</code> 中，Acceptor 事件处理器所关注的事件是 <code>ACCEPT 事件</code>，这样 mainReactor 会<strong>监听</strong>客户端向服务器端发起的连接请求事件(ACCEPT 事件)。启动 mainReactor 的事件循环。</li>
+<li>客户端向服务器端<strong>发起</strong>一个<code>连接请求</code>，<code>mainReactor</code> <strong>监听</strong>到了该 <code>ACCEPT 事件</code>并将该 ACCEPT 事件派发给 <code>Acceptor 处理器</code>来进行处理。Acceptor 处理器通过 <code>accept()方法</code>得到与这个客户端对应的<code>连接(SocketChannel)</code>，然后将这个 SocketChannel 传递给 <code>subReactor 线程池</code>。</li>
+<li><code>subReactor 线程池</code>分配一个 <code>subReactor 线程</code>给这个 <code>SocketChannel</code>，即，将 SocketChannel 关注的 <code>READ 事件</code>以及对应的 <code>READ 事件处理器</code><strong>注册</strong>到 <code>subReactor 线程</code>中。当然也注册 <code>WRITE 事件</code>以及 <code>WRITE 事件处理器</code>到 <code>subReactor 线程</code>中以完成 <code>I/O 写操作</code>。 <code>Reactor 线程池</code>中的每一个<code>Reactor 线程</code>都会有自己的 <code>Selector</code>、<code>线程</code>和<code>分发</code>的循环逻辑。</li>
+<li>当有 <code>I/O 事件</code><strong>就绪</strong>时，相关的 <code>subReactor</code>就将事件<strong>派发</strong>给相应的处理器处理。<strong>注意</strong>，这里 <code>subReactor 线程</code><strong>只负责</strong>完成 I&#x2F;O 的<code>read()操作</code>，在读取到数据后将业务逻辑的处理放入到<code>线程池</code>中完成，若完成业务逻辑后需要返回数据给客户端，则相关的 I&#x2F;O 的 <code>write 操作</code>还是会<strong>被提交回</strong> <code>subReactor 线程</code>来完成。</li>
+</ul>
+</li>
+<li><p>mainReactor 可以<code>只有一个</code>，但subReactor <code>一般会有多个</code>.</p>
+</li>
+<li><p>mainReactor 线程主要负责<strong>接收客户端的连接请求</strong>，然后将接收到的<code>SocketChannel</code>传递给<code>subReactor</code>，由<code>subReactor</code>来完成和客户端的通信.</p>
+</li>
+<li><p>所有的<code>I/O操作</code>(包括 I&#x2F;O 的<code>accept()</code>、<code>read()</code>、<code>write()</code>以及<code>connect()</code>操作)依旧还是在<code>Reactor线程</code>(mainReactor 线程或subReactor 线程)中完成的.</p>
+</li>
+<li><p><code>Thread Pool(线程池)</code>仅用来处理<code>非I/O 操作</code>的逻辑.</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Master-Slave-Multi-Thread-Reactor.png" alt="主从多线程Reactor模式"></p>
+<h3 id="4-2-3-JAVA对IO多路复用的支持"><a href="#4-2-3-JAVA对IO多路复用的支持" class="headerlink" title="4.2.3 JAVA对IO多路复用的支持"></a>4.2.3 JAVA对IO多路复用的支持</h3><p><img src="https://img-blog.csdn.net/20150924091829616" alt="JAVA IO多路复用实现"></p>
+<p><img src="https://img-blog.csdn.net/20150922120210682" alt="JAVA NIO Selector实现接口"></p>
+<h3 id="4-2-4-IO多路复用的优缺点-2"><a href="#4-2-4-IO多路复用的优缺点-2" class="headerlink" title="4.2.4 IO多路复用的优缺点[^2]"></a>4.2.4 IO多路复用的优缺点[^2]</h3><ul>
+<li><p>不用再使用<code>多线程</code>来进行IO处理了（包括操作系统内核IO管理模块和应用程序进程而言）。当然实际业务的处理中，应用程序进程还是可以引入线程池技术的</p>
+</li>
+<li><p><code>同一个端口</code>可以处理<code>多种协议</code>，例如，使用ServerSocketChannel测测的服务器端口监听，既可以处理TCP协议又可以处理UDP协议。</p>
+</li>
+<li><p>操作系统级别的优化：IO多路复用技术可以是操作系统级别在一个端口上能够同时接受多个客户端的IO事件。同时具有之前我们讲到的阻塞式同步IO和非阻塞式同步IO的所有特点。Selector的一部分作用更相当于“轮询代理器”。</p>
+</li>
+<li><p>都是同步IO：目前我们介绍的<code>阻塞式IO</code>、<code>非阻塞式IO</code>甚至包括<code>IO多路复用</code>，这些都是基于操作<strong>系统级别</strong>对<code>同步IO</code>的实现。我们一直在说“同步IO”，一直都没有详细说，什么叫做“同步IO”。实际上一句话就可以说清楚：只有上层（包括上层的某种代理机制）系统询问我是否有某个事件发生了，否则我不会主动告诉上层系统事件发生了。</p>
+</li>
+</ul>
+<p>[^1]:<a target="_blank" rel="noopener" href="https://yinwj.blog.csdn.net/article/details/48472237">IO通信模型和JAVA实践 上篇</a><br>[^2]:<a target="_blank" rel="noopener" href="https://blog.csdn.net/yinwenjie/article/details/48522403">IO通信模型和JAVA实践 中篇</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Kezade</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zyxelva.github.io/posts/1837626065.html">https://zyxelva.github.io/posts/1837626065.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Kezade</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Netty/">
+                                    <span class="chip bg-color">Netty</span>
+                                </a>
+                            
+                                <a href="/tags/BIO/">
+                                    <span class="chip bg-color">BIO</span>
+                                </a>
+                            
+                                <a href="/tags/NIO/">
+                                    <span class="chip bg-color">NIO</span>
+                                </a>
+                            
+                                <a href="/tags/AIO/">
+                                    <span class="chip bg-color">AIO</span>
+                                </a>
+                            
+                                <a href="/tags/IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/">
+                                    <span class="chip bg-color">IO多路复用</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC81ODQyNi8zNDg4OQ==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/posts/1837626065.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/Netty.png" class="responsive-img" alt="【Netty学习】2.Java原生网络编程">
+                        
+                        <span class="card-title">【Netty学习】2.Java原生网络编程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Netty%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    Netty学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Netty/">
+                        <span class="chip bg-color">Netty</span>
+                    </a>
+                    
+                    <a href="/tags/BIO/">
+                        <span class="chip bg-color">BIO</span>
+                    </a>
+                    
+                    <a href="/tags/NIO/">
+                        <span class="chip bg-color">NIO</span>
+                    </a>
+                    
+                    <a href="/tags/AIO/">
+                        <span class="chip bg-color">AIO</span>
+                    </a>
+                    
+                    <a href="/tags/IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/">
+                        <span class="chip bg-color">IO多路复用</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/4286590179.html">
+                    <div class="card-image">
+                        
+                        <img src="/medias/LeetCode.jpg" class="responsive-img" alt="【LeetCode】15. 三数之和">
+                        
+                        <span class="card-title">【LeetCode】15. 三数之和</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/LeetCode/">
+                        <span class="chip bg-color">LeetCode</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                        <span class="chip bg-color">双指针</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Kezade<br />'
+            + '文章作者: Kezade<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">Kezade</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">82.7k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2019";
+                        var startMonth = "6";
+                        var startDate = "28";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days ' + diffHours + " hours " + diffMinutes + " mins " + diffSeconds + " seconds";
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已苟且偷生 ' + diffYears + ' 年 ' + diffDays + ' 天 ' + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天 ' + diffHours + " 小時 " + diffMinutes + " 分鐘 " + diffSeconds + " 秒";
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                    setInterval(calcSiteTime, 1000);
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/zyxelva" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:zyxelva@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1807401971" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1807401971" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/js/matery.js"></script>
+
+    
+
+    
+    
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/snow.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

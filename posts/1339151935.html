@@ -28,7 +28,7 @@
     
     <style>
         body{
-            background-image: url(https://cdn.jsdelivr.net/gh/zyxelva/picgo/images/Taeyeon/taeyeon62.jpg);
+            background-image: url(https://cdn.jsdelivr.net/gh/zyxelva/picgo/images/wallpaper/43616-105.jpg);
             background-repeat:no-repeat;
             background-size: 100% 100%;
             background-attachment:fixed;
@@ -143,6 +143,17 @@
   
   <li class="hide-on-med-and-down nav-item">
     
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
     <a href="/contact" class="waves-effect waves-light">
       
       <i class="fas fa-comments" style="zoom: 0.6;"></i>
@@ -159,17 +170,6 @@
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
       <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
     </a>
     
   </li>
@@ -261,6 +261,17 @@
         
         <li class="m-nav-item">
 	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
 		<a href="/contact" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-comments"></i>
@@ -277,17 +288,6 @@
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
 		</a>
           
         </li>
@@ -432,6 +432,10 @@
                                 <span class="chip bg-color">本地消息表</span>
                             </a>
                         
+                            <a href="/tags/Paxos%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">Paxos算法</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -442,6 +446,10 @@
                         
                             <a href="/categories/Zookeeper%E5%AD%A6%E4%B9%A0/" class="post-category">
                                 Zookeeper学习
+                            </a>
+                        
+                            <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                分布式系统
                             </a>
                         
                     </div>
@@ -462,14 +470,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.5k
+                    6.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    22 分
                 </div>
                 
 
@@ -496,16 +504,16 @@
 <ul>
 <li><p>刚性事务</p>
 <blockquote>
-<p>对于满足CP模型的事务，遵循ACID，对数据要求强一致性。<br>实现方案：基于XA协议的2PC，3PC；Java事务规范的JTA、JTS。</p>
+<p>对于满足<code>CP模型</code>的事务，遵循ACID，对数据要求强一致性。<br>实现方案：基于<code>XA协议</code>的<code>2PC</code>，<code>3PC</code>；Java事务规范的<code>JTA</code>、<code>JTS</code>。</p>
 </blockquote>
 </li>
 <li><p>柔性事务</p>
 <blockquote>
-<p>对于满足AP模型的事务，遵循BASE，允许一定时间内不同节点的数据不一致，但要求最终一致。<br>实现方案：补偿协议：TCC，SAGA；基于最终一致性的消息表，消息队列，最大努力通知等。</p>
+<p>对于满足<code>AP模型</code>的事务，遵循<code>BASE</code>，允许一定时间内不同节点的数据不一致，但要求最终一致。<br>实现方案：<code>补偿协议：TCC，SAGA</code>；基于<code>最终一致性</code>的<code>本地消息表</code>，<code>可靠消息</code>，<code>最大努力通知</code>等。</p>
 </blockquote>
 </li>
 </ul>
-<h1 id="1-分布式协议"><a href="#1-分布式协议" class="headerlink" title="1 分布式协议"></a>1 分布式协议</h1><p>为了解决分布式一致性问题，涌现了一大批经典的一致性协议和算法，最有名的有二阶段提交协议（2PC）、三阶段提交协议（3PC）和Paxos算法。</p>
+<h1 id="1-分布式协议"><a href="#1-分布式协议" class="headerlink" title="1 分布式协议"></a>1 分布式协议</h1><p>为了解决分布式一致性问题，涌现了一大批经典的一致性协议和算法，最有名的有<code>二阶段提交协议（2PC）</code>、<code>三阶段提交协议（3PC）</code>和<code>Paxos算法</code>。</p>
 <h2 id="1-1-XA协议"><a href="#1-1-XA协议" class="headerlink" title="1.1 XA协议"></a>1.1 XA协议</h2><p>当一个事务操作需要跨越多个分布式节点时，为了保持事务处理的ACID特性，就需要引入一个<strong>“协调者”</strong>的组件来统一调度所有分布式节点的执行，这些被调度的分布式节点则称为<strong>“参与者”</strong>，协调者负责调度参与者的行为，并最终决定这些参与者是否要把事务真正提交。</p>
 <blockquote>
 <p><strong>XA 协议</strong>是由 X&#x2F;Open 组织提出的分布式事务处理规范，主要定义了<strong>事务管理器TM</strong>和 <strong>本地（或局部）资源管理器 RM</strong>之间的接口。</p>
@@ -536,7 +544,7 @@
 </blockquote>
 </li>
 </ul>
-<p><img src="/images/pasted-3.png" alt="2PC"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/2PC.png" alt="2PC"></p>
 <p><strong>优点</strong>：</p>
 <ul>
 <li>原理简单，实现方便</li>
@@ -628,7 +636,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/images/pasted-5.png" alt="3PC"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/3PC.png" alt="3PC"></p>
 <p>与两阶段提交不同的是，三阶段提交有两个改动点：</p>
 <ul>
 <li>引入超时机制。同时在协调者和参与者中都引入超时机制。</li>
@@ -666,7 +674,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/images/pasted-6.png" alt="TCC"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/TCC.png" alt="TCC"></p>
 <h3 id="1-3-2-Saga"><a href="#1-3-2-Saga" class="headerlink" title="1.3.2 Saga"></a>1.3.2 Saga</h3><p>业务流程中每个参与者都提交本地事务，当出现某一个参与者失败则补偿前面已经成功的参与者。</p>
 <p>如下内容主要来源于<a target="_blank" rel="noopener" href="https://blog.couchbase.com/saga-pattern-implement-business-transactions-using-microservices-part/">这里</a>，然后由flyingww翻译整理在<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95852045">知乎</a>。</p>
 <p>Saga的实现有很多种方式，其中最流行的两种方式是：</p>
@@ -684,10 +692,10 @@
 <li>Stock Service：库存服务</li>
 <li>Delivery Service：物流服务</li>
 </ul>
-<p><img src="/images/pasted-8.png" alt="a very high-level design a saga pattern implementation"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/SAGA-EG.png" alt="a very high-level design a saga pattern implementation"></p>
 <h4 id="1-3-2-1-基于事件的方式"><a href="#1-3-2-1-基于事件的方式" class="headerlink" title="1.3.2.1 基于事件的方式"></a>1.3.2.1 基于事件的方式</h4><p>在基于事件的方式中，第一个服务执行完本地事务之后，会产生一个事件。其它服务会监听这个事件，触发该服务本地事务的执行，并产生新的事件。</p>
 <p>采用基于事件的saga模式的订单处理流程如下：</p>
-<p><img src="/images/pasted-9.png" alt="基于事件的saga模式的订单处理"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/SAGA-EVENT-BASED.png" alt="基于事件的saga模式的订单处理"></p>
 <ul>
 <li>订单服务创建一笔新订单，将订单状态设置为”待处理”，产生事件<code>ORDER_CREATED_EVENT</code>。</li>
 <li>支付服务监听<code>ORDER_CREATED_EVENT</code>，完成扣款并产生事件<code>BILLED_ORDER_EVENT</code>。</li>
@@ -719,7 +727,7 @@
 <p>接下来，我们将介绍如何使用命令的方式来克服上面提到的缺点。</p>
 <h4 id="1-3-2-2-基于命令的方式"><a href="#1-3-2-2-基于命令的方式" class="headerlink" title="1.3.2.2 基于命令的方式"></a>1.3.2.2 基于命令的方式</h4><p>在基于命令的方式中，我们会定义一个新的服务，这个服务扮演的角色就和一支交响乐乐队的指挥一样，告诉各个业务参与方，在什么时候做什么事情。我们管这个新服务叫做<strong>协调中心</strong>。协调中心通过<code>命令/回复</code>的方式来和Saga中其它服务进行交互。</p>
 <p>我们继续以之前的订单流程来举例。下图中的<code>Order Saga Orchestrator</code>就是新引入的协调中心。</p>
-<p><img src="/images/pasted-10.png" alt="基于命令的saga模式的订单处理"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/SAGA-ORDER-BASED.png" alt="基于命令的saga模式的订单处理"></p>
 <ul>
 <li>订单服务创建一笔新订单，将订单状态设置为<code>&quot;待处理&quot;</code>，然后让<code>Order Saga Orchestrator（OSO）</code>开启创建订单事务。</li>
 <li>OSO发送一个<code>&quot;支付命令&quot;</code>给支付服务，支付服务完成扣款并回复<code>&quot;支付完成&quot;</code>消息。</li>
@@ -731,7 +739,7 @@
 <blockquote>
 <p>该模式下分布式事务的回滚</p>
 </blockquote>
-<p><img src="/images/pasted-11.png" alt="事务的回滚"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/SAGA-ORDER-ROLLBACK.png" alt="事务的回滚"></p>
 <p>该模式下的回滚流程如下：</p>
 <ul>
 <li>库存服务回复OSO一个<code>&quot;库存不足&quot;</code>消息。</li>
@@ -767,10 +775,10 @@
 </blockquote>
 <ul>
 <li><p>正常情况：事务主动方发消息</p>
-<p>  <img src="/images/pasted-12.png" alt="正常情况"></p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Normal-MQ.png" alt="正常情况"></p>
 </li>
 <li><p>异常情况：事务主动方消息恢复</p>
-<p>  <img src="/images/pasted-13.png" alt="异常情况"></p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Innormal-MQ.png" alt="异常情况"></p>
 </li>
 </ul>
 <p><strong>优点</strong>：<br>相比本地消息表方案，MQ 事务方案优点是：</p>
@@ -787,7 +795,7 @@
 <p>最大努力通知也称为定期校对，是对MQ事务方案的进一步优化。它在事务主动方增加了消息校对的接口，如果事务被动方没有接收到消息，此时可以调用事务主动方提供的消息校对的接口主动获取。</p>
 </blockquote>
 <p>最大努力通知的整体流程如下图：</p>
-<p><img src="/images/pasted-14.png" alt="最大努力通知整体流程"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Best-effort-notification.png" alt="最大努力通知整体流程"></p>
 <h4 id="1-4-3-1-特点"><a href="#1-4-3-1-特点" class="headerlink" title="1.4.3.1 特点"></a>1.4.3.1 特点</h4><ul>
 <li><p>用到的服务模式：可查询操作、幂等（idempotent）操作</p>
 </li>
@@ -809,6 +817,80 @@
 <li>消息重复通知机制</li>
 <li>消息校对机制</li>
 </ul>
+<h1 id="2-Paxos算法"><a href="#2-Paxos算法" class="headerlink" title="2 Paxos算法"></a>2 Paxos算法</h1><blockquote>
+<p>There is only one consensus protocol, and that’s Paxos. All other approaches are just broken versions of Paxos.<br>– Mike Burrows(Google Chubby的作者)</p>
+</blockquote>
+<p><code>Paxos 算法</code>是分布式技术大师<code>莱斯利·兰伯特 Leslie Lamport</code> 于1990年提出的一种基于<code>消息传递</code>且具有<code>高度容错特性</code>的<code>共识算法</code>[^1] (PS: 网上有很多文章写成一致性算法，咱要尊重作者老爷子的思想，个人拙见，共识是手段，少数服从多数；一致性是目标和结果)，是目前公认的解决<code>分布式一致性问题</code>最有效的算法之一。其解决的问题是</p>
+<blockquote>
+<p>如何在一个可能发生宕机或网络异常等情况下的分布式系统中，快速且正确地在集群内部就某个数据的值达成一致，并且保证不论发生上述任何一种异常，都不会破坏整个系统的一致性。</p>
+</blockquote>
+<p>在此之前，Lamport提出过这样一个经典问题：</p>
+<blockquote>
+<p>拜占庭帝国有许多支军队，不同军队的将军之间必须制订一个统一的行动计划，从而做出进攻或者撤退的决定，同时，各个将军在地理上都是被分隔开来的，只能依靠军队的通讯员来进行通讯。然而，在所有的通讯员中可能会存在叛徒，这些叛徒可以任意篡改消息，从而达到欺骗将军的目的。</p>
+</blockquote>
+<p>这就是<code>拜占庭将军问题</code>[^2]。从理论上说，在分布式计算领域，试图在<code>异步系统</code>和<code>不可靠</code>的通道上来达到一致性状态是不可能的。因此在对一致性的研究过程中，往往假设<code>信道是可靠的</code>。事实上，大多数系统都是部署在同一个局域网中的，因此消息被篡改的情况非常罕见；另一方面，由于硬件和网络原因而造成的消息不完整问题，只需一套简单的校验算法即可避免——因此，在实际工程实践中，可以假设不存在拜占庭问题，即假设<code>所有</code>消息都是<code>完整的</code>，<code>没有被篡改的</code>。</p>
+<p>Paxos 算法的前提是<code>不存在</code>拜占庭将军问题，即信道是<code>安全的</code>、<code>可靠的</code>，集群节点间传递的消息是<code>不会被篡改的</code>。</p>
+<p>Lamport鉴于之前成功地运用故事类比，把<code>拜占庭将军问题</code>阐述地简单清晰明了，因而在提出Paxos算法时，同样给出了一个场景：</p>
+<blockquote>
+<p>在古布腊有一个叫做Paxos 的小岛，岛上来用议会的形式来通过法令，议会中的议员通过信使进行消息的传递。值得注意的是，议员和信使都是兼职的，他们随时有可能会离开议会厅，并且信使可能会重复的传递消息，也可能一去不复返。因此，议会协议要保证在这种情况下法令仍然能够正确的产生，并且不会出现冲突。 </p>
+</blockquote>
+<p>这个算法也是因此而得名.</p>
+<h2 id="2-1-主要角色"><a href="#2-1-主要角色" class="headerlink" title="2.1 主要角色"></a>2.1 主要角色</h2><ul>
+<li>Proposer（提案者&#x2F;提议者）：提议一个值，用于被投票决议。</li>
+<li>Acceptor（附议者&#x2F;接受者）：对每个提议进行投票。</li>
+<li>Learner（学习者&#x2F;告知者）：被告知投票的结果，不参与投票过程。</li>
+</ul>
+<p><img src="https://pdai.tech/images/alg/alg-dst-paxos-1.jpg" alt="Paxos算法角色"></p>
+<p>引用@pdai大神的说法：</p>
+<blockquote>
+<p>可以理解为<code>人大代表(Proposer)</code>在<code>人大</code>向<code>其它代表(Acceptors)</code><strong>提案</strong>，通过后让<code>老百姓(Learner)</code>落实。</p>
+</blockquote>
+<h2 id="2-2-三阶段"><a href="#2-2-三阶段" class="headerlink" title="2.2 三阶段"></a>2.2 三阶段</h2><p><img src="https://pdai.tech/images/alg/alg-dst-paxos-2.jpg" alt="三阶段"></p>
+<ul>
+<li><p>第一阶段: Prepare阶段<br>Proposer向Acceptors发出Prepare请求，Acceptors针对收到的Prepare请求进行Promise承诺。</p>
+<ul>
+<li><code>Prepare</code>: Proposer生成全局唯一且递增的Proposal ID (可使用时间戳加Server ID)，向所有Acceptors发送Prepare请求，这里无需携带提案内容，只携带Proposal ID即可。</li>
+<li><code>Promise</code>: Acceptors收到Prepare请求后，做出<strong>“两个承诺，一个应答”</strong>。<ul>
+<li>承诺1: 不再接受Proposal ID小于等于(注意: 这里是&lt;&#x3D; )当前请求的Prepare请求;</li>
+<li>承诺2: 不再接受Proposal ID小于(注意: 这里是&lt; )当前请求的Propose请求;</li>
+<li>应答: 不违背以前作出的承诺下，回复已经Accept过的提案中Proposal ID最大的那个提案的Value和Proposal ID，没有则返回空值。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>第二阶段: Accept阶段<br>Proposer收到多数Acceptors承诺的Promise后，向Acceptors发出Propose请求，Acceptors针对收到的Propose请求进行Accept处理。</p>
+<ul>
+<li><code>Propose</code>: Proposer 收到多数Acceptors的Promise应答后，从应答中选择Proposal ID最大的提案的Value，作为本次要发起的提案。如果所有应答的提案Value均为空值，则可以自己随意决定提案Value。然后携带当前Proposal ID，向所有Acceptors发送Propose请求。</li>
+<li><code>Accept</code>: Acceptor收到Propose请求后，在不违背自己之前作出的承诺下，接受并持久化当前Proposal ID和提案Value。</li>
+</ul>
+</li>
+<li><p>第三阶段: Learn阶段<br>Proposer在收到多数Acceptors的Accept之后，标志着本次Accept成功，决议形成，将形成的决议发送给所有Learners。</p>
+</li>
+</ul>
+<p>参阅<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/tzxNmlz1b0NzTEvig67HMg">漫谈分布式系统(11) – 达成共识就是一致</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/wOVvSJO4HOz1rjAHvo9ifw">大话分布式理论之二——共识算法与一致性的区别</a></p>
+<p>伪代码:<br><img src="https://pdai.tech/images/alg/alg-dst-paxos-3.jpg" alt="Basic Paxos"></p>
+<h2 id="2-3-Paxos算法推导"><a href="#2-3-Paxos算法推导" class="headerlink" title="2.3 Paxos算法推导"></a>2.3 Paxos算法推导</h2><p>参阅<a target="_blank" rel="noopener" href="https://blog.csdn.net/yeqiuzs/article/details/76862026">理解Paxos算法的推导过程</a></p>
+<h2 id="2-4-Paxos算法拓展"><a href="#2-4-Paxos算法拓展" class="headerlink" title="2.4 Paxos算法拓展"></a>2.4 Paxos算法拓展</h2><p>Google的很多大型分布式系统都采用了<code>Paxos算法</code>来解决<code>分布式一致性问题</code>，如<code>Chubby</code>、<code>Megastore</code>以及<code>Spanner</code>等。开源的<code>ZooKeeper</code>，以及<code>MySQL 5.7</code>推出的用来取代传统的主从复制的<code>MySQL Group Replication</code>等纷纷采用Paxos算法解决分布式一致性问题。后续文章会讲讲<code>ZAB</code>，<code>RAFT</code>，敬请期待。</p>
+<ul>
+<li>Multi-Paxos<br>由于Paxos每次流程只能支持一个提案的达成，效率较低，于是又出现了Multi-Paxos，支持一次协调达成一揽子的提案。</li>
+<li>Raft<br>Raft是对Muti-Paxos的精简，强调易理解、易实现。</li>
+<li>Multi-Raft<br>当下很多分布式数据库存在分片，不同分片之间的数据&#x2F;信息应该是隔离的，于是需要多个Raft来支持分片，每个Raft对应一个分片，这就是Multi-Raft。</li>
+<li>ZAB<br>ZAB也是对Multi-Paxos算法的改进，是Zookeeper中的选主机制，比Raft协议出现的更早。</li>
+</ul>
+<h2 id="2-5-Paxos-算法的一致性"><a href="#2-5-Paxos-算法的一致性" class="headerlink" title="2.5 Paxos 算法的一致性"></a>2.5 Paxos 算法的一致性</h2><p>Paxos 算法的一致性主要体现在以下几点：</p>
+<ul>
+<li>每个提案者在提出提案时都会首先获取到一个具有全局唯一性的、递增的提案编号 N， 即在整个集群中是唯一的编号 N，然后将该编号赋予其要提出的提案。</li>
+<li>每个表决者在 accept 某提案后，会将该提案的编号 N 记录在本地，这样每个表决者中保存的已经被 accept 的提案中会存在一个编号最大的提案，其编号假设为 maxN。每个表决者仅会 accept 编号大于自己本地 maxN 的提案。</li>
+<li>在众多提案中最终只能有一个提案被选定。</li>
+<li>一旦一个提案被选定，则其它服务器会主动同步(Learn)该提案到本地。</li>
+<li>没有提案提出则不会有提案被选定。</li>
+</ul>
+<p><strong>参考文献</strong></p>
+<ul>
+<li>Lamport, Leslie. “The part-time parliament.” ACM Transactions on Computer Systems (TOCS) 16.2 (1998): 133-169.</li>
+<li>Lamport, Leslie. “Paxos made simple.” ACM Sigact News 32.4 (2001): 18-25.</li>
+</ul>
+<p>[^1]:<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/research/uploads/prod/2016/12/The-Part-Time-Parliament.pdf">第一篇论文</a>;<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/research/uploads/prod/2016/12/paxos-simple-Copy.pdf">第二篇论文</a>;<a target="_blank" rel="noopener" href="https://research.microsoft.com/en-us/um/people/blampson/60-PaxosAlgorithm/Acrobat.pdf">Nancy Lynch</a><br>[^2]:<a target="_blank" rel="noopener" href="https://www.andrew.cmu.edu/course/15-749/READINGS/required/resilience/lamport82.pdf">Byzantine Generals Problem</a></p>
 
                 
             </div>
@@ -903,6 +985,10 @@
                             
                                 <a href="/tags/%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8/">
                                     <span class="chip bg-color">本地消息表</span>
+                                </a>
+                            
+                                <a href="/tags/Paxos%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">Paxos算法</span>
                                 </a>
                             
                         </div>
@@ -1007,12 +1093,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/3253867670.html">
+                <a href="/posts/824710590.html">
                     <div class="card-image">
                         
-                        <img src="/medias/Netty.png" class="responsive-img" alt="【Netty学习】1.网络协议">
+                        <img src="/medias/zookeeper.png" class="responsive-img" alt="【Zookeeper学习】3.Zookeeper基础">
                         
-                        <span class="card-title">【Netty学习】1.网络协议</span>
+                        <span class="card-title">【Zookeeper学习】3.Zookeeper基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1023,14 +1109,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-05-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-05-15
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Netty%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    Netty学习
+                            <a href="/categories/Zookeeper%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    Zookeeper学习
                                 </a>
                             
                             
@@ -1040,20 +1126,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Netty/">
-                        <span class="chip bg-color">Netty</span>
+                    <a href="/tags/Zookeeper/">
+                        <span class="chip bg-color">Zookeeper</span>
                     </a>
                     
-                    <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">
-                        <span class="chip bg-color">网络协议</span>
-                    </a>
-                    
-                    <a href="/tags/TCP-IP/">
-                        <span class="chip bg-color">TCP/IP</span>
-                    </a>
-                    
-                    <a href="/tags/HTTP/">
-                        <span class="chip bg-color">HTTP</span>
+                    <a href="/tags/ZNode/">
+                        <span class="chip bg-color">ZNode</span>
                     </a>
                     
                 </div>
@@ -1279,60 +1357,6 @@
 
     <footer class="page-footer bg-color">
     
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/aplayer/Meting.min.js"></script>
-
-    
 
     <div class="container row center-align"
          style="margin-bottom: 15px !important;">
@@ -1348,7 +1372,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">74k</span>
+                        class="white-color">82.7k</span>
             
             
             
