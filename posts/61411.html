@@ -5,12 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="【MyBatis源码学习】代理阶段, Back-End Dev Java">
-    <meta name="description" content="
-
-一、Mybatis 的接口层1.SqlSessionsqlSession总结总之一句话：
+    <meta name="description" content="一、Mybatis 的接口层1.SqlSessionsqlSession总结总之一句话：
 &amp;#x2F;**
  * The primary Java interface for working with MyBatis.
- * Throu">
+ * Through">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -136,29 +134,16 @@
         </a>
       </li>
       
+      <li>
+        <a href="/bibi">
+          
+          <i class="fa-fw fa-solid fa-cloud-rain" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>哔哔</span>
+        </a>
+      </li>
+      
     </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
     
   </li>
   
@@ -169,6 +154,17 @@
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
       <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
     </a>
     
   </li>
@@ -254,29 +250,17 @@
                   </a>
                 </li>
               
+                <li>
+
+                  <a href="/bibi " style="margin-left:75px">
+				  
+				   <i class="fa fa-fw fa-solid fa-cloud-rain" style="position: absolute;left:50px" ></i>
+			      
+		          <span>哔哔</span>
+                  </a>
+                </li>
+              
             </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
           
         </li>
         
@@ -287,6 +271,17 @@
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
 		</a>
           
         </li>
@@ -367,7 +362,6 @@
 </header>
 
     
-
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/MyBatis.jpeg')">
@@ -467,9 +461,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
-
-<h1 id="一、Mybatis-的接口层"><a href="#一、Mybatis-的接口层" class="headerlink" title="一、Mybatis 的接口层"></a>一、Mybatis 的接口层</h1><h2 id="1-SqlSession"><a href="#1-SqlSession" class="headerlink" title="1.SqlSession"></a>1.SqlSession</h2><p>sqlSession总结<br><img src="https://img-blog.csdnimg.cn/20210312101600300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图1"><br>总之一句话：</p>
+                <h1 id="一、Mybatis-的接口层"><a href="#一、Mybatis-的接口层" class="headerlink" title="一、Mybatis 的接口层"></a>一、Mybatis 的接口层</h1><h2 id="1-SqlSession"><a href="#1-SqlSession" class="headerlink" title="1.SqlSession"></a>1.SqlSession</h2><p>sqlSession总结<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210312101600300.png" alt="图1"><br>总之一句话：</p>
 <pre class="line-numbers language-none"><code class="language-none">&#x2F;**
  * The primary Java interface for working with MyBatis.
  * Through this interface you can execute commands, get mappers and manage transactions.
@@ -477,8 +469,8 @@
  * @author Clinton Begin
  *&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>翻译过来，就是：对外访问统一的接口，通过这些接口，完成读写命令，获取映射和管理事务。</p>
-<p>UML：<br><img src="https://img-blog.csdnimg.cn/20210312102149880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图2"><br>SqlSession查询接口嵌套关系<br><img src="https://img-blog.csdnimg.cn/20210312102442855.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="SqlSession查询接口嵌套关系"></p>
-<h2 id="2-SqlSessionFactory"><a href="#2-SqlSessionFactory" class="headerlink" title="2.SqlSessionFactory"></a>2.SqlSessionFactory</h2><p>SqlSessionFactory与SqlSession关系UML图<br><img src="https://img-blog.csdnimg.cn/20210312103052478.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="SqlSessionFactory与SqlSession关系UML图"><br>SqlSessionFactory 使用工厂模式创建SqlSession，其默认的实现类为DefaultSqlSessionFactory，其中获取SqlSession 的核心方法为openSessionFromDataSource(ExecutorType, TransactionIsolationLevel, boolean)，在这个方法中从configuration 中获取的TransactionFactory 是典型的策略模式的应用。运行期，TransactionFactory 接口的实现，是由配置文件配置决定的，可配置选项包括：JDBC、Managed，可根据需求灵活的替换TransactionFactory 的实现。</p>
+<p>UML：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210312102149880.png" alt="图2"><br>SqlSession查询接口嵌套关系<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210312102442855.png" alt="SqlSession查询接口嵌套关系"></p>
+<h2 id="2-SqlSessionFactory"><a href="#2-SqlSessionFactory" class="headerlink" title="2.SqlSessionFactory"></a>2.SqlSessionFactory</h2><p>SqlSessionFactory与SqlSession关系UML图<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210312103052478.png" alt="SqlSessionFactory与SqlSession关系UML图"><br>SqlSessionFactory 使用工厂模式创建SqlSession，其默认的实现类为DefaultSqlSessionFactory，其中获取SqlSession 的核心方法为openSessionFromDataSource(ExecutorType, TransactionIsolationLevel, boolean)，在这个方法中从configuration 中获取的TransactionFactory 是典型的策略模式的应用。运行期，TransactionFactory 接口的实现，是由配置文件配置决定的，可配置选项包括：JDBC、Managed，可根据需求灵活的替换TransactionFactory 的实现。</p>
 <h1 id="二、binding-模块分析"><a href="#二、binding-模块分析" class="headerlink" title="二、binding 模块分析"></a>二、binding 模块分析</h1><h2 id="0-MyBatis两种编程模型"><a href="#0-MyBatis两种编程模型" class="headerlink" title="0.MyBatis两种编程模型"></a>0.MyBatis两种编程模型</h2><p>(1) 使用mapper接口编程，就可以访问数据库；</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token comment">// 程序员喜欢的风格</span>
@@ -502,8 +494,8 @@
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以比较以下两种编程风格，发现，直接使用SqlSession 进行数据库开发存在代码可读性差、可维护性差的问题，所以我们很少使用，而是使用Mapper接口的方式进行数据库的开发。实现的基础涉及配置文件的解读以及动态代理的运用。</p>
-<h2 id="1-核心类"><a href="#1-核心类" class="headerlink" title="1.核心类"></a>1.核心类</h2><p><img src="https://img-blog.csdnimg.cn/20210312105114200.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图3"></p>
-<h2 id="2-运行流程"><a href="#2-运行流程" class="headerlink" title="2.运行流程"></a>2.运行流程</h2><p><img src="https://img-blog.csdnimg.cn/20210312105706612.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图4"></p>
+<h2 id="1-核心类"><a href="#1-核心类" class="headerlink" title="1.核心类"></a>1.核心类</h2><p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210312105114200.png" alt="图3"></p>
+<h2 id="2-运行流程"><a href="#2-运行流程" class="headerlink" title="2.运行流程"></a>2.运行流程</h2><p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210312105706612.png" alt="图4"></p>
 <h1 id="三、举个栗子"><a href="#三、举个栗子" class="headerlink" title="三、举个栗子"></a>三、举个栗子</h1><p>demo如下：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token comment">// 程序员喜欢的风格</span>
@@ -519,7 +511,7 @@
 
 <h2 id="1-打开一个会话"><a href="#1-打开一个会话" class="headerlink" title="1.打开一个会话"></a>1.打开一个会话</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">SqlSession</span> sqlSession <span class="token operator">=</span> sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="2-DefaultSqlSessionFactory"><a href="#2-DefaultSqlSessionFactory" class="headerlink" title="2.DefaultSqlSessionFactory"></a>2.DefaultSqlSessionFactory</h2><p>有两个实现类，主要看DefaultSqlSessionFactory.<br><img src="https://img-blog.csdnimg.cn/2021031211034090.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图5"></p>
+<h2 id="2-DefaultSqlSessionFactory"><a href="#2-DefaultSqlSessionFactory" class="headerlink" title="2.DefaultSqlSessionFactory"></a>2.DefaultSqlSessionFactory</h2><p>有两个实现类，主要看DefaultSqlSessionFactory.<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031211034090.png" alt="图5"></p>
 <p>点进去看看openSession的方法内容</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
 <span class="token keyword">public</span> <span class="token class-name">SqlSession</span> <span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -584,7 +576,7 @@
   <span class="token keyword">this</span><span class="token punctuation">.</span>dirty <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>autoCommit <span class="token operator">=</span> autoCommit<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>DefaultSqlSession实现了SqlSession的方法。<br><img src="https://img-blog.csdnimg.cn/20210312111811946.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图6"><br>当执行以下代码时，调用的其实就是DefaultSqlSession类的selectOne方法（最终调用该类下的selectList方法）：</p>
+<p>DefaultSqlSession实现了SqlSession的方法。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210312111811946.png" alt="图6"><br>当执行以下代码时，调用的其实就是DefaultSqlSession类的selectOne方法（最终调用该类下的selectList方法）：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
 <span class="token keyword">public</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token class-name">T</span> <span class="token function">selectOne</span><span class="token punctuation">(</span><span class="token class-name">String</span> statement<span class="token punctuation">,</span> <span class="token class-name">Object</span> parameter<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
   <span class="token comment">// Popular vote was to return null on 0 results and throw exception on too many.</span>
@@ -612,7 +604,7 @@
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="5-Executor"><a href="#5-Executor" class="headerlink" title="5.Executor"></a>5.Executor</h2><p>先大致了解下Executor的类继承关系。<br><img src="https://img-blog.csdnimg.cn/20210312112927579.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图7"><br>所以，我们重点看看这段代码的奥秘。</p>
+<h2 id="5-Executor"><a href="#5-Executor" class="headerlink" title="5.Executor"></a>5.Executor</h2><p>先大致了解下Executor的类继承关系。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210312112927579.png" alt="图7"><br>所以，我们重点看看这段代码的奥秘。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">return</span> executor<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>ms<span class="token punctuation">,</span> <span class="token function">wrapCollection</span><span class="token punctuation">(</span>parameter<span class="token punctuation">)</span><span class="token punctuation">,</span> rowBounds<span class="token punctuation">,</span> <span class="token class-name">Executor</span><span class="token punctuation">.</span><span class="token constant">NO_RESULT_HANDLER</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>先看BaseExecutor.</p>
@@ -709,7 +701,7 @@
   <span class="token keyword">return</span> statementHandler<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>瞧瞧StatementHandler的小弟们。<br><img src="https://img-blog.csdnimg.cn/20210312114334576.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图8"><br>总结下StatementHandler是干啥的，以及它的小弟们分别能干啥。<br><img src="https://img-blog.csdnimg.cn/20210312114441395.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图9"></p>
+<p>瞧瞧StatementHandler的小弟们。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210312114334576.png" alt="图8"><br>总结下StatementHandler是干啥的，以及它的小弟们分别能干啥。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210312114441395.png" alt="图9"></p>
 <p>再看看prepare干了啥。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">stmt <span class="token operator">=</span> handler<span class="token punctuation">.</span><span class="token function">prepare</span><span class="token punctuation">(</span>connection<span class="token punctuation">,</span> transaction<span class="token punctuation">.</span><span class="token function">getTimeout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -816,7 +808,7 @@
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/share/js/social-share.min.js"></script>
     
 
@@ -1182,10 +1174,12 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">82.7k</span>
+                        class="white-color">101.5k</span>
             
             
             
@@ -1448,6 +1442,17 @@ $(function () {
     
 
     
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
     
     
         
@@ -1472,14 +1477,6 @@ $(function () {
     
 
     <!-- 鼠标星星特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/star.js"><\/script>');
-            }
-        </script>
     
 
     

@@ -5,9 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="【MyBatis源码学习】Sql解析, Back-End Dev Java">
-    <meta name="description" content="
-
-一、前言之前我在【Mybatis源码学习】初始化阶段 中重点讲述了核心配置类XMLConfigBuilder、XMLMapperBuilder、XMLStatementBuilder各自的功能。我们先熟悉下这“三剑客”，看下图即可。本章">
+    <meta name="description" content="一、前言之前我在【Mybatis源码学习】初始化阶段 中重点讲述了核心配置类XMLConfigBuilder、XMLMapperBuilder、XMLStatementBuilder各自的功能。我们先熟悉下这“三剑客”，看下图即可。本章节中">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -133,29 +131,16 @@
         </a>
       </li>
       
+      <li>
+        <a href="/bibi">
+          
+          <i class="fa-fw fa-solid fa-cloud-rain" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>哔哔</span>
+        </a>
+      </li>
+      
     </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
     
   </li>
   
@@ -166,6 +151,17 @@
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
       <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
     </a>
     
   </li>
@@ -251,29 +247,17 @@
                   </a>
                 </li>
               
+                <li>
+
+                  <a href="/bibi " style="margin-left:75px">
+				  
+				   <i class="fa fa-fw fa-solid fa-cloud-rain" style="position: absolute;left:50px" ></i>
+			      
+		          <span>哔哔</span>
+                  </a>
+                </li>
+              
             </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
           
         </li>
         
@@ -284,6 +268,17 @@
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
 		</a>
           
         </li>
@@ -364,7 +359,6 @@
 </header>
 
     
-
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/MyBatis.jpeg')">
@@ -468,9 +462,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
-
-<h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>之前我在<a href="https://zyxelva.github.io/posts/24693.html">【Mybatis源码学习】初始化阶段</a> 中重点讲述了核心配置类XMLConfigBuilder、XMLMapperBuilder、XMLStatementBuilder各自的功能。我们先熟悉下这“三剑客”，看下图即可。<br><img src="https://img-blog.csdnimg.cn/20210315205850237.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>本章节中，我们重点跟一下XMLMapperBuilder、XMLStatementBuilder解析sql的源码过程。<br>XMLMapperBuilder、XMLStatementBuilder均实现了BaseBuilder。<br><img src="https://img-blog.csdnimg.cn/2021031521015322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>XMLMapperBuilder主要功能：<br>    遍历mybatis中mapperLocations属性中的xml文件中每个节点的Builder，比如user.xml，内部会使用XMLStatementBuilder处理xml中的每个节点。<br>XMLStatementBuilder主要功能：<br>    解析xml文件中各个节点，比如select,insert,update,delete节点，内部会使用XMLScriptBuilder处理节点的sql部分，遍历产生的数据会丢到Configuration的mappedStatements中。</p>
+                <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>之前我在<a href="https://zyxelva.github.io/posts/24693.html">【Mybatis源码学习】初始化阶段</a> 中重点讲述了核心配置类XMLConfigBuilder、XMLMapperBuilder、XMLStatementBuilder各自的功能。我们先熟悉下这“三剑客”，看下图即可。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315205850237.png"><br>本章节中，我们重点跟一下XMLMapperBuilder、XMLStatementBuilder解析sql的源码过程。<br>XMLMapperBuilder、XMLStatementBuilder均实现了BaseBuilder。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031521015322.png"><br>XMLMapperBuilder主要功能：<br>    遍历mybatis中mapperLocations属性中的xml文件中每个节点的Builder，比如user.xml，内部会使用XMLStatementBuilder处理xml中的每个节点。<br>XMLStatementBuilder主要功能：<br>    解析xml文件中各个节点，比如select,insert,update,delete节点，内部会使用XMLScriptBuilder处理节点的sql部分，遍历产生的数据会丢到Configuration的mappedStatements中。</p>
 <p>在<a href="https://zyxelva.github.io/posts/24693.html">【Mybatis源码学习】初始化阶段</a>中，我们分析了XMLConfigBuilder的主要工作流程。还是以下面的代码为例，重点分析下XMLMapperBuilder和XMLStatementBuilder解析sql的流程。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Before</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
@@ -482,7 +474,7 @@
     sqlSessionFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SqlSessionFactoryBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>inputStream<span class="token punctuation">)</span><span class="token punctuation">;</span>
     inputStream<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>进入new SqlSessionFactoryBuilder().build(inputStream)方法，我们看看parse的方法。<br><img src="https://img-blog.csdnimg.cn/20210316135635377.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br><img src="https://img-blog.csdnimg.cn/2021031613571219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>而我这里的mybatis-config.xml文件如下：</p>
+<p>进入new SqlSessionFactoryBuilder().build(inputStream)方法，我们看看parse的方法。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316135635377.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031613571219.png"><br>而我这里的mybatis-config.xml文件如下：</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8" ?></span>
 <span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">configuration</span> <span class="token name">PUBLIC</span> <span class="token string">"-//mybatis.org//DTD Config 3.0//EN"</span> <span class="token string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
@@ -536,7 +528,7 @@
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mapper</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sqlmapper/THealthReportMaleMapper.xml<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mappers</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="二、XMLMapperBuilder"><a href="#二、XMLMapperBuilder" class="headerlink" title="二、XMLMapperBuilder"></a>二、XMLMapperBuilder</h1><p>对于parser.evalNode(“&#x2F;configuration”)，这里我就不赘述了，重点关注parseConfiguration里面的mapperElement()方法。<br><img src="https://img-blog.csdnimg.cn/20210316135924625.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>这个mapperElement()主要就是解析&lt;mappers&gt;标签下的内容. 这里贴出这个方法的源码，包含注释。</p>
+<h1 id="二、XMLMapperBuilder"><a href="#二、XMLMapperBuilder" class="headerlink" title="二、XMLMapperBuilder"></a>二、XMLMapperBuilder</h1><p>对于parser.evalNode(“&#x2F;configuration”)，这里我就不赘述了，重点关注parseConfiguration里面的mapperElement()方法。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316135924625.png"><br>这个mapperElement()主要就是解析&lt;mappers&gt;标签下的内容. 这里贴出这个方法的源码，包含注释。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
   * 解析mappers节点，例如：
   * &lt;mappers>
@@ -866,7 +858,7 @@
 <li>sqlElement：解析sql节点&lt;sql&gt;.</li>
 <li>buildStatementFromContext：解析&lt;select&gt;、&lt;insert&gt;、&lt;update&gt;、&lt;delete&gt;节点.</li>
 </ul>
-<p>而当前我们的UserInfoMapper如下：<br><img src="https://img-blog.csdnimg.cn/20210316160708894.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>接下来，我们关注buildStatementFromContext解析&lt;select&gt;、&lt;insert&gt;、&lt;update&gt;、&lt;delete&gt;标签的过程。主要就是看看XMLStatementBuilder是怎么干活儿的。</p>
+<p>而当前我们的UserInfoMapper如下：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316160708894.png"><br>接下来，我们关注buildStatementFromContext解析&lt;select&gt;、&lt;insert&gt;、&lt;update&gt;、&lt;delete&gt;标签的过程。主要就是看看XMLStatementBuilder是怎么干活儿的。</p>
 <h1 id="三、XMLStatementBuilder"><a href="#三、XMLStatementBuilder" class="headerlink" title="三、XMLStatementBuilder"></a>三、XMLStatementBuilder</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//解析select、insert、update、delete节点</span>
 <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">buildStatementFromContext</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">XNode</span><span class="token punctuation">></span></span> list<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>configuration<span class="token punctuation">.</span><span class="token function">getDatabaseId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -993,10 +985,10 @@
   <span class="token keyword">return</span> sqlSource<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>方法parseDynamicTags()就是真正去解析sql语句的淫儿了。当执行createSqlSource()方法中的new XMLScriptBuilder(configuration, script, parameterType)时，我们看下，它初始化了些什么东东。<br><img src="https://img-blog.csdnimg.cn/20210316174946741.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>可以看到关键的部分，对于不同的标签，比如&lt;trim&gt;、&lt;where&gt;等，都有不同的处理策略。在执行parseDynamicTags()时，会判断节点是否包含一些动态标记，比如 ${} 占位符以及动态 SQL 节点等。若包含动态标记，则会将 isDynamic 设为 true。后续可根据 isDynamic 创建不同的 SqlSource。<br><img src="https://img-blog.csdnimg.cn/20210315210703601.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"></p>
-<p>通常，我们在xml内写sql都是片段的去编写，主要语句写完了，还会有些动态标签包裹的语句，对于mybatis来说，每个片段都会解析成为一个sqlNode存起来，我们先来回忆一下sqlNode有哪些实现类。<br><img src="https://img-blog.csdnimg.cn/20210315210642589.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>这些 SqlNode 是如何生成的呢？我们看看parseDynamicTags()中的这段代码：</p>
+<p>方法parseDynamicTags()就是真正去解析sql语句的淫儿了。当执行createSqlSource()方法中的new XMLScriptBuilder(configuration, script, parameterType)时，我们看下，它初始化了些什么东东。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316174946741.png"><br>可以看到关键的部分，对于不同的标签，比如&lt;trim&gt;、&lt;where&gt;等，都有不同的处理策略。在执行parseDynamicTags()时，会判断节点是否包含一些动态标记，比如 ${} 占位符以及动态 SQL 节点等。若包含动态标记，则会将 isDynamic 设为 true。后续可根据 isDynamic 创建不同的 SqlSource。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315210703601.png"></p>
+<p>通常，我们在xml内写sql都是片段的去编写，主要语句写完了，还会有些动态标签包裹的语句，对于mybatis来说，每个片段都会解析成为一个sqlNode存起来，我们先来回忆一下sqlNode有哪些实现类。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315210642589.png"><br>这些 SqlNode 是如何生成的呢？我们看看parseDynamicTags()中的这段代码：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">handler<span class="token punctuation">.</span><span class="token function">handleNode</span><span class="token punctuation">(</span>child<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>它有很多个实现。<br><img src="https://img-blog.csdnimg.cn/20210316180045568.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>到此 SQL 语句的解析过程搞完了。但我们只是完成了xml解析为sqlSource的流程，而一般sql语句还会有一些附加属性，需要mybatis去解析出来，封装至MappedStatement当中，最终还要把它注册到configuration。回到XMLStatementBuilder的parseStatementNode()方法。<br><img src="https://img-blog.csdnimg.cn/2021031618090324.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>具体方法实现：</p>
+<p>它有很多个实现。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316180045568.png"><br>到此 SQL 语句的解析过程搞完了。但我们只是完成了xml解析为sqlSource的流程，而一般sql语句还会有一些附加属性，需要mybatis去解析出来，封装至MappedStatement当中，最终还要把它注册到configuration。回到XMLStatementBuilder的parseStatementNode()方法。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031618090324.png"><br>具体方法实现：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//添加MappedStatement对象</span>
 <span class="token keyword">public</span> <span class="token class-name">MappedStatement</span> <span class="token function">addMappedStatement</span><span class="token punctuation">(</span>
     <span class="token class-name">String</span> id<span class="token punctuation">,</span>
@@ -1206,7 +1198,7 @@
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/share/js/social-share.min.js"></script>
     
 
@@ -1576,10 +1568,12 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">82.7k</span>
+                        class="white-color">101.5k</span>
             
             
             
@@ -1842,6 +1836,17 @@ $(function () {
     
 
     
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
     
     
         
@@ -1866,14 +1871,6 @@ $(function () {
     
 
     <!-- 鼠标星星特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/star.js"><\/script>');
-            }
-        </script>
     
 
     

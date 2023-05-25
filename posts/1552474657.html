@@ -5,11 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="【LeetCode】300. 最长递增子序列, Back-End Dev Java">
-    <meta name="description" content="
-
-1.问题给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。
+    <meta name="description" content="1.问题给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。
 子序列 是由数组派生而来的序列，删除（或不删除）数组中的元素而不改变其余元素的顺序。例如，[3,6,2,7] 是数组 [0,3,1,6,2,2,7] 的子序列。
-">
+示例">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -135,29 +133,16 @@
         </a>
       </li>
       
+      <li>
+        <a href="/bibi">
+          
+          <i class="fa-fw fa-solid fa-cloud-rain" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>哔哔</span>
+        </a>
+      </li>
+      
     </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
     
   </li>
   
@@ -168,6 +153,17 @@
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
       <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
     </a>
     
   </li>
@@ -253,29 +249,17 @@
                   </a>
                 </li>
               
+                <li>
+
+                  <a href="/bibi " style="margin-left:75px">
+				  
+				   <i class="fa fa-fw fa-solid fa-cloud-rain" style="position: absolute;left:50px" ></i>
+			      
+		          <span>哔哔</span>
+                  </a>
+                </li>
+              
             </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
           
         </li>
         
@@ -286,6 +270,17 @@
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
 		</a>
           
         </li>
@@ -368,7 +363,6 @@
     
 
 
-
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/LeetCode.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
@@ -398,6 +392,10 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/LeetCode/">
+                                <span class="chip bg-color">LeetCode</span>
+                            </a>
+                        
                             <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
                                 <span class="chip bg-color">动态规划</span>
                             </a>
@@ -416,10 +414,6 @@
                         
                             <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
                                 算法
-                            </a>
-                        
-                            <a href="/categories/%E7%AE%97%E6%B3%95/LeetCode/" class="post-category">
-                                LeetCode
                             </a>
                         
                     </div>
@@ -470,9 +464,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
-
-<h1 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h1><p>给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。</p>
+                <h1 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h1><p>给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。</p>
 <p>子序列 是由数组派生而来的序列，删除（或不删除）数组中的元素而不改变其余元素的顺序。例如，<code>[3,6,2,7]</code> 是数组 <code>[0,3,1,6,2,2,7]</code> 的子序列。</p>
 <h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h2><blockquote>
 <p>输入：nums &#x3D; [10,9,2,5,3,7,101,18]<br>输出：4<br>解释：最长递增子序列是 [2,3,7,101]，因此长度为 4 。</p>
@@ -505,25 +497,25 @@
 </ul>
 <p>举例：<code>nums=[10,9,2,5,3,7,21,18]</code>.</p>
 <ul>
-<li><p>初始状态<br><img src="https://img-blog.csdnimg.cn/4859d6f4149e4ae0b78f234125226b0a.png"></p>
+<li><p>初始状态<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/4859d6f4149e4ae0b78f234125226b0a.png"></p>
 </li>
-<li><p>$dp_1$ 的值<br><img src="https://img-blog.csdnimg.cn/f5be726f2a324e078ea97ba4172304a7.png"></p>
+<li><p>$dp_1$ 的值<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/f5be726f2a324e078ea97ba4172304a7.png"></p>
 </li>
-<li><p>$dp_2$ 的值<br><img src="https://img-blog.csdnimg.cn/95f43db5b5bf43fc9279494b180eec03.png"></p>
+<li><p>$dp_2$ 的值<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/95f43db5b5bf43fc9279494b180eec03.png"></p>
 </li>
-<li><p>$dp_3$ 的值<br><img src="https://img-blog.csdnimg.cn/5956d6fb71ad4eb5a7f3339ff3d30e4b.png"></p>
+<li><p>$dp_3$ 的值<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/5956d6fb71ad4eb5a7f3339ff3d30e4b.png"></p>
 </li>
-<li><p>$dp_4$ 的值<br><img src="https://img-blog.csdnimg.cn/1726b7db75cb425293ff5a2bb9a0cde0.png"></p>
+<li><p>$dp_4$ 的值<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/1726b7db75cb425293ff5a2bb9a0cde0.png"></p>
 </li>
-<li><p>$dp_5$ 的值<br><img src="https://img-blog.csdnimg.cn/9182f7b175fc4b179ce43951862d16f5.png"></p>
+<li><p>$dp_5$ 的值<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/9182f7b175fc4b179ce43951862d16f5.png"></p>
 </li>
-<li><p>$dp_6$ 的值<br><img src="https://img-blog.csdnimg.cn/a3a43cebfc934daab6cc33bf2598b953.png"></p>
+<li><p>$dp_6$ 的值<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/a3a43cebfc934daab6cc33bf2598b953.png"></p>
 </li>
-<li><p>$dp_7$ 的值<br><img src="https://img-blog.csdnimg.cn/05c22d4ae7154435a15d5d8d447669eb.png"></p>
+<li><p>$dp_7$ 的值<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/05c22d4ae7154435a15d5d8d447669eb.png"></p>
 </li>
-<li><p>$dp_8$ 的值<br><img src="https://img-blog.csdnimg.cn/7a5a173ef8f3450bbdaf016ae1ddfe9e.png"></p>
+<li><p>$dp_8$ 的值<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/7a5a173ef8f3450bbdaf016ae1ddfe9e.png"></p>
 </li>
-<li><p>求max(dp)<br><img src="https://img-blog.csdnimg.cn/1554d9cc74214186af2bf48bda4025c5.png"></p>
+<li><p>求max(dp)<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/1554d9cc74214186af2bf48bda4025c5.png"></p>
 </li>
 </ul>
 <h2 id="2-2-动态规划-二分查找"><a href="#2-2-动态规划-二分查找" class="headerlink" title="2.2 动态规划+二分查找"></a>2.2 动态规划+二分查找</h2><ul>
@@ -553,7 +545,7 @@
 </li>
 </ul>
 <p>借用知乎大神 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149911042">企鹅</a>的一个例子：</p>
-<p><img src="https://img-blog.csdnimg.cn/5346d1d0ceeb49d9a83fc4dcb8fd7793.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/5346d1d0ceeb49d9a83fc4dcb8fd7793.png"></p>
 <h1 id="3-代码"><a href="#3-代码" class="headerlink" title="3. 代码"></a>3. 代码</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">lengthOfLIS2</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token keyword">int</span> len<span class="token operator">=</span>nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
@@ -660,6 +652,10 @@
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/LeetCode/">
+                                    <span class="chip bg-color">LeetCode</span>
+                                </a>
+                            
                                 <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
                                     <span class="chip bg-color">动态规划</span>
                                 </a>
@@ -676,7 +672,7 @@
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/share/js/social-share.min.js"></script>
     
 
@@ -856,16 +852,16 @@
                                     算法
                                 </a>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/LeetCode/" class="post-category">
-                                    LeetCode
-                                </a>
-                            
                             
                         </span>
                     </div>
                 </div>
                 
                 <div class="card-action article-tags">
+                    
+                    <a href="/tags/LeetCode/">
+                        <span class="chip bg-color">LeetCode</span>
+                    </a>
                     
                     <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
                         <span class="chip bg-color">动态规划</span>
@@ -1057,10 +1053,12 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">82.7k</span>
+                        class="white-color">101.5k</span>
             
             
             
@@ -1323,6 +1321,17 @@ $(function () {
     
 
     
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
     
     
         
@@ -1347,14 +1356,6 @@ $(function () {
     
 
     <!-- 鼠标星星特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/star.js"><\/script>');
-            }
-        </script>
     
 
     

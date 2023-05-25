@@ -5,11 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="【多线程】ThreadPoolExcutor线程池, Back-End Dev Java">
-    <meta name="description" content="
+    <meta name="description" content="一、Executors创建线程池1.newFixedThreadPool先来看看源码中是怎么构造的：
 
-一、Executors创建线程池1.newFixedThreadPool先来看看源码中是怎么构造的：
-
-public static ExecutorService newFixedThreadPool(int nThreads) &amp;#1">
+public static ExecutorService newFixedThreadPool(int nThreads) &amp;#123">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -135,29 +133,16 @@ public static ExecutorService newFixedThreadPool(int nThreads) &amp;#1">
         </a>
       </li>
       
+      <li>
+        <a href="/bibi">
+          
+          <i class="fa-fw fa-solid fa-cloud-rain" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>哔哔</span>
+        </a>
+      </li>
+      
     </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
     
   </li>
   
@@ -168,6 +153,17 @@ public static ExecutorService newFixedThreadPool(int nThreads) &amp;#1">
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
       <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
     </a>
     
   </li>
@@ -253,29 +249,17 @@ public static ExecutorService newFixedThreadPool(int nThreads) &amp;#1">
                   </a>
                 </li>
               
+                <li>
+
+                  <a href="/bibi " style="margin-left:75px">
+				  
+				   <i class="fa fa-fw fa-solid fa-cloud-rain" style="position: absolute;left:50px" ></i>
+			      
+		          <span>哔哔</span>
+                  </a>
+                </li>
+              
             </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
           
         </li>
         
@@ -286,6 +270,17 @@ public static ExecutorService newFixedThreadPool(int nThreads) &amp;#1">
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
 		</a>
           
         </li>
@@ -366,7 +361,6 @@ public static ExecutorService newFixedThreadPool(int nThreads) &amp;#1">
 </header>
 
     
-
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/concurrent.jpeg')">
@@ -470,9 +464,7 @@ public static ExecutorService newFixedThreadPool(int nThreads) &amp;#1">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
-
-<h1 id="一、Executors创建线程池"><a href="#一、Executors创建线程池" class="headerlink" title="一、Executors创建线程池"></a>一、Executors创建线程池</h1><h2 id="1-newFixedThreadPool"><a href="#1-newFixedThreadPool" class="headerlink" title="1.newFixedThreadPool"></a>1.newFixedThreadPool</h2><p>先来看看源码中是怎么构造的：</p>
+                <h1 id="一、Executors创建线程池"><a href="#一、Executors创建线程池" class="headerlink" title="一、Executors创建线程池"></a>一、Executors创建线程池</h1><h2 id="1-newFixedThreadPool"><a href="#1-newFixedThreadPool" class="headerlink" title="1.newFixedThreadPool"></a>1.newFixedThreadPool</h2><p>先来看看源码中是怎么构造的：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">
 <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">ExecutorService</span> <span class="token function">newFixedThreadPool</span><span class="token punctuation">(</span><span class="token keyword">int</span> nThreads<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
   <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ThreadPoolExecutor</span><span class="token punctuation">(</span>nThreads<span class="token punctuation">,</span> 
@@ -550,7 +542,7 @@ public static ExecutorService newFixedThreadPool(int nThreads) &amp;#1">
 <p>  可以自定义实现RejectedExecutionHandler。</p>
 </li>
 </ul>
-<h2 id="2-内部执行流程"><a href="#2-内部执行流程" class="headerlink" title="2.内部执行流程"></a>2.内部执行流程</h2><p><img src="https://img-blog.csdnimg.cn/2021040121195681.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"></p>
+<h2 id="2-内部执行流程"><a href="#2-内部执行流程" class="headerlink" title="2.内部执行流程"></a>2.内部执行流程</h2><p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021040121195681.png"></p>
 <p>1). 线程池刚创建时，里面没有一个线程。任务队列是作为参数传进来的。不过，就算队列里面有任务，线程池也不会马上执行它们。</p>
 <p>2). 当调用execute()方法添加一个任务时，线程池会做如下判断：</p>
 <ul>
@@ -645,7 +637,7 @@ public static ExecutorService newFixedThreadPool(int nThreads) &amp;#1">
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/share/js/social-share.min.js"></script>
     
 
@@ -763,10 +755,6 @@ public static ExecutorService newFixedThreadPool(int nThreads) &amp;#1">
                             
                             <a href="/categories/Hexo%E4%B8%BB%E9%A2%98/" class="post-category">
                                     Hexo主题
-                                </a>
-                            
-                            <a href="/categories/Hexo%E4%B8%BB%E9%A2%98/Fluid/" class="post-category">
-                                    Fluid
                                 </a>
                             
                             
@@ -1011,10 +999,12 @@ public static ExecutorService newFixedThreadPool(int nThreads) &amp;#1">
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">82.7k</span>
+                        class="white-color">101.5k</span>
             
             
             
@@ -1277,6 +1267,17 @@ $(function () {
     
 
     
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
     
     
         
@@ -1301,14 +1302,6 @@ $(function () {
     
 
     <!-- 鼠标星星特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/star.js"><\/script>');
-            }
-        </script>
     
 
     

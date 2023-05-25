@@ -5,15 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="【MyBatis源码学习】Sql执行, Back-End Dev Java">
-    <meta name="description" content="
-
-前言上一篇【MyBatis源码学习】Sql解析中，我主要梳理了sql的源码解析过程，本章我通过同样的一个例子，来仔细瞧瞧sql是怎样执行下来的。主要分为三个步骤：
+    <meta name="description" content="前言上一篇【MyBatis源码学习】Sql解析中，我主要梳理了sql的源码解析过程，本章我通过同样的一个例子，来仔细瞧瞧sql是怎样执行下来的。主要分为三个步骤：
 
 动态代理生成mapper
 sql执行
 结果集处理
 
-还是通过同样的例子">
+还是通过同样的例子来开">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -139,29 +137,16 @@ sql执行
         </a>
       </li>
       
+      <li>
+        <a href="/bibi">
+          
+          <i class="fa-fw fa-solid fa-cloud-rain" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>哔哔</span>
+        </a>
+      </li>
+      
     </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
     
   </li>
   
@@ -172,6 +157,17 @@ sql执行
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
       <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
     </a>
     
   </li>
@@ -257,29 +253,17 @@ sql执行
                   </a>
                 </li>
               
+                <li>
+
+                  <a href="/bibi " style="margin-left:75px">
+				  
+				   <i class="fa fa-fw fa-solid fa-cloud-rain" style="position: absolute;left:50px" ></i>
+			      
+		          <span>哔哔</span>
+                  </a>
+                </li>
+              
             </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
           
         </li>
         
@@ -290,6 +274,17 @@ sql执行
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
 		</a>
           
         </li>
@@ -370,7 +365,6 @@ sql执行
 </header>
 
     
-
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/MyBatis.jpeg')">
@@ -474,9 +468,7 @@ sql执行
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
-
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>上一篇<a href="https://zyxelva.github.io/posts/45790.html">【MyBatis源码学习】Sql解析</a>中，我主要梳理了sql的源码解析过程，本章我通过同样的一个例子，来仔细瞧瞧sql是怎样执行下来的。主要分为三个步骤：</p>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>上一篇<a href="https://zyxelva.github.io/posts/45790.html">【MyBatis源码学习】Sql解析</a>中，我主要梳理了sql的源码解析过程，本章我通过同样的一个例子，来仔细瞧瞧sql是怎样执行下来的。主要分为三个步骤：</p>
 <ul>
 <li>动态代理生成mapper</li>
 <li>sql执行</li>
@@ -497,8 +489,8 @@ sql执行
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="一、动态代理生成mapper"><a href="#一、动态代理生成mapper" class="headerlink" title="一、动态代理生成mapper"></a>一、动态代理生成mapper</h1><p>我们直接从这句开始跟下源码：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">TUserMapper</span> mapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">TUserMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>断点调式开始<br><img src="https://img-blog.csdnimg.cn/20210322102317495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>我们看到SqlSession实例是DefaultSqlSession，点进去看看getMapper:<br><img src="https://img-blog.csdnimg.cn/20210322102447860.png"><br>进入的是“大管家”Configuration的getMapper.<br><img src="https://img-blog.csdnimg.cn/20210322102558173.png"></p>
-<p>而真正给出接口代理类的是MapperRegistry.<img src="https://img-blog.csdnimg.cn/20210322102754132.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>点进去看看mapperProxyFactory.newInstance(sqlSession)具体生成实例的代码：</p>
+<p>断点调式开始<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210322102317495.png"><br>我们看到SqlSession实例是DefaultSqlSession，点进去看看getMapper:<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210322102447860.png"><br>进入的是“大管家”Configuration的getMapper.<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210322102558173.png"></p>
+<p>而真正给出接口代理类的是MapperRegistry.<img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210322102754132.png"><br>点进去看看mapperProxyFactory.newInstance(sqlSession)具体生成实例的代码：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// MapperProxyFactory</span>
 <span class="token comment">// 生成一个 MapperProxy对象</span>
   <span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"unchecked"</span><span class="token punctuation">)</span>
@@ -510,8 +502,8 @@ sql执行
     <span class="token keyword">final</span> <span class="token class-name">MapperProxy</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> mapperProxy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MapperProxy</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>sqlSession<span class="token punctuation">,</span> mapperInterface<span class="token punctuation">,</span> methodCache<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token function">newInstance</span><span class="token punctuation">(</span>mapperProxy<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>发现，运用的正是JDK动态代理。<br>梳理下该过程的时序图，如下：<br><img src="https://img-blog.csdnimg.cn/20210322110043730.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"></p>
-<h1 id="二、sql执行"><a href="#二、sql执行" class="headerlink" title="二、sql执行"></a>二、sql执行</h1><p>通过一中的过程，我们可以得到一个接口的mapperProxy动态代理对象了。sql的执行过程就是从MapperProxy的invoke方法开始的。<br><img src="https://img-blog.csdnimg.cn/20210322110414703.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br><img src="https://img-blog.csdnimg.cn/20210322110853190.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>先去缓存中看看是否已经有了现成的MapperMethod，没有才回去new一个出来。<br>接下来，调用 MapperMethod 中的execute方法。<br><img src="https://img-blog.csdnimg.cn/20210322111101131.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>本例中，执行的是一个查询语句，进入case SELECT分支</p>
+<p>发现，运用的正是JDK动态代理。<br>梳理下该过程的时序图，如下：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210322110043730.png"></p>
+<h1 id="二、sql执行"><a href="#二、sql执行" class="headerlink" title="二、sql执行"></a>二、sql执行</h1><p>通过一中的过程，我们可以得到一个接口的mapperProxy动态代理对象了。sql的执行过程就是从MapperProxy的invoke方法开始的。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210322110414703.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210322110853190.png"><br>先去缓存中看看是否已经有了现成的MapperMethod，没有才回去new一个出来。<br>接下来，调用 MapperMethod 中的execute方法。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210322111101131.png"><br>本例中，执行的是一个查询语句，进入case SELECT分支</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">
 <span class="token keyword">case</span> <span class="token constant">SELECT</span><span class="token operator">:</span> <span class="token comment">// 如果是查询语句</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>method<span class="token punctuation">.</span><span class="token function">returnsVoid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> method<span class="token punctuation">.</span><span class="token function">hasResultHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 返回为void，且有结果处理器</span>
@@ -576,12 +568,12 @@ sql执行
       <span class="token class-name">ErrorContext</span><span class="token punctuation">.</span><span class="token function">instance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
   <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这里说明下，mybatis默认是开启了二级缓存的，所以这里executor其实是CachingExecutor.我们可以在创建sqlSession中看看Configuration中创建执行器时的代码：<br><img src="https://img-blog.csdnimg.cn/20210322135551582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>要关闭二级缓存，我们可以在mybatis-config.xml中显示配置，如下：</p>
+<p>这里说明下，mybatis默认是开启了二级缓存的，所以这里executor其实是CachingExecutor.我们可以在创建sqlSession中看看Configuration中创建执行器时的代码：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210322135551582.png"><br>要关闭二级缓存，我们可以在mybatis-config.xml中显示配置，如下：</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!-- 二级缓存开关，默认为开启--></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>setting</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>cacheEnabled<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>关闭二级缓存，我们回到selectList方法中，继续跟下这段代码的执行过程：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">executor<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>ms<span class="token punctuation">,</span> <span class="token function">wrapCollection</span><span class="token punctuation">(</span>parameter<span class="token punctuation">)</span><span class="token punctuation">,</span> rowBounds<span class="token punctuation">,</span> <span class="token class-name">Executor</span><span class="token punctuation">.</span><span class="token constant">NO_RESULT_HANDLER</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>executor这里为SimpleExecutor，其首先调用的是BaseExecutor的query方法。<br><img src="https://img-blog.csdnimg.cn/2021032214023869.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"></p>
+<p>executor这里为SimpleExecutor，其首先调用的是BaseExecutor的query方法。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021032214023869.png"></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
    * 查询数据库中的数据
    * @param ms 映射语句
@@ -636,15 +628,15 @@ sql执行
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> list<span class="token punctuation">;</span>
   <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>先从一级缓存中查询是否已有结果，没有则才去查询数据库。我们直接看查询数据库的部分，也就是方法queryFromDatabase().<br><img src="https://img-blog.csdnimg.cn/20210322141109713.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>进入doQuery()方法，发现这里是个模版方法，由于前面提到我们此处的执行器为SimpleExecutor，所以这个方法来到了SimpleExecutor的doQuery()方法.</p>
-<p><img src="https://img-blog.csdnimg.cn/20210322141449815.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>如上，该方法主要有三步：</p>
+<p>先从一级缓存中查询是否已有结果，没有则才去查询数据库。我们直接看查询数据库的部分，也就是方法queryFromDatabase().<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210322141109713.png"><br>进入doQuery()方法，发现这里是个模版方法，由于前面提到我们此处的执行器为SimpleExecutor，所以这个方法来到了SimpleExecutor的doQuery()方法.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210322141449815.png"><br>如上，该方法主要有三步：</p>
 <ul>
 <li>新建一个StatementHandler</li>
 <li>获取Statement</li>
 <li>StatementHandler.query（实际调用的是PreparedStatementHandler）获取查询结果。</li>
 </ul>
 <p>我们看看prepareStatement方法。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"> <span class="token comment">//SimpleExcutor</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"> <span class="token comment">//SimpleExecutor</span>
  <span class="token keyword">private</span> <span class="token class-name">Statement</span> <span class="token function">prepareStatement</span><span class="token punctuation">(</span><span class="token class-name">StatementHandler</span> handler<span class="token punctuation">,</span> <span class="token class-name">Log</span> statementLog<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">SQLException</span> <span class="token punctuation">&#123;</span>
    <span class="token class-name">Statement</span> stmt<span class="token punctuation">;</span>
 <span class="token comment">//获取数据库连接</span>
@@ -666,7 +658,7 @@ sql执行
    <span class="token keyword">return</span> resultSetHandler<span class="token punctuation">.</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">></span></span> <span class="token function">handleResultSets</span><span class="token punctuation">(</span>ps<span class="token punctuation">)</span><span class="token punctuation">;</span>
  <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>查询完毕，总结一下这个过程的时序图，一目了然：<br><img src="https://img-blog.csdnimg.cn/20210322151224922.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"></p>
+<p>查询完毕，总结一下这个过程的时序图，一目了然：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210322151224922.png"></p>
 <h1 id="三、结果集处理"><a href="#三、结果集处理" class="headerlink" title="三、结果集处理"></a>三、结果集处理</h1><p>结果集的映射，这部分我会在下一篇详细的跟进。Game over.</p>
 
                 
@@ -752,7 +744,7 @@ sql执行
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/share/js/social-share.min.js"></script>
     
 
@@ -1126,10 +1118,12 @@ sql执行
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">82.7k</span>
+                        class="white-color">101.5k</span>
             
             
             
@@ -1392,6 +1386,17 @@ $(function () {
     
 
     
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
     
     
         
@@ -1416,14 +1421,6 @@ $(function () {
     
 
     <!-- 鼠标星星特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/star.js"><\/script>');
-            }
-        </script>
     
 
     

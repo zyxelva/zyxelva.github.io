@@ -5,9 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="【MyBatis源码学习】Spring集成MyBatis的原理分析, Back-End Dev Java">
-    <meta name="description" content="
-
-前言上一章中【MyBatis源码学习】MyBatis与Spring整合，我们介绍了Mybatis与Spring、Spring Boot的融合，其中我们提到了mybatis-spring中的几个关键类，本章我们来跟踪下这几个关键类的源码，">
+    <meta name="description" content="前言上一章中【MyBatis源码学习】MyBatis与Spring整合，我们介绍了Mybatis与Spring、Spring Boot的融合，其中我们提到了mybatis-spring中的几个关键类，本章我们来跟踪下这几个关键类的源码，看看">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -133,29 +131,16 @@
         </a>
       </li>
       
+      <li>
+        <a href="/bibi">
+          
+          <i class="fa-fw fa-solid fa-cloud-rain" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>哔哔</span>
+        </a>
+      </li>
+      
     </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
     
   </li>
   
@@ -166,6 +151,17 @@
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
       <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
     </a>
     
   </li>
@@ -251,29 +247,17 @@
                   </a>
                 </li>
               
+                <li>
+
+                  <a href="/bibi " style="margin-left:75px">
+				  
+				   <i class="fa fa-fw fa-solid fa-cloud-rain" style="position: absolute;left:50px" ></i>
+			      
+		          <span>哔哔</span>
+                  </a>
+                </li>
+              
             </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
           
         </li>
         
@@ -284,6 +268,17 @@
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
 		</a>
           
         </li>
@@ -364,7 +359,6 @@
 </header>
 
     
-
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/MyBatis.jpeg')">
@@ -472,16 +466,14 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
-
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>上一章中<a href="https://zyxelva.github.io/posts/53897.html">【MyBatis源码学习】MyBatis与Spring整合</a>，我们介绍了Mybatis与Spring、Spring Boot的融合，其中我们提到了mybatis-spring中的几个关键类，本章我们来跟踪下这几个关键类的源码，看看它们干了些啥.</p>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>上一章中<a href="https://zyxelva.github.io/posts/53897.html">【MyBatis源码学习】MyBatis与Spring整合</a>，我们介绍了Mybatis与Spring、Spring Boot的融合，其中我们提到了mybatis-spring中的几个关键类，本章我们来跟踪下这几个关键类的源码，看看它们干了些啥.</p>
 <h1 id="一、源码下载"><a href="#一、源码下载" class="headerlink" title="一、源码下载"></a>一、源码下载</h1><p>和mybatis源码下载一样，从GitHub下载好后，本地打包部署一下，方便我们后面进行测试时方便查看。源码地址：<a target="_blank" rel="noopener" href="https://github.com/mybatis/spring">这里是MyBatis-Spring源码地址</a>.</p>
 <h1 id="二、核心类源码解析"><a href="#二、核心类源码解析" class="headerlink" title="二、核心类源码解析"></a>二、核心类源码解析</h1><p>先来回顾下核心类的功能：</p>
 <ul>
 <li>SqlSessionFactoryBean：用于创建SqlSessionFactory；</li>
 <li>MapperScannerConfigurer：自动扫描所有的 Mapper 接口，使用时可以直接注入接口。</li>
 </ul>
-<h2 id="1-SqlSessionFactoryBean"><a href="#1-SqlSessionFactoryBean" class="headerlink" title="1.SqlSessionFactoryBean"></a>1.SqlSessionFactoryBean</h2><p>(1) UML<br><img src="https://img-blog.csdnimg.cn/20210324100712686.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>(2) 配置和源码解析<br>通常我们在项目中整合Spring和mybatis时，Spring相关的配置文件会包含：</p>
+<h2 id="1-SqlSessionFactoryBean"><a href="#1-SqlSessionFactoryBean" class="headerlink" title="1.SqlSessionFactoryBean"></a>1.SqlSessionFactoryBean</h2><p>(1) UML<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210324100712686.png"><br>(2) 配置和源码解析<br>通常我们在项目中整合Spring和mybatis时，Spring相关的配置文件会包含：</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sqlSessionFactory<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.mybatis.spring.SqlSessionFactoryBean<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
@@ -661,7 +653,7 @@
 <p>最后一句</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sqlSessionFactoryBuilder<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>configuration<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>是不是又回到了熟悉的地方。</p>
-<h2 id="2-MapperScannerConfigurer"><a href="#2-MapperScannerConfigurer" class="headerlink" title="2.MapperScannerConfigurer"></a>2.MapperScannerConfigurer</h2><p>(1) UML<br><img src="https://img-blog.csdnimg.cn/20210324140422191.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>(2) 配置和源码解析<br>这里我们主要关注这个接口：BeanDefinitionRegistryPostProcessor<br>MapperScannerConfigurer实现了BeanDefinitionRegistryPostProcessor接口，BeanDefinitionRegistryPostProcessor接口是一个可以修改spring工厂中已定义的bean的接口，该接口有个postProcessBeanDefinitionRegistry方法。</p>
+<h2 id="2-MapperScannerConfigurer"><a href="#2-MapperScannerConfigurer" class="headerlink" title="2.MapperScannerConfigurer"></a>2.MapperScannerConfigurer</h2><p>(1) UML<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210324140422191.png"><br>(2) 配置和源码解析<br>这里我们主要关注这个接口：BeanDefinitionRegistryPostProcessor<br>MapperScannerConfigurer实现了BeanDefinitionRegistryPostProcessor接口，BeanDefinitionRegistryPostProcessor接口是一个可以修改spring工厂中已定义的bean的接口，该接口有个postProcessBeanDefinitionRegistry方法。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">postProcessBeanDefinitionRegistry</span><span class="token punctuation">(</span><span class="token class-name">BeanDefinitionRegistry</span> registry<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
   <span class="token comment">//占位符处理</span>
@@ -757,7 +749,7 @@
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>注释已经写得很清楚了，这里再看看MapperFactoryBean.<br><img src="https://img-blog.csdnimg.cn/20210324144607379.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>其继承了SqlSessionDaoSupport类，SqlSessionDaoSupport类继承DaoSupport抽象类，DaoSupport抽象类实现了InitializingBean接口，因此实例一个MapperFactoryBean的时候，都会调用InitializingBean接口的afterPropertiesSet方法。而MapperFactoryBean也重写了：</p>
+<p>注释已经写得很清楚了，这里再看看MapperFactoryBean.<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210324144607379.png"><br>其继承了SqlSessionDaoSupport类，SqlSessionDaoSupport类继承DaoSupport抽象类，DaoSupport抽象类实现了InitializingBean接口，因此实例一个MapperFactoryBean的时候，都会调用InitializingBean接口的afterPropertiesSet方法。而MapperFactoryBean也重写了：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
  * MapperFactoryBean在容器初始化时，要确保mapper接口被注册到mapperRegistry
  * &#123;@inheritDoc&#125;
@@ -884,7 +876,7 @@
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/share/js/social-share.min.js"></script>
     
 
@@ -1254,10 +1246,12 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">82.7k</span>
+                        class="white-color">101.5k</span>
             
             
             
@@ -1520,6 +1514,17 @@ $(function () {
     
 
     
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
     
     
         
@@ -1544,14 +1549,6 @@ $(function () {
     
 
     <!-- 鼠标星星特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/star.js"><\/script>');
-            }
-        </script>
     
 
     

@@ -5,10 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="【LeetCode】987.二叉树的垂序遍历, Back-End Dev Java">
-    <meta name="description" content="
-
-1.问题给你二叉树的根结点 root ，请你设计算法计算二叉树的 垂序遍历 序列。
-对位于 (row, col) 的每个结点而言，其左右子结点分别位于 (row + 1, col - 1) 和 (row + 1, col + 1) 。树">
+    <meta name="description" content="1.问题给你二叉树的根结点 root ，请你设计算法计算二叉树的 垂序遍历 序列。
+对位于 (row, col) 的每个结点而言，其左右子结点分别位于 (row + 1, col - 1) 和 (row + 1, col + 1) 。树的根">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -134,29 +132,16 @@
         </a>
       </li>
       
+      <li>
+        <a href="/bibi">
+          
+          <i class="fa-fw fa-solid fa-cloud-rain" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>哔哔</span>
+        </a>
+      </li>
+      
     </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
     
   </li>
   
@@ -167,6 +152,17 @@
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
       <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
     </a>
     
   </li>
@@ -252,29 +248,17 @@
                   </a>
                 </li>
               
+                <li>
+
+                  <a href="/bibi " style="margin-left:75px">
+				  
+				   <i class="fa fa-fw fa-solid fa-cloud-rain" style="position: absolute;left:50px" ></i>
+			      
+		          <span>哔哔</span>
+                  </a>
+                </li>
+              
             </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
           
         </li>
         
@@ -285,6 +269,17 @@
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
 		</a>
           
         </li>
@@ -367,7 +362,6 @@
     
 
 
-
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/LeetCode.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
@@ -433,14 +427,6 @@
                                 算法
                             </a>
                         
-                            <a href="/categories/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="post-category">
-                                二叉树
-                            </a>
-                        
-                            <a href="/categories/LeetCode/" class="post-category">
-                                LeetCode
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -489,23 +475,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
-
-<h1 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h1><p>给你二叉树的根结点 root ，请你设计算法计算二叉树的 垂序遍历 序列。</p>
+                <h1 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h1><p>给你二叉树的根结点 root ，请你设计算法计算二叉树的 垂序遍历 序列。</p>
 <p>对位于 (row, col) 的每个结点而言，其左右子结点分别位于 (row + 1, col - 1) 和 (row + 1, col + 1) 。树的根结点位于 (0, 0) 。</p>
 <p>二叉树的 <strong>垂序遍历</strong> 从最左边的列开始直到最右边的列结束，按列索引每一列上的所有结点，形成一个按出现位置从上到下排序的有序列表。如果同行同列上有多个结点，则按结点的值从小到大进行排序。</p>
 <p>返回二叉树的 <strong>垂序遍历</strong> 序列。</p>
-<h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/e04967e5622978d8f038f3f484c96344.jpeg#pic_center" alt="图1"></p>
+<h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h2><p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/e04967e5622978d8f038f3f484c96344.jpeg" alt="图1"></p>
 <blockquote>
 <p>输入：root &#x3D; [3,9,20,null,null,15,7]<br>输出：[[9],[3,15],[20],[7]]</p>
 </blockquote>
 <p><strong>解释</strong>：<br>列 -1 ：只有结点 9 在此列中。<br>列  0 ：只有结点 3 和 15 在此列中，按从上到下顺序。<br>列  1 ：只有结点 20 在此列中。<br>列  2 ：只有结点 7 在此列中。</p>
-<h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/928311391554fa02c32df8d2fe82f29f.jpeg#pic_center" alt="图2"></p>
+<h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h2><p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/928311391554fa02c32df8d2fe82f29f.jpeg" alt="图2"></p>
 <blockquote>
 <p>输入：root &#x3D; [1,2,3,4,5,6,7]<br>输出：[[4],[2],[1,5,6],[3],[7]]</p>
 </blockquote>
 <p><strong>解释</strong>：<br>列 -2 ：只有结点 4 在此列中。<br>列 -1 ：只有结点 2 在此列中。<br>列  0 ：结点 1 、5 和 6 都在此列中。<br>          1 在上面，所以它出现在前面。<br>          5 和 6 位置都是 (2, 0) ，所以按值从小到大排序，5 在 6 的前面。<br>列  1 ：只有结点 3 在此列中。<br>列  2 ：只有结点 7 在此列中。</p>
-<h2 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3"></a>示例 3</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/21f2fd6f20821d1e1279984777466b85.jpeg#pic_center" alt="图3"></p>
+<h2 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3"></a>示例 3</h2><p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/21f2fd6f20821d1e1279984777466b85.jpeg" alt="图3"></p>
 <blockquote>
 <p>输入：root &#x3D; [1,2,3,4,6,5,7]<br>输出：[[4],[2],[1,5,6],[3],[7]]</p>
 </blockquote>
@@ -704,7 +688,7 @@
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/share/js/social-share.min.js"></script>
     
 
@@ -874,14 +858,6 @@
                             
                             <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
                                     算法
-                                </a>
-                            
-                            <a href="/categories/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="post-category">
-                                    二叉树
-                                </a>
-                            
-                            <a href="/categories/LeetCode/" class="post-category">
-                                    LeetCode
                                 </a>
                             
                             
@@ -1090,10 +1066,12 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">82.7k</span>
+                        class="white-color">101.5k</span>
             
             
             
@@ -1356,6 +1334,17 @@ $(function () {
     
 
     
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
     
     
         
@@ -1380,14 +1369,6 @@ $(function () {
     
 
     <!-- 鼠标星星特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/star.js"><\/script>');
-            }
-        </script>
     
 
     

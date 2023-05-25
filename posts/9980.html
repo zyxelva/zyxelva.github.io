@@ -5,12 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="【Spring源码学习】Spring Bean实例化过程-创建Bean实例, Back-End Dev Java">
-    <meta name="description" content="
-
-前言Spring 初始化核心流程spring容器初始化的核心方法AbstractApplicationContext#refresh，
+    <meta name="description" content="前言Spring 初始化核心流程spring容器初始化的核心方法AbstractApplicationContext#refresh，
 
 refresh Spring 初始化核心流程入口
-prepareRefresh ① 准备此上下文用">
+prepareRefresh ① 准备此上下文用于刷">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -136,29 +134,16 @@ prepareRefresh ① 准备此上下文用">
         </a>
       </li>
       
+      <li>
+        <a href="/bibi">
+          
+          <i class="fa-fw fa-solid fa-cloud-rain" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>哔哔</span>
+        </a>
+      </li>
+      
     </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
     
   </li>
   
@@ -169,6 +154,17 @@ prepareRefresh ① 准备此上下文用">
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
       <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
     </a>
     
   </li>
@@ -254,29 +250,17 @@ prepareRefresh ① 准备此上下文用">
                   </a>
                 </li>
               
+                <li>
+
+                  <a href="/bibi " style="margin-left:75px">
+				  
+				   <i class="fa fa-fw fa-solid fa-cloud-rain" style="position: absolute;left:50px" ></i>
+			      
+		          <span>哔哔</span>
+                  </a>
+                </li>
+              
             </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
           
         </li>
         
@@ -287,6 +271,17 @@ prepareRefresh ① 准备此上下文用">
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
 		</a>
           
         </li>
@@ -367,7 +362,6 @@ prepareRefresh ① 准备此上下文用">
 </header>
 
     
-
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/Spring.jpeg')">
@@ -467,9 +461,7 @@ prepareRefresh ① 准备此上下文用">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
-
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="Spring-初始化核心流程"><a href="#Spring-初始化核心流程" class="headerlink" title="Spring 初始化核心流程"></a>Spring 初始化核心流程</h2><p>spring容器初始化的核心方法AbstractApplicationContext#refresh，</p>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="Spring-初始化核心流程"><a href="#Spring-初始化核心流程" class="headerlink" title="Spring 初始化核心流程"></a>Spring 初始化核心流程</h2><p>spring容器初始化的核心方法AbstractApplicationContext#refresh，</p>
 <ul>
 <li>refresh Spring 初始化核心流程入口<ul>
 <li>prepareRefresh ① 准备此上下文用于刷新，设置启动时间和active标志，初始化属性</li>
@@ -494,7 +486,7 @@ prepareRefresh ① 准备此上下文用">
 <li>Bean初始化</li>
 </ul>
 <p>本章主要是讲创建Bean实例的过程，我分为两个部分：一是构造函数的选取，二是依赖注入相关的注解扫描.</p>
-<h1 id="二、时序图"><a href="#二、时序图" class="headerlink" title="二、时序图"></a>二、时序图</h1><p><img src="https://img-blog.csdnimg.cn/20210411112559829.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70#pic_center"></p>
+<h1 id="二、时序图"><a href="#二、时序图" class="headerlink" title="二、时序图"></a>二、时序图</h1><p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210411112559829.png"></p>
 <h1 id="三、源码跟踪"><a href="#三、源码跟踪" class="headerlink" title="三、源码跟踪"></a>三、源码跟踪</h1><h2 id="1-finishBeanFactoryInitialization"><a href="#1-finishBeanFactoryInitialization" class="headerlink" title="1.finishBeanFactoryInitialization()"></a>1.finishBeanFactoryInitialization()</h2><p>点进去看看finishBeanFactoryInitialization()方法</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
  * 这个方法是spring中最重要的方法，没有之一
@@ -1706,7 +1698,7 @@ prepareRefresh ① 准备此上下文用">
 <p> 2）分别获取被@Resource注解的属性和方法(这里我们只关注@Resource注解的属性和方法)</p>
 </li>
 </ol>
-<p> <img src="https://img-blog.csdnimg.cn/20210413105919770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"></p>
+<p> <img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210413105919770.png"></p>
 <pre><code>3）最终把两个field 和Method 封装的对象集合封装到InjectionMetadata 对象中
 </code></pre>
 <h4 id="6-2-2-Autowired和-Value注解扫描"><a href="#6-2-2-Autowired和-Value注解扫描" class="headerlink" title="6.2.2.@Autowired和@Value注解扫描"></a>6.2.2.@Autowired和@Value注解扫描</h4><p>AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition()<br>AutowiredAnnotationBeanPostProcessor 类是对@Autowired 和@Value 注解的属性和方法的收集，收集<br>支持的注解类型可以在构造函数或者Static 静态块中找。收集过程基本上跟@Resource 注解的收集差不多。</p>
@@ -1804,7 +1796,7 @@ prepareRefresh ① 准备此上下文用">
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/share/js/social-share.min.js"></script>
     
 
@@ -2166,10 +2158,12 @@ prepareRefresh ① 准备此上下文用">
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">82.7k</span>
+                        class="white-color">101.5k</span>
             
             
             
@@ -2432,6 +2426,17 @@ $(function () {
     
 
     
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
     
     
         
@@ -2456,14 +2461,6 @@ $(function () {
     
 
     <!-- 鼠标星星特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/star.js"><\/script>');
-            }
-        </script>
     
 
     

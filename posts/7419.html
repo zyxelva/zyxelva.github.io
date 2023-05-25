@@ -5,11 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="【MyBatis源码学习】参数解析, Back-End Dev Java">
-    <meta name="description" content="
-
-一、几种入参形式这里只分析带有入参的方法。
+    <meta name="description" content="一、几种入参形式这里只分析带有入参的方法。
 1.单个入参UserInfo selectByPrimaryKey(String id);
-2.多个入参List&amp;lt;UserInfo&gt; getByOpenIdAndUsername2(@P">
+2.多个入参List&amp;lt;UserInfo&gt; getByOpenIdAndUsername2(@Par">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -135,29 +133,16 @@
         </a>
       </li>
       
+      <li>
+        <a href="/bibi">
+          
+          <i class="fa-fw fa-solid fa-cloud-rain" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>哔哔</span>
+        </a>
+      </li>
+      
     </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
     
   </li>
   
@@ -168,6 +153,17 @@
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
       <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
     </a>
     
   </li>
@@ -253,29 +249,17 @@
                   </a>
                 </li>
               
+                <li>
+
+                  <a href="/bibi " style="margin-left:75px">
+				  
+				   <i class="fa fa-fw fa-solid fa-cloud-rain" style="position: absolute;left:50px" ></i>
+			      
+		          <span>哔哔</span>
+                  </a>
+                </li>
+              
             </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
           
         </li>
         
@@ -286,6 +270,17 @@
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
 		</a>
           
         </li>
@@ -366,7 +361,6 @@
 </header>
 
     
-
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/MyBatis.jpeg')">
@@ -470,9 +464,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
-
-<h1 id="一、几种入参形式"><a href="#一、几种入参形式" class="headerlink" title="一、几种入参形式"></a>一、几种入参形式</h1><p>这里只分析带有入参的方法。</p>
+                <h1 id="一、几种入参形式"><a href="#一、几种入参形式" class="headerlink" title="一、几种入参形式"></a>一、几种入参形式</h1><p>这里只分析带有入参的方法。</p>
 <h2 id="1-单个入参"><a href="#1-单个入参" class="headerlink" title="1.单个入参"></a>1.单个入参</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">UserInfo</span> <span class="token function">selectByPrimaryKey</span><span class="token punctuation">(</span><span class="token class-name">String</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="2-多个入参"><a href="#2-多个入参" class="headerlink" title="2.多个入参"></a>2.多个入参</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">UserInfo</span><span class="token punctuation">></span></span> <span class="token function">getByOpenIdAndUsername2</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token string">"openid"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> openId<span class="token punctuation">,</span> <span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> username<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="3-入参为实体对象"><a href="#3-入参为实体对象" class="headerlink" title="3.入参为实体对象"></a>3.入参为实体对象</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">UserInfo</span><span class="token punctuation">></span></span> <span class="token function">getByOpenIdAndUsername3</span><span class="token punctuation">(</span><span class="token class-name">UserInfo</span> userInfo<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -493,7 +485,7 @@
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>当我们执行到这一行时，</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">UserInfoMapper</span> mapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">UserInfoMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>通过调试我们可以看到，这个mapper其实是通过MapperProxy代理执行的。我们拿到的其实就是个动态代理对象。如下图：<br><img src="https://img-blog.csdnimg.cn/20210314204651483.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>当我们执行查询时，进入MapperProxy动态代理过程。<br><img src="https://img-blog.csdnimg.cn/2021031420510518.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>最终交由MapperMethod类的execute()方法执行，源代码如下：</p>
+<p>通过调试我们可以看到，这个mapper其实是通过MapperProxy代理执行的。我们拿到的其实就是个动态代理对象。如下图：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314204651483.png"><br>当我们执行查询时，进入MapperProxy动态代理过程。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031420510518.png"><br>最终交由MapperMethod类的execute()方法执行，源代码如下：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//三步翻译在此完成</span>
 <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token class-name">SqlSession</span> sqlSession<span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
   <span class="token class-name">Object</span> result<span class="token punctuation">;</span>
@@ -547,7 +539,7 @@
   <span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>所以，本章参数解析的过程，我们重点关注这个方法即可，这个方法就是convertArgsToSqlCommandParam。它其实是方法的参数解析器ParamNameResolver的getNamedParams()方法完成的。<br><img src="https://img-blog.csdnimg.cn/20210314205954450.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>而这个ParamNameResolver则是在MapperProxy获取mapperMethod时（先不说从cache中取）进行初始化的，<br><img src="https://img-blog.csdnimg.cn/20210314211304810.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br><img src="https://img-blog.csdnimg.cn/20210314211424528.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br><img src="https://img-blog.csdnimg.cn/20210314211600469.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>而ParamNameResolver实例化时，主要工作就是进行初步的映射关系存储，其字段names是一个SortedMap，存储了参数名的顺序映射。</p>
+<p>所以，本章参数解析的过程，我们重点关注这个方法即可，这个方法就是convertArgsToSqlCommandParam。它其实是方法的参数解析器ParamNameResolver的getNamedParams()方法完成的。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314205954450.png"><br>而这个ParamNameResolver则是在MapperProxy获取mapperMethod时（先不说从cache中取）进行初始化的，<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314211304810.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314211424528.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314211600469.png"><br>而ParamNameResolver实例化时，主要工作就是进行初步的映射关系存储，其字段names是一个SortedMap，存储了参数名的顺序映射。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
    * &lt;p>
    * The key is the index and the value is the name of the parameter.&lt;br />
@@ -615,8 +607,8 @@
 <p>我们从方法</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">UserInfo</span><span class="token punctuation">></span></span> list1 <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">getByUsernameAndOpenId</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>开始断点调试。我们看到，进入到了MapperProxy的动态代理过程。直接进入mapperMethod.execute(sqlSession, args);</p>
-<p><img src="https://img-blog.csdnimg.cn/20210315111605602.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>来到MapperMethod中的execute方法中。由于我们的例子是查询操作，故进入Select。又例子的返回类型是List,故进入第二个if语句中。<br><img src="https://img-blog.csdnimg.cn/20210315111929562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br><img src="https://img-blog.csdnimg.cn/20210315112106406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>进入方法executeForMany(). 没有分页，所以进入else语句中。而convertArgsToSqlCommandParam方法我们在二中已经分析了，这里不再具体梳理。<br><img src="https://img-blog.csdnimg.cn/20210315112219141.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>进入DefaultSQLSession的selectList方法中。可以看下statement实际形式是namespace+id，就可以从MappedStatement中获取。<br><img src="https://img-blog.csdnimg.cn/20210315112604497.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>而MappedStatement也有很多信息，主要是<select>标签以及该节点其他重要的属性。<br><img src="https://img-blog.csdnimg.cn/20210315113216306.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>而sql的实际执行者，则为Executor. 代理对象执行方法被拦截器拦截，执行以下方法。<br><img src="https://img-blog.csdnimg.cn/20210315113629172.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>先看看getBoundSql干了啥：<br><img src="https://img-blog.csdnimg.cn/20210315135210374.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br><img src="https://img-blog.csdnimg.cn/20210315135542105.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>进入RawSqlSource,因例子的sql无${},无动态SQL节点。<br><img src="https://img-blog.csdnimg.cn/20210315140041749.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>先看看RawSqlSource的构造方法，看看#{}是怎么替换成?的，发现主要是SqlSourceBuilder在干活儿。<br><img src="https://img-blog.csdnimg.cn/20210315141654652.png"><br><img src="https://img-blog.csdnimg.cn/20210315141735671.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>主要看GenericTokenParser.parse().该方法主要完成占位符的定位工作，然后把占位符的替换工作交给与其关联的 TokenHandler 处理.<br><img src="https://img-blog.csdnimg.cn/20210315142304221.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>TokenHandler有四个小弟，<br><img src="https://img-blog.csdnimg.cn/20210315142425559.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>BindingTokenParser：该对象的handleToken方法会取出占位符中的变量，然后使用该变量作为键去上下文环境中寻找对应的值。之后，会用找到的值替换占位符。因此，该对象可以完成占位符的替换工作；<br>DynamicCheckerTokenParser：该对象的 handleToken 方法会置位成员属性isDynamic。因此该对象可以记录自身是否遇到过占位符。<br>ParameterMappingTokenHandler：将DynamicSqlSource和RawSqlSource中的“#{}”符号替换掉，从而将他们转化为StaticSqlSource；<br>VariableTokenHandler：handleToken方法中传入输入参数后，该方法会以输入参数为键尝试从variables属性中寻找对应的值返回。<br><img src="https://img-blog.csdnimg.cn/20210315140144135.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>到此BoundSql的解析过程基本结束。getBoundSql方法执行完后，我们再看看一级缓存的key生成策略。<br><img src="https://img-blog.csdnimg.cn/20210315140541909.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br><img src="https://img-blog.csdnimg.cn/20210315140853968.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"></select></p>
-<p>可以看出，cacheKey由namespace的id,分页参数，sql语句，入参以及<environment>节点的信息组成。<br>回到查询过程，实际执行的方法为<br><img src="https://img-blog.csdnimg.cn/20210315113709359.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>而首次查询不会进入if语句，调用BaseExecutor的方法：<br><img src="https://img-blog.csdnimg.cn/20210315113913105.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>本地缓存没有结果，故需要查询数据库，进入queryFromDatabase().<br><img src="https://img-blog.csdnimg.cn/20210315114121102.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>doQuery()则调用的为SimpleExecutor的方法。<br><img src="https://img-blog.csdnimg.cn/20210315114350394.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>看看newStatementHandler()。<br><img src="https://img-blog.csdnimg.cn/20210315114428448.png"><br><img src="https://img-blog.csdnimg.cn/20210315114501949.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>由于我们的例子当中sql带有#{}，故进入PREPARED，生成PreparedStatementHandler。<br>执行完语句后，放入一级缓存。<br><img src="https://img-blog.csdnimg.cn/20210315115037492.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70"><br>后续就是结果映射执行过程，这里不再赘述，后续跟上。</environment></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315111605602.png"><br>来到MapperMethod中的execute方法中。由于我们的例子是查询操作，故进入Select。又例子的返回类型是List,故进入第二个if语句中。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315111929562.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315112106406.png"><br>进入方法executeForMany(). 没有分页，所以进入else语句中。而convertArgsToSqlCommandParam方法我们在二中已经分析了，这里不再具体梳理。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315112219141.png"><br>进入DefaultSQLSession的selectList方法中。可以看下statement实际形式是namespace+id，就可以从MappedStatement中获取。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315112604497.png"><br>而MappedStatement也有很多信息，主要是<select>标签以及该节点其他重要的属性。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315113216306.png"><br>而sql的实际执行者，则为Executor. 代理对象执行方法被拦截器拦截，执行以下方法。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315113629172.png"><br>先看看getBoundSql干了啥：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315135210374.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315135542105.png"><br>进入RawSqlSource,因例子的sql无${},无动态SQL节点。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315140041749.png"><br>先看看RawSqlSource的构造方法，看看#{}是怎么替换成?的，发现主要是SqlSourceBuilder在干活儿。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315141654652.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315141735671.png"><br>主要看GenericTokenParser.parse().该方法主要完成占位符的定位工作，然后把占位符的替换工作交给与其关联的 TokenHandler 处理.<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315142304221.png"><br>TokenHandler有四个小弟，<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315142425559.png"><br>BindingTokenParser：该对象的handleToken方法会取出占位符中的变量，然后使用该变量作为键去上下文环境中寻找对应的值。之后，会用找到的值替换占位符。因此，该对象可以完成占位符的替换工作；<br>DynamicCheckerTokenParser：该对象的 handleToken 方法会置位成员属性isDynamic。因此该对象可以记录自身是否遇到过占位符。<br>ParameterMappingTokenHandler：将DynamicSqlSource和RawSqlSource中的“#{}”符号替换掉，从而将他们转化为StaticSqlSource；<br>VariableTokenHandler：handleToken方法中传入输入参数后，该方法会以输入参数为键尝试从variables属性中寻找对应的值返回。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315140144135.png"><br>到此BoundSql的解析过程基本结束。getBoundSql方法执行完后，我们再看看一级缓存的key生成策略。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315140541909.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315140853968.png"></select></p>
+<p>可以看出，cacheKey由namespace的id,分页参数，sql语句，入参以及<environment>节点的信息组成。<br>回到查询过程，实际执行的方法为<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315113709359.png"><br>而首次查询不会进入if语句，调用BaseExecutor的方法：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315113913105.png"><br>本地缓存没有结果，故需要查询数据库，进入queryFromDatabase().<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315114121102.png"><br>doQuery()则调用的为SimpleExecutor的方法。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315114350394.png"><br>看看newStatementHandler()。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315114428448.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315114501949.png"><br>由于我们的例子当中sql带有#{}，故进入PREPARED，生成PreparedStatementHandler。<br>执行完语句后，放入一级缓存。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315115037492.png"><br>后续就是结果映射执行过程，这里不再赘述，后续跟上。</environment></p>
 <h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><p>本章主要讲述了mybatis参数解析的过程，重点跟踪了执行sql时，变量占位符${}以及参数占位符#{}的替换和解析过程。实际开发过程中，要注意这两者的区别，能用#{}的地方尽量用#。而${}主要用于order by语句、原生jdbc、表名作参数。</p>
 
                 
@@ -702,7 +694,7 @@
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/share/js/social-share.min.js"></script>
     
 
@@ -1068,10 +1060,12 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">82.7k</span>
+                        class="white-color">101.5k</span>
             
             
             
@@ -1334,6 +1328,17 @@ $(function () {
     
 
     
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
     
     
         
@@ -1358,14 +1363,6 @@ $(function () {
     
 
     <!-- 鼠标星星特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/star.js"><\/script>');
-            }
-        </script>
     
 
     

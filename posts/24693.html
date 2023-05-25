@@ -5,9 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="【MyBatis源码学习】初始化阶段, Back-End Dev Java">
-    <meta name="description" content="
-
-一、核心配置类XMLConfigBuilder： 主要负责解析mybatis-config.xml；XMLMapperBuilder： 主要负责解析映射配置Mapper.xml 文件；XMLStatementBuilder： 主要负责解">
+    <meta name="description" content="一、核心配置类XMLConfigBuilder： 主要负责解析mybatis-config.xml；XMLMapperBuilder： 主要负责解析映射配置Mapper.xml 文件；XMLStatementBuilder： 主要负责解析映">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -133,29 +131,16 @@
         </a>
       </li>
       
+      <li>
+        <a href="/bibi">
+          
+          <i class="fa-fw fa-solid fa-cloud-rain" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>哔哔</span>
+        </a>
+      </li>
+      
     </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
     
   </li>
   
@@ -166,6 +151,17 @@
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
       <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
     </a>
     
   </li>
@@ -251,29 +247,17 @@
                   </a>
                 </li>
               
+                <li>
+
+                  <a href="/bibi " style="margin-left:75px">
+				  
+				   <i class="fa fa-fw fa-solid fa-cloud-rain" style="position: absolute;left:50px" ></i>
+			      
+		          <span>哔哔</span>
+                  </a>
+                </li>
+              
             </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
           
         </li>
         
@@ -284,6 +268,17 @@
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
 		</a>
           
         </li>
@@ -364,7 +359,6 @@
 </header>
 
     
-
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/MyBatis.jpeg')">
@@ -464,13 +458,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
-
-<h1 id="一、核心配置类"><a href="#一、核心配置类" class="headerlink" title="一、核心配置类"></a>一、核心配置类</h1><p>XMLConfigBuilder： 主要负责解析mybatis-config.xml；<br>XMLMapperBuilder： 主要负责解析映射配置Mapper.xml 文件；<br>XMLStatementBuilder： 主要负责解析映射配置文件中的SQL 节点<br>三者之间的关系，如下图<br><img src="https://img-blog.csdnimg.cn/20210311160137766.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="核心配置类三剑客关系图"></p>
-<h2 id="1-XMLConfigBuilder"><a href="#1-XMLConfigBuilder" class="headerlink" title="1.XMLConfigBuilder"></a>1.XMLConfigBuilder</h2><p>主要负责解析mybatis关键配置文件mybatis-config.xml，重点关注91行，全局唯一初始化的大配置类。<img src="https://img-blog.csdnimg.cn/20210311161114699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图1"><br>面试题经常会问，为啥mybatis的配置类Configuration是单例的？首先我们在BaseBuilder中发现它是final类型的，其次91行是全局唯一初始化它的地方。<br><img src="https://img-blog.csdnimg.cn/20210311161415639.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图2"></p>
-<h2 id="2-XMLMapperBuilder"><a href="#2-XMLMapperBuilder" class="headerlink" title="2.XMLMapperBuilder"></a>2.XMLMapperBuilder</h2><p>负责解析<em>mapper.xml和</em>mapper.java文件，关键代码<br><img src="https://img-blog.csdnimg.cn/2021031116211879.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图3"><br>重点关注下configurationElement方法<br><img src="https://img-blog.csdnimg.cn/20210311162203404.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图4"></p>
-<h2 id="3-XMLStatementBuilder"><a href="#3-XMLStatementBuilder" class="headerlink" title="3.XMLStatementBuilder"></a>3.XMLStatementBuilder</h2><p>主要负责解析*mapper.xml中的select、insert、update、delete标签语句。重点关注下这个方法<br><img src="https://img-blog.csdnimg.cn/2021031116252489.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图5"></p>
-<h2 id="4-Configuration"><a href="#4-Configuration" class="headerlink" title="4.Configuration"></a>4.Configuration</h2><p><img src="https://img-blog.csdnimg.cn/20210311162859567.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tlemFkZQ==,size_16,color_FFFFFF,t_70" alt="图6"></p>
+                <h1 id="一、核心配置类"><a href="#一、核心配置类" class="headerlink" title="一、核心配置类"></a>一、核心配置类</h1><p>XMLConfigBuilder： 主要负责解析mybatis-config.xml；<br>XMLMapperBuilder： 主要负责解析映射配置Mapper.xml 文件；<br>XMLStatementBuilder： 主要负责解析映射配置文件中的SQL 节点<br>三者之间的关系，如下图<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210311160137766.png" alt="核心配置类三剑客关系图"></p>
+<h2 id="1-XMLConfigBuilder"><a href="#1-XMLConfigBuilder" class="headerlink" title="1.XMLConfigBuilder"></a>1.XMLConfigBuilder</h2><p>主要负责解析mybatis关键配置文件mybatis-config.xml，重点关注91行，全局唯一初始化的大配置类。<img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210311161114699.png" alt="图1"><br>面试题经常会问，为啥mybatis的配置类Configuration是单例的？首先我们在BaseBuilder中发现它是final类型的，其次91行是全局唯一初始化它的地方。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210311161415639.png" alt="图2"></p>
+<h2 id="2-XMLMapperBuilder"><a href="#2-XMLMapperBuilder" class="headerlink" title="2.XMLMapperBuilder"></a>2.XMLMapperBuilder</h2><p>负责解析<em>mapper.xml和</em>mapper.java文件，关键代码<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031116211879.png" alt="图3"><br>重点关注下configurationElement方法<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210311162203404.png" alt="图4"></p>
+<h2 id="3-XMLStatementBuilder"><a href="#3-XMLStatementBuilder" class="headerlink" title="3.XMLStatementBuilder"></a>3.XMLStatementBuilder</h2><p>主要负责解析*mapper.xml中的select、insert、update、delete标签语句。重点关注下这个方法<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031116252489.png" alt="图5"></p>
+<h2 id="4-Configuration"><a href="#4-Configuration" class="headerlink" title="4.Configuration"></a>4.Configuration</h2><p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210311162859567.png" alt="图6"></p>
 <h1 id="二、源码追踪初始化流程"><a href="#二、源码追踪初始化流程" class="headerlink" title="二、源码追踪初始化流程"></a>二、源码追踪初始化流程</h1><h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><p>编写测试类</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MybatisDemo</span> <span class="token punctuation">&#123;</span>
 	<span class="token keyword">private</span> <span class="token class-name">SqlSessionFactory</span> sqlSessionFactory<span class="token punctuation">;</span>
@@ -713,7 +705,7 @@ sqlSessionFactory <span class="token operator">=</span> <span class="token keywo
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/share/js/social-share.min.js"></script>
     
 
@@ -883,14 +875,6 @@ sqlSessionFactory <span class="token operator">=</span> <span class="token keywo
                             
                             <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
                                     算法
-                                </a>
-                            
-                            <a href="/categories/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="post-category">
-                                    二叉树
-                                </a>
-                            
-                            <a href="/categories/LeetCode/" class="post-category">
-                                    LeetCode
                                 </a>
                             
                             
@@ -1099,10 +1083,12 @@ sqlSessionFactory <span class="token operator">=</span> <span class="token keywo
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">82.7k</span>
+                        class="white-color">101.5k</span>
             
             
             
@@ -1365,6 +1351,17 @@ $(function () {
     
 
     
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
     
     
         
@@ -1389,14 +1386,6 @@ $(function () {
     
 
     <!-- 鼠标星星特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/libs/others/star.js"><\/script>');
-            }
-        </script>
     
 
     
