@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Kezade</title>
+    <link>https://zyxelva.github.io/</link>
+    
+    <atom:link href="https://zyxelva.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>7 年 Java 开发经验，其中 3 年以上大型系统架构设计经验，以及 2 年以上的团队管理经验 | 具有分布式、高并发、高可用、大数据量的系统架构设计以及研发经验 | 对 Zookeeper、Netty、Dubbo、Spring Cloud、 Spring 等开源框架源码有过深入研究，并且有一定的框架定制开发经验</description>
+    <pubDate>Mon, 26 Jun 2023 07:54:45 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>【JVM学习】2.内存区域</title>
+      <link>https://zyxelva.github.io/posts/1293081538.html</link>
+      <guid>https://zyxelva.github.io/posts/1293081538.html</guid>
+      <pubDate>Mon, 26 Jun 2023 03:04:14 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-运行时数据区域&quot;&gt;&lt;a href=&quot;#1-运行时数据区域&quot; class=&quot;headerlink&quot; title=&quot;1 运行时数据区域&quot;&gt;&lt;/a&gt;1 运行时数据区域&lt;/h1&gt;&lt;p&gt;在 JVM 中，JVM</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/JVM%E5%AD%A6%E4%B9%A0/">JVM学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/JVM/">JVM</category>
+      
+      <category domain="https://zyxelva.github.io/tags/JVM%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/">JVM内存区域</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1293081538.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【JVM学习】1.JVM基础知识</title>
+      <link>https://zyxelva.github.io/posts/4244691383.html</link>
+      <guid>https://zyxelva.github.io/posts/4244691383.html</guid>
+      <pubDate>Mon, 26 Jun 2023 01:30:58 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-JVM-从编译到执行&quot;&gt;&lt;a href=&quot;#1-JVM-从编译到执行&quot; class=&quot;headerlink&quot; title=&quot;1 JVM 从编译到执行&quot;&gt;&lt;/a&gt;1 JVM 从编译到执行&lt;/h1&gt;&lt;p&gt;首先给出基于JDK8的JAVA</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/JVM%E5%AD%A6%E4%B9%A0/">JVM学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/JVM/">JVM</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/4244691383.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【MySQL学习】9.锁</title>
+      <link>https://zyxelva.github.io/posts/1095286017.html</link>
+      <guid>https://zyxelva.github.io/posts/1095286017.html</guid>
+      <pubDate>Wed, 21 Jun 2023 03:06:35 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-InnoDB中的锁&quot;&gt;&lt;a href=&quot;#1-InnoDB中的锁&quot; class=&quot;headerlink&quot; title=&quot;1 InnoDB中的锁&quot;&gt;&lt;/a&gt;1 InnoDB中的锁&lt;/h1&gt;&lt;p&gt;在MySQL官方文档中（version</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/MySQL%E5%AD%A6%E4%B9%A0/">MySQL学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/MySQL/">MySQL</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E9%94%81/">锁</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1095286017.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Hexo】由CDN引发的暴躁场面</title>
+      <link>https://zyxelva.github.io/posts/2971760749.html</link>
+      <guid>https://zyxelva.github.io/posts/2971760749.html</guid>
+      <pubDate>Tue, 20 Jun 2023 07:16:27 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-起因&quot;&gt;&lt;a href=&quot;#1-起因&quot; class=&quot;headerlink&quot; title=&quot;1 起因&quot;&gt;&lt;/a&gt;1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Hexo/">Hexo</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</category>
+      
+      <category domain="https://zyxelva.github.io/tags/Hexo%E6%B3%A8%E5%85%A5%E5%99%A8/">Hexo注入器</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2971760749.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【MySQL学习】8.事务原理与MVCC</title>
+      <link>https://zyxelva.github.io/posts/3590034994.html</link>
+      <guid>https://zyxelva.github.io/posts/3590034994.html</guid>
+      <pubDate>Mon, 19 Jun 2023 08:45:05 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-实现机制&quot;&gt;&lt;a href=&quot;#1-实现机制&quot; class=&quot;headerlink&quot; title=&quot;1 实现机制&quot;&gt;&lt;/a&gt;1 实现机制&lt;/h1&gt;&lt;p&gt;&lt;code&gt;WAL&lt;/code&gt;（Write-ahead</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/MySQL%E5%AD%A6%E4%B9%A0/">MySQL学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/MySQL/">MySQL</category>
+      
+      <category domain="https://zyxelva.github.io/tags/MVCC/">MVCC</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3590034994.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【MySQL学习】7.InnoDB 引擎底层解析</title>
+      <link>https://zyxelva.github.io/posts/4004849283.html</link>
+      <guid>https://zyxelva.github.io/posts/4004849283.html</guid>
+      <pubDate>Thu, 15 Jun 2023 08:48:35 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-常见引擎&quot;&gt;&lt;a href=&quot;#1-常见引擎&quot; class=&quot;headerlink&quot; title=&quot;1 常见引擎&quot;&gt;&lt;/a&gt;1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/MySQL%E5%AD%A6%E4%B9%A0/">MySQL学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/MySQL/">MySQL</category>
+      
+      <category domain="https://zyxelva.github.io/tags/InnoDB/">InnoDB</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/4004849283.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Netty学习】10.WebSocket通信实现</title>
+      <link>https://zyxelva.github.io/posts/1755358152.html</link>
+      <guid>https://zyxelva.github.io/posts/1755358152.html</guid>
+      <pubDate>Thu, 15 Jun 2023 03:17:09 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-基于Stomp的聊天室IM-的实现&quot;&gt;&lt;a href=&quot;#1-基于Stomp的聊天室IM-的实现&quot; class=&quot;headerlink&quot; title=&quot;1 基于Stomp的聊天室IM 的实现&quot;&gt;&lt;/a&gt;1 基于Stomp的聊天室IM</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Netty%E5%AD%A6%E4%B9%A0/">Netty学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Netty/">Netty</category>
+      
+      <category domain="https://zyxelva.github.io/tags/IM%E8%81%8A%E5%A4%A9/">IM聊天</category>
+      
+      <category domain="https://zyxelva.github.io/tags/WebSocket/">WebSocket</category>
+      
+      <category domain="https://zyxelva.github.io/tags/Stomp/">Stomp</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1755358152.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Netty学习】9.WebSocket</title>
+      <link>https://zyxelva.github.io/posts/2556263506.html</link>
+      <guid>https://zyxelva.github.io/posts/2556263506.html</guid>
+      <pubDate>Thu, 15 Jun 2023 01:31:57 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-服务器推送技术&quot;&gt;&lt;a href=&quot;#1-服务器推送技术&quot; class=&quot;headerlink&quot; title=&quot;1 服务器推送技术&quot;&gt;&lt;/a&gt;1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Netty%E5%AD%A6%E4%B9%A0/">Netty学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Netty/">Netty</category>
+      
+      <category domain="https://zyxelva.github.io/tags/WebSocket/">WebSocket</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A8%E9%80%81%E6%8A%80%E6%9C%AF/">服务器推送技术</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2556263506.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Netty学习】8.UDP协议</title>
+      <link>https://zyxelva.github.io/posts/3528480614.html</link>
+      <guid>https://zyxelva.github.io/posts/3528480614.html</guid>
+      <pubDate>Wed, 14 Jun 2023 07:42:46 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-UDP-是什么&quot;&gt;&lt;a href=&quot;#1-UDP-是什么&quot; class=&quot;headerlink&quot; title=&quot;1 UDP 是什么?&quot;&gt;&lt;/a&gt;1 UDP 是什么?&lt;/h1&gt;&lt;p&gt;&lt;code&gt;UDP&lt;/code&gt;(User Data</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Netty%E5%AD%A6%E4%B9%A0/">Netty学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Netty/">Netty</category>
+      
+      <category domain="https://zyxelva.github.io/tags/UDP%E5%8D%8F%E8%AE%AE/">UDP协议</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3528480614.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Hexo】修复Matery主题相册加密bug</title>
+      <link>https://zyxelva.github.io/posts/992235703.html</link>
+      <guid>https://zyxelva.github.io/posts/992235703.html</guid>
+      <pubDate>Wed, 14 Jun 2023 03:18:09 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1 前言&quot;&gt;&lt;/a&gt;1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Hexo/">Hexo</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/992235703.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Hexo】基于Matery主题将博客接入Umami</title>
+      <link>https://zyxelva.github.io/posts/1366461558.html</link>
+      <guid>https://zyxelva.github.io/posts/1366461558.html</guid>
+      <pubDate>Wed, 14 Jun 2023 02:49:30 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-关于-Umami&quot;&gt;&lt;a href=&quot;#1-关于-Umami&quot; class=&quot;headerlink&quot; title=&quot;1 关于 Umami&quot;&gt;&lt;/a&gt;1 关于 Umami&lt;/h1&gt;&lt;p&gt;&lt;code&gt;Umami&lt;/code&gt; 是一个开源的、以隐私为中心的</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Hexo/">Hexo</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1366461558.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Netty学习】7.Protocol Buffer序列化</title>
+      <link>https://zyxelva.github.io/posts/2052182147.html</link>
+      <guid>https://zyxelva.github.io/posts/2052182147.html</guid>
+      <pubDate>Thu, 08 Jun 2023 23:48:45 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-定义&quot;&gt;&lt;a href=&quot;#1-定义&quot; class=&quot;headerlink&quot; title=&quot;1 定义&quot;&gt;&lt;/a&gt;1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Netty%E5%AD%A6%E4%B9%A0/">Netty学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Netty/">Netty</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2052182147.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Hexo】Github博客内容管理解决方案 - netlifycms</title>
+      <link>https://zyxelva.github.io/posts/1598177646.html</link>
+      <guid>https://zyxelva.github.io/posts/1598177646.html</guid>
+      <pubDate>Thu, 08 Jun 2023 00:20:52 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;本文转自&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Hexo/">Hexo</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Hexo/">Hexo</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1598177646.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【MySQL学习】6.执行原理</title>
+      <link>https://zyxelva.github.io/posts/3501501421.html</link>
+      <guid>https://zyxelva.github.io/posts/3501501421.html</guid>
+      <pubDate>Wed, 07 Jun 2023 08:29:02 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-单表访问之索引合并&quot;&gt;&lt;a href=&quot;#1-单表访问之索引合并&quot; class=&quot;headerlink&quot; title=&quot;1 单表访问之索引合并&quot;&gt;&lt;/a&gt;1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/MySQL%E5%AD%A6%E4%B9%A0/">MySQL学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/MySQL/">MySQL</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3501501421.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Hexo】GitHub Action自动部署Hexo</title>
+      <link>https://zyxelva.github.io/posts/2839790799.html</link>
+      <guid>https://zyxelva.github.io/posts/2839790799.html</guid>
+      <pubDate>Wed, 07 Jun 2023 06:33:03 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1 前言&quot;&gt;&lt;/a&gt;1 前言&lt;/h1&gt;&lt;p&gt;网上虽然有很多通过 GitHub Actions 自动部署 Hexo 的教程，但都有各种各样的问题。主要问题还是</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Hexo/">Hexo</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/GitHub-Actions/">GitHub Actions</category>
+      
+      <category domain="https://zyxelva.github.io/tags/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2839790799.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【MySQL学习】5.性能优化</title>
+      <link>https://zyxelva.github.io/posts/401728211.html</link>
+      <guid>https://zyxelva.github.io/posts/401728211.html</guid>
+      <pubDate>Tue, 06 Jun 2023 02:22:54 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-调优金字塔&quot;&gt;&lt;a href=&quot;#1-调优金字塔&quot; class=&quot;headerlink&quot; title=&quot;1 调优金字塔&quot;&gt;&lt;/a&gt;1 调优金字塔&lt;/h1&gt;&lt;h2 id=&quot;1-1-架构调优&quot;&gt;&lt;a href=&quot;#1-1-架构调优&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/MySQL%E5%AD%A6%E4%B9%A0/">MySQL学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/MySQL/">MySQL</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/401728211.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Netty学习】6.编解码器</title>
+      <link>https://zyxelva.github.io/posts/3027290853.html</link>
+      <guid>https://zyxelva.github.io/posts/3027290853.html</guid>
+      <pubDate>Mon, 05 Jun 2023 03:12:18 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-定义&quot;&gt;&lt;a href=&quot;#1-定义&quot; class=&quot;headerlink&quot; title=&quot;1 定义&quot;&gt;&lt;/a&gt;1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Netty%E5%AD%A6%E4%B9%A0/">Netty学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Netty/">Netty</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E7%BC%96%E8%A7%A3%E7%A0%81%E5%99%A8/">编解码器</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3027290853.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【LeetCode】605.种花问题</title>
+      <link>https://zyxelva.github.io/posts/4089583191.html</link>
+      <guid>https://zyxelva.github.io/posts/4089583191.html</guid>
+      <pubDate>Fri, 02 Jun 2023 07:41:45 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/LeetCode/">LeetCode</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/4089583191.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Netty学习】5.Netty中的粘包和拆包</title>
+      <link>https://zyxelva.github.io/posts/2516516204.html</link>
+      <guid>https://zyxelva.github.io/posts/2516516204.html</guid>
+      <pubDate>Fri, 02 Jun 2023 02:53:29 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-什么是粘包和半包&quot;&gt;&lt;a href=&quot;#1-什么是粘包和半包&quot; class=&quot;headerlink&quot; title=&quot;1 什么是粘包和半包?&quot;&gt;&lt;/a&gt;1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Netty%E5%AD%A6%E4%B9%A0/">Netty学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Netty/">Netty</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E7%B2%98%E5%8C%85%E5%8D%8A%E5%8C%85%E9%97%AE%E9%A2%98/">粘包半包问题</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2516516204.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【MySQL学习】4.高性能索引</title>
+      <link>https://zyxelva.github.io/posts/82369335.html</link>
+      <guid>https://zyxelva.github.io/posts/82369335.html</guid>
+      <pubDate>Thu, 01 Jun 2023 02:06:45 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-索引的本质&quot;&gt;&lt;a href=&quot;#1-索引的本质&quot; class=&quot;headerlink&quot; title=&quot;1 索引的本质&quot;&gt;&lt;/a&gt;1 索引的本质&lt;/h1&gt;&lt;p&gt;帮助MySQL高效获取数据的&lt;code&gt;数据结构&lt;/code&gt;。&lt;/p&gt;
+&lt;h1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/MySQL%E5%AD%A6%E4%B9%A0/">MySQL学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/MySQL/">MySQL</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E7%B4%A2%E5%BC%95/">索引</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/82369335.html#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>

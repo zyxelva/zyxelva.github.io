@@ -18,14 +18,15 @@
 
 
     <title>【Netty学习】2.Java原生网络编程 | Kezade</title>
-    <link rel="icon" type="image/png" href="/medias/avatar.png">
+    <link rel="icon" type="image/png" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/avatar.png">
     
     <style>
-        body{
-            background-image: url(https://cdn.jsdelivr.net/gh/zyxelva/picgo/images/wallpaper/43616-105.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
+        body {
+            background-image: url(https://it-ark-dev.oss-cn-shenzhen.aliyuncs.com/464e9ac7a5a729ae67f91f7cf0cf6fe2.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center center;
         }
     </style>
 
@@ -35,33 +36,49 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-<link rel="stylesheet" type="text/css" href="/css/matery.css">
-<link rel="stylesheet" type="text/css" href="/css/my.css">
-<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/matery.css?v2">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/my.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/dark.css" media="none" onload="if(media!='all')media='all'">
 
 
 
 
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-    <link rel="stylesheet" href="/css/post.css">
+    <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/post.css">
 
 
 
 
     
-        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+        <link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/reward.css">
     
 
 
 
-    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
-
-<meta name="generator" content="Hexo 6.3.0"></head>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/jquery/jquery-3.6.0.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/function.js?v3"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/imgStatus.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/waterfall.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/lately.min.js"></script>
+<!-- hexo injector head_end start --><script async defer src="https://kezade-umami.zeabur.app/script.js" data-website-id="38a8a7e4-0745-4f35-91cb-41dc78c52778" data-host-url="https://kezade-umami.zeabur.app" data-domains="zyxelva.github.io"></script><script type="text/javascript">
+            var memos = {
+                host: "https://memos-zyx.zeabur.app/",
+                limit: "10",
+                creatorId: "1",
+                username: "zyxelva",
+                name: "Kezade",
+                domId: '#memos',
+            };
+            var douban = {
+                api: "https://douban-api.edui.fun/",
+            }
+        </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss2.xml" title="Kezade" type="application/rss+xml">
+</head>
 
 
 <body>
@@ -71,7 +88,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/avatar.png" class="logo-img" alt="LOGO">
+                    <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/avatar.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">Kezade</span>
                 </a>
@@ -94,24 +111,15 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/archives" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
 
       
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      <i class="fa-solid fa-newspaper" style="zoom: 0.6;"></i>
       
-      <span>归档</span>
+      <span>文章</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/galleries">
-          
-          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>相册</span>
-        </a>
-      </li>
       
       <li>
         <a href="/tags">
@@ -128,6 +136,49 @@
           <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
           
           <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fa-solid fa-place-of-worship" style="zoom: 0.6;"></i>
+      
+      <span>我的地盘</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/photos">
+          
+          <i class="fa-solid fa-photo-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Memos</span>
         </a>
       </li>
       
@@ -155,23 +206,53 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/friends" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
+
       
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      <i class="fa-solid fa-circle-info" style="zoom: 0.6;"></i>
       
-      <span>友情链接</span>
+      <span>更多</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
+    <ul class="sub-nav menus_item_child ">
       
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>留言</span>
+        </a>
+      </li>
       
-      <span>关于</span>
-    </a>
+      <li>
+        <a href="/friends">
+          
+          <i class="fa-solid fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友链</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friend-circle">
+          
+          <i class="fa-solid fa-rss" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>朋友圈</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -192,7 +273,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/avatar.png" class="logo-img circle responsive-img">
+        <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/avatar.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">Kezade</div>
         <div class="logo-desc">
@@ -219,22 +300,12 @@
 	  
 		<a href="javascript:;">
 			
-				<i class="fa-fw fas fa-archive"></i>
+				<i class="fa-fw fa-solid fa-newspaper"></i>
 			
-			归档
+			文章
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
-              
-                <li>
-
-                  <a href="/galleries " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
-			      
-		          <span>相册</span>
-                  </a>
-                </li>
               
                 <li>
 
@@ -253,6 +324,51 @@
 				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
 			      
 		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fa-solid fa-place-of-worship"></i>
+			
+			我的地盘
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/photos " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-photo-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Memos</span>
                   </a>
                 </li>
               
@@ -282,23 +398,56 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/friends" class="waves-effect waves-light">
+		<a href="javascript:;">
 			
-			    <i class="fa-fw fas fa-address-book"></i>
+				<i class="fa-fw fa-solid fa-circle-info"></i>
 			
-			友情链接
+			更多
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:50px" ></i>
+			      
+		          <span>留言</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/friends " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-link" style="position: absolute;left:50px" ></i>
+			      
+		          <span>友链</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/friend-circle " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-rss" style="position: absolute;left:50px" ></i>
+			      
+		          <span>朋友圈</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -378,6 +527,19 @@
 </header>
 
     
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/Netty.png')">
@@ -471,18 +633,13 @@
                 
 
                 
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
             </div>
         </div>
         <hr class="clearfix">
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/prism/prism.min.css">
         
 
         
@@ -537,7 +694,7 @@
 <p>IO有<code>内存IO</code>、<code>网络IO</code>和<code>磁盘IO</code>三种，通常我们说的IO指的是后两者。</p>
 <p><strong>《UNIX网络编程》</strong>[^1]作者指出，5种IO模型分别是<code>阻塞式IO模型</code>、<code>非阻塞式IO模型</code>、<code>IO复用模型</code>、<code>信号驱动式IO</code>、<code>异步IO</code>；前4种为<code>同步IO</code>操作，只有<code>异步IO模型</code>是<code>异步IO</code>操作。</p>
 <h2 id="3-1-BIO"><a href="#3-1-BIO" class="headerlink" title="3.1 BIO"></a>3.1 BIO</h2><p>BIO就是：Blocking IO。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/BIO.png" alt="BIO"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/BIO.png" alt="BIO"></p>
 <p><code>应用程序</code><strong>请求IO操作</strong>，并一直等待处理结果；<code>操作系统</code>同时也进行<strong>IO操作</strong>，并等待设备的处理结果；可以看出，应用程序的请求线程和操作系统的内核线程都是等待状态。</p>
 <ul>
 <li><p>优点</p>
@@ -556,7 +713,7 @@
 </blockquote>
 </li>
 </ul>
-<h2 id="3-2-NIO"><a href="#3-2-NIO" class="headerlink" title="3.2 NIO"></a>3.2 NIO</h2><p>NIO: Non-Blocking IO.<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/NIO.png" alt="NIO"></p>
+<h2 id="3-2-NIO"><a href="#3-2-NIO" class="headerlink" title="3.2 NIO"></a>3.2 NIO</h2><p>NIO: Non-Blocking IO.<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/NIO.png" alt="NIO"></p>
 <p><code>应用程序</code><strong>请求IO</strong>，并且<strong>不用</strong>一直<strong>等待</strong>返回结果就去做其他事情。隔一定的周期，再去<strong>询问</strong>操作系统上次IO操作有没有结果，直到某一次询问从操作系统拿到IO结果；<code>操作系统</code>内核线程在进行<strong>IO操作</strong>时，还是处理一直<strong>等待</strong>设备返回操作结果的状态。</p>
 <ul>
 <li><p>特点</p>
@@ -576,7 +733,7 @@
 </li>
 </ul>
 <h2 id="3-3-IO多路复用"><a href="#3-3-IO多路复用" class="headerlink" title="3.3 IO多路复用"></a>3.3 IO多路复用</h2><p>指的是一个<code>进程/线程</code>可以<strong>同时监视</strong>多个<code>文件描述符</code>（一个网络连接，操作系统底层使用一个文件描述符来表示），一旦其中的一个或者多个文件描述符<code>可读或者可写</code>，系统内核就<code>通知</code>该进程&#x2F;线程。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo/markdown/IO-Multiplexing.png" alt="IO Multiplexing"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo/markdown/IO-Multiplexing.png" alt="IO Multiplexing"></p>
 <ul>
 <li>特点<blockquote>
 <p>IO多路复用模型建立在操作系统的基础设施之上，即操作系统的内核必须能够提供多路分离的系统调用，比如select&#x2F;epoll。</p>
@@ -596,12 +753,12 @@
 <p>IO多路复用技术最适用的是<strong>“高并发”</strong>场景，所谓高并发是指1毫秒内至少同时有上千个连接请求准备好。其他情况下IO多路复用技术发挥不出来它的优势。另一方面，使用JAVA NIO进行功能实现，相对于传统的Socket套接字实现要复杂一些，所以实际应用中，需要根据自己的业务需求进行技术选择。</p>
 </blockquote>
 <h2 id="3-4-信号驱动IO"><a href="#3-4-信号驱动IO" class="headerlink" title="3.4 信号驱动IO"></a>3.4 信号驱动IO</h2><p>与非阻塞IO类似，其在<strong>数据等待阶段</strong><code>并不阻塞</code>，但是原理不同。<code>信号驱动IO</code>是在套接字上<code>注册</code>了一个<code>信号调用方法</code>。这个注册动作会将内核发出一个请求，在套接字的收到数据时内核会给进程发出一个<code>sigio信号</code>。该注册调用很快返回，因此应用程序可以转去处理别的任务。当内核准备好数据后，就给进程发出了信号。进程就可以通过<code>recvfrom调用</code>来读取数据。其模型如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Signal-driven-IO.png" alt="信号驱动IO模型"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Signal-driven-IO.png" alt="信号驱动IO模型"></p>
 <ul>
 <li>优点：在数据包到达之前，进程不会被阻塞。而且采用<code>通知</code>的方式也避免了轮训带来的损耗。</li>
 </ul>
 <p>这种模型在Java中并没有对应的实现。</p>
-<h2 id="3-5-AIO"><a href="#3-5-AIO" class="headerlink" title="3.5 AIO"></a>3.5 AIO</h2><p>异步IO则是采用“订阅-通知”模式: 即应用程序向操作系统注册IO监听，然后继续做自己的事情。当操作系统发生IO事件，并且准备好数据后，在主动通知应用程序，触发相应的函数。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/AIO.png" alt="AIO"></p>
+<h2 id="3-5-AIO"><a href="#3-5-AIO" class="headerlink" title="3.5 AIO"></a>3.5 AIO</h2><p>异步IO则是采用“订阅-通知”模式: 即应用程序向操作系统注册IO监听，然后继续做自己的事情。当操作系统发生IO事件，并且准备好数据后，在主动通知应用程序，触发相应的函数。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/AIO.png" alt="AIO"></p>
 <ul>
 <li><p>特点</p>
 <blockquote>
@@ -621,11 +778,11 @@
 </ul>
 <p>与信号驱动 IO 相比，<strong>最大的不同</strong>在于<code>信号驱动 IO</code>是内核通知应用程序<code>可以读取数据了</code>；而<code>异步IO</code>是内核通知应用程序数据<code>已经读取完毕了</code>。</p>
 <p>参见大神的讲解<a target="_blank" rel="noopener" href="https://yinwj.blog.csdn.net/article/details/48784375">架构设计：系统间通信（5）——IO通信模型和JAVA实践 下篇</a>。</p>
-<h2 id="3-6-对比"><a href="#3-6-对比" class="headerlink" title="3.6 对比"></a>3.6 对比</h2><p>来看下五种 IO 模型的对比，如下：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/IO-Comparison.png" alt="五种 IO 模型对比"></p>
-<h1 id="4-原生网络编程"><a href="#4-原生网络编程" class="headerlink" title="4 原生网络编程"></a>4 原生网络编程</h1><h2 id="4-1-BIO"><a href="#4-1-BIO" class="headerlink" title="4.1 BIO"></a>4.1 BIO</h2><p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/BIO2.png" alt="BIO"></p>
+<h2 id="3-6-对比"><a href="#3-6-对比" class="headerlink" title="3.6 对比"></a>3.6 对比</h2><p>来看下五种 IO 模型的对比，如下：<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/IO-Comparison.png" alt="五种 IO 模型对比"></p>
+<h1 id="4-原生网络编程"><a href="#4-原生网络编程" class="headerlink" title="4 原生网络编程"></a>4 原生网络编程</h1><h2 id="4-1-BIO"><a href="#4-1-BIO" class="headerlink" title="4.1 BIO"></a>4.1 BIO</h2><p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/BIO2.png" alt="BIO"></p>
 <ul>
 <li>应用-RPC<blockquote>
-<p>RPC（Remote Procedure Call 远程过程调用） 框架，是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络的技术。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/RPC.png" alt="RPC"></p>
+<p>RPC（Remote Procedure Call 远程过程调用） 框架，是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络的技术。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/RPC.png" alt="RPC"></p>
 </blockquote>
 </li>
 </ul>
@@ -651,7 +808,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/IO-Multiplexing-Flow.png" alt="IO Multiplexing Flow"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/IO-Multiplexing-Flow.png" alt="IO Multiplexing Flow"></p>
 <h3 id="4-2-2-NIO-之Reactor-模式"><a href="#4-2-2-NIO-之Reactor-模式" class="headerlink" title="4.2.2 NIO 之Reactor 模式"></a>4.2.2 NIO 之Reactor 模式</h3><blockquote>
 <p>“好莱坞法则”（不要调用我，让我来调用你）：具体事件处理程序不调用反应器，而向反应器注册一个事件处理器，表示自己对某些事件感兴趣，有时间来了，具体事件处理程序通过事件处理器对某个指定的事件发生做出反应。</p>
 </blockquote>
@@ -688,7 +845,7 @@
 </li>
 </ul>
 <p><strong>注意</strong>，Reactor 的单线程模式的单线程主要是针对于 <code>I/O 操作</code>而言，也就是所有的 I&#x2F;O 的 <code>accept()</code>、<code>read()</code>、<code>write()</code>以及 <code>connect()</code>操作都在<strong>一个线程</strong>上完成的。<br>但在目前的单线程 Reactor 模式中，不仅 <code>I/O 操作</code>在该 Reactor 线程上，连<code>非 I/O 的业务操作</code>也在该线程上进行处理了，这可能会大大<strong>延迟</strong> I&#x2F;O 请求的响应。所以我们应该将非 I&#x2F;O 的业务逻辑操作从 Reactor 线程上卸载，以此来加速 Reactor 线程对 I&#x2F;O 请求的响应。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Single-Reactor-Mono-Thread.png" alt="单Reactor-单线程"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Single-Reactor-Mono-Thread.png" alt="单Reactor-单线程"></p>
 <p><code>单Reactor-多线程</code></p>
 <blockquote>
 <p>1个前台接待员，多个服务员，接待员只负责接待.</p>
@@ -712,7 +869,7 @@
 <li>一个 <code>NIO 线程</code><strong>同时处理</strong>成百上千的链路，性能上<strong>无法支撑</strong>，即便 NIO 线程的 CPU 负荷达到100%，也<strong>无法满足</strong>海量消息的读取和发送;</li>
 <li>当 <code>NIO 线程</code>负载过重之后，处理速度将变慢，这会导致大量客户端<code>连接超时</code>，超时之后往往会进行<code>重发</code>，这<strong>更加重</strong>了 NIO 线程的负载，最终会导致<code>大量消息积压</code>和<code>处理超时</code>， 成为系统的性能瓶颈。</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Single-Reactor-Multi-Thread.png" alt="单Reactor-多线程"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Single-Reactor-Multi-Thread.png" alt="单Reactor-多线程"></p>
 <p><code>主从多线程Reactor模式</code></p>
 <blockquote>
 <p>1个大堂经理，多个前台接待员，多个服务员.</p>
@@ -735,8 +892,8 @@
 <li><p><code>Thread Pool(线程池)</code>仅用来处理<code>非I/O 操作</code>的逻辑.</p>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Master-Slave-Multi-Thread-Reactor.png" alt="主从多线程Reactor模式"></p>
-<p>Netty中的Reactor架构：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Netty-Reactor.png" alt="Netty中的Reactor"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Master-Slave-Multi-Thread-Reactor.png" alt="主从多线程Reactor模式"></p>
+<p>Netty中的Reactor架构：<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Netty-Reactor.png" alt="Netty中的Reactor"></p>
 <h3 id="4-2-3-JAVA对IO多路复用的支持"><a href="#4-2-3-JAVA对IO多路复用的支持" class="headerlink" title="4.2.3 JAVA对IO多路复用的支持"></a>4.2.3 JAVA对IO多路复用的支持</h3><p><img src="https://img-blog.csdn.net/20150924091829616" alt="JAVA IO多路复用实现"></p>
 <p><img src="https://img-blog.csdn.net/20150922120210682" alt="JAVA NIO Selector实现接口"></p>
 <h3 id="4-2-4-IO多路复用的优缺点-2"><a href="#4-2-4-IO多路复用的优缺点-2" class="headerlink" title="4.2.4 IO多路复用的优缺点[^2]"></a>4.2.4 IO多路复用的优缺点[^2]</h3><ul>
@@ -839,12 +996,12 @@
                     
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+                    <link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/share/css/share.min.css">
 <div id="article-share">
 
     
     <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/share/js/social-share.min.js"></script>
     
 
     
@@ -869,10 +1026,10 @@
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                        <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -908,7 +1065,7 @@
                 }
 
                 j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.src = 'https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/embed.dist.js';
                 j.async = true;
 
                 e.parentNode.insertBefore(j, e);
@@ -1080,26 +1237,26 @@
 
 
 <!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeBlockFuction.js"></script>
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeLang.js"></script>
 
 
 <!-- 代码块复制 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeCopy.js"></script>
 
 
 <!-- 代码块收缩 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -1121,7 +1278,7 @@
 </div>
 
 
-<script src="/libs/tocbot/tocbot.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/tocbot/tocbot.min.js"></script>
 <script>
     $(function () {
         tocbot.init({
@@ -1205,28 +1362,11 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
-                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
-            
             <br>
             
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">118.4k</span>
             
             
             
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
             
             <br>
 
@@ -1293,7 +1433,7 @@
             <br>
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
+        <div class="col s12 m4 l4 social-link ">
     <a href="https://github.com/zyxelva" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
@@ -1318,7 +1458,15 @@
 
 
 
+    <a href="https://www.zhihu.com/people/kezade" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/kezade" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
 
+
+
+    <a href="rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
 
 </div>
     </div>
@@ -1463,58 +1611,30 @@ $(function () {
 </div>
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/materialize/materialize.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/aos/aos.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/js/matery.js"></script>
 
-    
 
-    
-        <script type="text/javascript" src="/js/tw_cn.js"></script>
-        <script type="text/javascript">
-          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
-          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
-          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
-          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
-          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
-          var translateButtonId = "translateLink"; //默认互换id
-          translateInitilization();
-        </script>
-    
-    
-    
-        
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
-            }
-        </script>
-    
 
-    <!-- 雪花特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
-            }
-        </script>
-    
 
-    <!-- 鼠标星星特效 -->
-    
 
-    
 
-    <!-- Baidu Analytics -->
 
-    <!-- Baidu Push -->
+<!-- 雪花特效 -->
+
+
+<!-- 鼠标星星特效 -->
+
+
+
+
+<!-- Baidu Analytics -->
+
+<!-- Baidu Push -->
 
 <script>
     (function () {
@@ -1530,30 +1650,27 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
 
-    
 
-    
 
-    <!--腾讯兔小巢-->
-    
-    
 
-    
 
-    
-    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
-    
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+
+<!--腾讯兔小巢-->
+
+
+
+
+
+
+    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/background/ribbon-dynamic.js"
+            async="async"></script>
+
+
+
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/instantpage/instantpage.js" type="module"></script>
+
 
 </body>
 

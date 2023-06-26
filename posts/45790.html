@@ -18,14 +18,15 @@
 
 
     <title>【MyBatis源码学习】Sql解析 | Kezade</title>
-    <link rel="icon" type="image/png" href="/medias/avatar.png">
+    <link rel="icon" type="image/png" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/avatar.png">
     
     <style>
-        body{
-            background-image: url(https://cdn.jsdelivr.net/gh/zyxelva/picgo/images/wallpaper/43616-105.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
+        body {
+            background-image: url(https://it-ark-dev.oss-cn-shenzhen.aliyuncs.com/464e9ac7a5a729ae67f91f7cf0cf6fe2.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center center;
         }
     </style>
 
@@ -35,33 +36,49 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-<link rel="stylesheet" type="text/css" href="/css/matery.css">
-<link rel="stylesheet" type="text/css" href="/css/my.css">
-<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/matery.css?v2">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/my.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/dark.css" media="none" onload="if(media!='all')media='all'">
 
 
 
 
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-    <link rel="stylesheet" href="/css/post.css">
+    <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/post.css">
 
 
 
 
     
-        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+        <link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/reward.css">
     
 
 
 
-    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
-
-<meta name="generator" content="Hexo 6.3.0"></head>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/jquery/jquery-3.6.0.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/function.js?v3"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/imgStatus.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/waterfall.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/lately.min.js"></script>
+<!-- hexo injector head_end start --><script async defer src="https://kezade-umami.zeabur.app/script.js" data-website-id="38a8a7e4-0745-4f35-91cb-41dc78c52778" data-host-url="https://kezade-umami.zeabur.app" data-domains="zyxelva.github.io"></script><script type="text/javascript">
+            var memos = {
+                host: "https://memos-zyx.zeabur.app/",
+                limit: "10",
+                creatorId: "1",
+                username: "zyxelva",
+                name: "Kezade",
+                domId: '#memos',
+            };
+            var douban = {
+                api: "https://douban-api.edui.fun/",
+            }
+        </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss2.xml" title="Kezade" type="application/rss+xml">
+</head>
 
 
 <body>
@@ -71,7 +88,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/avatar.png" class="logo-img" alt="LOGO">
+                    <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/avatar.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">Kezade</span>
                 </a>
@@ -94,24 +111,15 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/archives" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
 
       
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      <i class="fa-solid fa-newspaper" style="zoom: 0.6;"></i>
       
-      <span>归档</span>
+      <span>文章</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/galleries">
-          
-          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>相册</span>
-        </a>
-      </li>
       
       <li>
         <a href="/tags">
@@ -128,6 +136,49 @@
           <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
           
           <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fa-solid fa-place-of-worship" style="zoom: 0.6;"></i>
+      
+      <span>我的地盘</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/photos">
+          
+          <i class="fa-solid fa-photo-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Memos</span>
         </a>
       </li>
       
@@ -155,23 +206,53 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/friends" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
+
       
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      <i class="fa-solid fa-circle-info" style="zoom: 0.6;"></i>
       
-      <span>友情链接</span>
+      <span>更多</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
+    <ul class="sub-nav menus_item_child ">
       
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>留言</span>
+        </a>
+      </li>
       
-      <span>关于</span>
-    </a>
+      <li>
+        <a href="/friends">
+          
+          <i class="fa-solid fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友链</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friend-circle">
+          
+          <i class="fa-solid fa-rss" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>朋友圈</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -192,7 +273,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/avatar.png" class="logo-img circle responsive-img">
+        <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/avatar.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">Kezade</div>
         <div class="logo-desc">
@@ -219,22 +300,12 @@
 	  
 		<a href="javascript:;">
 			
-				<i class="fa-fw fas fa-archive"></i>
+				<i class="fa-fw fa-solid fa-newspaper"></i>
 			
-			归档
+			文章
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
-              
-                <li>
-
-                  <a href="/galleries " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
-			      
-		          <span>相册</span>
-                  </a>
-                </li>
               
                 <li>
 
@@ -253,6 +324,51 @@
 				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
 			      
 		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fa-solid fa-place-of-worship"></i>
+			
+			我的地盘
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/photos " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-photo-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Memos</span>
                   </a>
                 </li>
               
@@ -282,23 +398,56 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/friends" class="waves-effect waves-light">
+		<a href="javascript:;">
 			
-			    <i class="fa-fw fas fa-address-book"></i>
+				<i class="fa-fw fa-solid fa-circle-info"></i>
 			
-			友情链接
+			更多
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:50px" ></i>
+			      
+		          <span>留言</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/friends " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-link" style="position: absolute;left:50px" ></i>
+			      
+		          <span>友链</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/friend-circle " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-rss" style="position: absolute;left:50px" ></i>
+			      
+		          <span>朋友圈</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -378,6 +527,19 @@
 </header>
 
     
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/MyBatis.jpeg')">
@@ -463,25 +625,20 @@
                 
 
                 
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
             </div>
         </div>
         <hr class="clearfix">
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/prism/prism.min.css">
         
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>之前我在<a href="https://zyxelva.github.io/posts/24693.html">【Mybatis源码学习】初始化阶段</a> 中重点讲述了核心配置类XMLConfigBuilder、XMLMapperBuilder、XMLStatementBuilder各自的功能。我们先熟悉下这“三剑客”，看下图即可。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315205850237.png"><br>本章节中，我们重点跟一下XMLMapperBuilder、XMLStatementBuilder解析sql的源码过程。<br>XMLMapperBuilder、XMLStatementBuilder均实现了BaseBuilder。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031521015322.png"><br>XMLMapperBuilder主要功能：<br>    遍历mybatis中mapperLocations属性中的xml文件中每个节点的Builder，比如user.xml，内部会使用XMLStatementBuilder处理xml中的每个节点。<br>XMLStatementBuilder主要功能：<br>    解析xml文件中各个节点，比如select,insert,update,delete节点，内部会使用XMLScriptBuilder处理节点的sql部分，遍历产生的数据会丢到Configuration的mappedStatements中。</p>
+                <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>之前我在<a href="https://zyxelva.github.io/posts/24693.html">【Mybatis源码学习】初始化阶段</a> 中重点讲述了核心配置类XMLConfigBuilder、XMLMapperBuilder、XMLStatementBuilder各自的功能。我们先熟悉下这“三剑客”，看下图即可。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315205850237.png"><br>本章节中，我们重点跟一下XMLMapperBuilder、XMLStatementBuilder解析sql的源码过程。<br>XMLMapperBuilder、XMLStatementBuilder均实现了BaseBuilder。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031521015322.png"><br>XMLMapperBuilder主要功能：<br>    遍历mybatis中mapperLocations属性中的xml文件中每个节点的Builder，比如user.xml，内部会使用XMLStatementBuilder处理xml中的每个节点。<br>XMLStatementBuilder主要功能：<br>    解析xml文件中各个节点，比如select,insert,update,delete节点，内部会使用XMLScriptBuilder处理节点的sql部分，遍历产生的数据会丢到Configuration的mappedStatements中。</p>
 <p>在<a href="https://zyxelva.github.io/posts/24693.html">【Mybatis源码学习】初始化阶段</a>中，我们分析了XMLConfigBuilder的主要工作流程。还是以下面的代码为例，重点分析下XMLMapperBuilder和XMLStatementBuilder解析sql的流程。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Before</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
@@ -493,7 +650,7 @@
     sqlSessionFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SqlSessionFactoryBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>inputStream<span class="token punctuation">)</span><span class="token punctuation">;</span>
     inputStream<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>进入new SqlSessionFactoryBuilder().build(inputStream)方法，我们看看parse的方法。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316135635377.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031613571219.png"><br>而我这里的mybatis-config.xml文件如下：</p>
+<p>进入new SqlSessionFactoryBuilder().build(inputStream)方法，我们看看parse的方法。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316135635377.png"><br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031613571219.png"><br>而我这里的mybatis-config.xml文件如下：</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8" ?></span>
 <span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">configuration</span> <span class="token name">PUBLIC</span> <span class="token string">"-//mybatis.org//DTD Config 3.0//EN"</span> <span class="token string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
@@ -547,7 +704,7 @@
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mapper</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sqlmapper/THealthReportMaleMapper.xml<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mappers</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="二、XMLMapperBuilder"><a href="#二、XMLMapperBuilder" class="headerlink" title="二、XMLMapperBuilder"></a>二、XMLMapperBuilder</h1><p>对于parser.evalNode(“&#x2F;configuration”)，这里我就不赘述了，重点关注parseConfiguration里面的mapperElement()方法。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316135924625.png"><br>这个mapperElement()主要就是解析&lt;mappers&gt;标签下的内容. 这里贴出这个方法的源码，包含注释。</p>
+<h1 id="二、XMLMapperBuilder"><a href="#二、XMLMapperBuilder" class="headerlink" title="二、XMLMapperBuilder"></a>二、XMLMapperBuilder</h1><p>对于parser.evalNode(“&#x2F;configuration”)，这里我就不赘述了，重点关注parseConfiguration里面的mapperElement()方法。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316135924625.png"><br>这个mapperElement()主要就是解析&lt;mappers&gt;标签下的内容. 这里贴出这个方法的源码，包含注释。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
   * 解析mappers节点，例如：
   * &lt;mappers>
@@ -877,7 +1034,7 @@
 <li>sqlElement：解析sql节点&lt;sql&gt;.</li>
 <li>buildStatementFromContext：解析&lt;select&gt;、&lt;insert&gt;、&lt;update&gt;、&lt;delete&gt;节点.</li>
 </ul>
-<p>而当前我们的UserInfoMapper如下：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316160708894.png"><br>接下来，我们关注buildStatementFromContext解析&lt;select&gt;、&lt;insert&gt;、&lt;update&gt;、&lt;delete&gt;标签的过程。主要就是看看XMLStatementBuilder是怎么干活儿的。</p>
+<p>而当前我们的UserInfoMapper如下：<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316160708894.png"><br>接下来，我们关注buildStatementFromContext解析&lt;select&gt;、&lt;insert&gt;、&lt;update&gt;、&lt;delete&gt;标签的过程。主要就是看看XMLStatementBuilder是怎么干活儿的。</p>
 <h1 id="三、XMLStatementBuilder"><a href="#三、XMLStatementBuilder" class="headerlink" title="三、XMLStatementBuilder"></a>三、XMLStatementBuilder</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//解析select、insert、update、delete节点</span>
 <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">buildStatementFromContext</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">XNode</span><span class="token punctuation">></span></span> list<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>configuration<span class="token punctuation">.</span><span class="token function">getDatabaseId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -1004,10 +1161,10 @@
   <span class="token keyword">return</span> sqlSource<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>方法parseDynamicTags()就是真正去解析sql语句的淫儿了。当执行createSqlSource()方法中的new XMLScriptBuilder(configuration, script, parameterType)时，我们看下，它初始化了些什么东东。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316174946741.png"><br>可以看到关键的部分，对于不同的标签，比如&lt;trim&gt;、&lt;where&gt;等，都有不同的处理策略。在执行parseDynamicTags()时，会判断节点是否包含一些动态标记，比如 ${} 占位符以及动态 SQL 节点等。若包含动态标记，则会将 isDynamic 设为 true。后续可根据 isDynamic 创建不同的 SqlSource。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315210703601.png"></p>
-<p>通常，我们在xml内写sql都是片段的去编写，主要语句写完了，还会有些动态标签包裹的语句，对于mybatis来说，每个片段都会解析成为一个sqlNode存起来，我们先来回忆一下sqlNode有哪些实现类。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315210642589.png"><br>这些 SqlNode 是如何生成的呢？我们看看parseDynamicTags()中的这段代码：</p>
+<p>方法parseDynamicTags()就是真正去解析sql语句的淫儿了。当执行createSqlSource()方法中的new XMLScriptBuilder(configuration, script, parameterType)时，我们看下，它初始化了些什么东东。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316174946741.png"><br>可以看到关键的部分，对于不同的标签，比如&lt;trim&gt;、&lt;where&gt;等，都有不同的处理策略。在执行parseDynamicTags()时，会判断节点是否包含一些动态标记，比如 ${} 占位符以及动态 SQL 节点等。若包含动态标记，则会将 isDynamic 设为 true。后续可根据 isDynamic 创建不同的 SqlSource。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315210703601.png"></p>
+<p>通常，我们在xml内写sql都是片段的去编写，主要语句写完了，还会有些动态标签包裹的语句，对于mybatis来说，每个片段都会解析成为一个sqlNode存起来，我们先来回忆一下sqlNode有哪些实现类。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315210642589.png"><br>这些 SqlNode 是如何生成的呢？我们看看parseDynamicTags()中的这段代码：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">handler<span class="token punctuation">.</span><span class="token function">handleNode</span><span class="token punctuation">(</span>child<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>它有很多个实现。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316180045568.png"><br>到此 SQL 语句的解析过程搞完了。但我们只是完成了xml解析为sqlSource的流程，而一般sql语句还会有一些附加属性，需要mybatis去解析出来，封装至MappedStatement当中，最终还要把它注册到configuration。回到XMLStatementBuilder的parseStatementNode()方法。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031618090324.png"><br>具体方法实现：</p>
+<p>它有很多个实现。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210316180045568.png"><br>到此 SQL 语句的解析过程搞完了。但我们只是完成了xml解析为sqlSource的流程，而一般sql语句还会有一些附加属性，需要mybatis去解析出来，封装至MappedStatement当中，最终还要把它注册到configuration。回到XMLStatementBuilder的parseStatementNode()方法。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031618090324.png"><br>具体方法实现：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//添加MappedStatement对象</span>
 <span class="token keyword">public</span> <span class="token class-name">MappedStatement</span> <span class="token function">addMappedStatement</span><span class="token punctuation">(</span>
     <span class="token class-name">String</span> id<span class="token punctuation">,</span>
@@ -1213,12 +1370,12 @@
                     
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+                    <link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/share/css/share.min.css">
 <div id="article-share">
 
     
     <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/share/js/social-share.min.js"></script>
     
 
     
@@ -1243,10 +1400,10 @@
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                        <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -1282,7 +1439,7 @@
                 }
 
                 j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.src = 'https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/embed.dist.js';
                 j.async = true;
 
                 e.parentNode.insertBefore(j, e);
@@ -1462,26 +1619,26 @@
 
 
 <!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeBlockFuction.js"></script>
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeLang.js"></script>
 
 
 <!-- 代码块复制 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeCopy.js"></script>
 
 
 <!-- 代码块收缩 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -1503,7 +1660,7 @@
 </div>
 
 
-<script src="/libs/tocbot/tocbot.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/tocbot/tocbot.min.js"></script>
 <script>
     $(function () {
         tocbot.init({
@@ -1587,28 +1744,11 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
-                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
-            
             <br>
             
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">118.4k</span>
             
             
             
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
             
             <br>
 
@@ -1675,7 +1815,7 @@
             <br>
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
+        <div class="col s12 m4 l4 social-link ">
     <a href="https://github.com/zyxelva" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
@@ -1700,7 +1840,15 @@
 
 
 
+    <a href="https://www.zhihu.com/people/kezade" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/kezade" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
 
+
+
+    <a href="rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
 
 </div>
     </div>
@@ -1845,58 +1993,30 @@ $(function () {
 </div>
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/materialize/materialize.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/aos/aos.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/js/matery.js"></script>
 
-    
 
-    
-        <script type="text/javascript" src="/js/tw_cn.js"></script>
-        <script type="text/javascript">
-          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
-          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
-          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
-          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
-          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
-          var translateButtonId = "translateLink"; //默认互换id
-          translateInitilization();
-        </script>
-    
-    
-    
-        
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
-            }
-        </script>
-    
 
-    <!-- 雪花特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
-            }
-        </script>
-    
 
-    <!-- 鼠标星星特效 -->
-    
 
-    
 
-    <!-- Baidu Analytics -->
 
-    <!-- Baidu Push -->
+<!-- 雪花特效 -->
+
+
+<!-- 鼠标星星特效 -->
+
+
+
+
+<!-- Baidu Analytics -->
+
+<!-- Baidu Push -->
 
 <script>
     (function () {
@@ -1912,30 +2032,27 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
 
-    
 
-    
 
-    <!--腾讯兔小巢-->
-    
-    
 
-    
 
-    
-    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
-    
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+
+<!--腾讯兔小巢-->
+
+
+
+
+
+
+    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/background/ribbon-dynamic.js"
+            async="async"></script>
+
+
+
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/instantpage/instantpage.js" type="module"></script>
+
 
 </body>
 

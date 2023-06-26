@@ -20,14 +20,15 @@
 
 
     <title>【MyBatis源码学习】参数解析 | Kezade</title>
-    <link rel="icon" type="image/png" href="/medias/avatar.png">
+    <link rel="icon" type="image/png" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/avatar.png">
     
     <style>
-        body{
-            background-image: url(https://cdn.jsdelivr.net/gh/zyxelva/picgo/images/wallpaper/43616-105.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
+        body {
+            background-image: url(https://it-ark-dev.oss-cn-shenzhen.aliyuncs.com/464e9ac7a5a729ae67f91f7cf0cf6fe2.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center center;
         }
     </style>
 
@@ -37,33 +38,49 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-<link rel="stylesheet" type="text/css" href="/css/matery.css">
-<link rel="stylesheet" type="text/css" href="/css/my.css">
-<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/matery.css?v2">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/my.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/dark.css" media="none" onload="if(media!='all')media='all'">
 
 
 
 
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-    <link rel="stylesheet" href="/css/post.css">
+    <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/post.css">
 
 
 
 
     
-        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+        <link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/reward.css">
     
 
 
 
-    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
-
-<meta name="generator" content="Hexo 6.3.0"></head>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/jquery/jquery-3.6.0.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/function.js?v3"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/imgStatus.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/waterfall.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/lately.min.js"></script>
+<!-- hexo injector head_end start --><script async defer src="https://kezade-umami.zeabur.app/script.js" data-website-id="38a8a7e4-0745-4f35-91cb-41dc78c52778" data-host-url="https://kezade-umami.zeabur.app" data-domains="zyxelva.github.io"></script><script type="text/javascript">
+            var memos = {
+                host: "https://memos-zyx.zeabur.app/",
+                limit: "10",
+                creatorId: "1",
+                username: "zyxelva",
+                name: "Kezade",
+                domId: '#memos',
+            };
+            var douban = {
+                api: "https://douban-api.edui.fun/",
+            }
+        </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss2.xml" title="Kezade" type="application/rss+xml">
+</head>
 
 
 <body>
@@ -73,7 +90,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/avatar.png" class="logo-img" alt="LOGO">
+                    <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/avatar.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">Kezade</span>
                 </a>
@@ -96,24 +113,15 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/archives" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
 
       
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      <i class="fa-solid fa-newspaper" style="zoom: 0.6;"></i>
       
-      <span>归档</span>
+      <span>文章</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/galleries">
-          
-          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>相册</span>
-        </a>
-      </li>
       
       <li>
         <a href="/tags">
@@ -130,6 +138,49 @@
           <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
           
           <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fa-solid fa-place-of-worship" style="zoom: 0.6;"></i>
+      
+      <span>我的地盘</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/photos">
+          
+          <i class="fa-solid fa-photo-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Memos</span>
         </a>
       </li>
       
@@ -157,23 +208,53 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/friends" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
+
       
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      <i class="fa-solid fa-circle-info" style="zoom: 0.6;"></i>
       
-      <span>友情链接</span>
+      <span>更多</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
+    <ul class="sub-nav menus_item_child ">
       
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>留言</span>
+        </a>
+      </li>
       
-      <span>关于</span>
-    </a>
+      <li>
+        <a href="/friends">
+          
+          <i class="fa-solid fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友链</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friend-circle">
+          
+          <i class="fa-solid fa-rss" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>朋友圈</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -194,7 +275,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/avatar.png" class="logo-img circle responsive-img">
+        <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/avatar.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">Kezade</div>
         <div class="logo-desc">
@@ -221,22 +302,12 @@
 	  
 		<a href="javascript:;">
 			
-				<i class="fa-fw fas fa-archive"></i>
+				<i class="fa-fw fa-solid fa-newspaper"></i>
 			
-			归档
+			文章
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
-              
-                <li>
-
-                  <a href="/galleries " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
-			      
-		          <span>相册</span>
-                  </a>
-                </li>
               
                 <li>
 
@@ -255,6 +326,51 @@
 				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
 			      
 		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fa-solid fa-place-of-worship"></i>
+			
+			我的地盘
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/photos " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-photo-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Memos</span>
                   </a>
                 </li>
               
@@ -284,23 +400,56 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/friends" class="waves-effect waves-light">
+		<a href="javascript:;">
 			
-			    <i class="fa-fw fas fa-address-book"></i>
+				<i class="fa-fw fa-solid fa-circle-info"></i>
 			
-			友情链接
+			更多
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:50px" ></i>
+			      
+		          <span>留言</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/friends " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-link" style="position: absolute;left:50px" ></i>
+			      
+		          <span>友链</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/friend-circle " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-rss" style="position: absolute;left:50px" ></i>
+			      
+		          <span>朋友圈</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -380,6 +529,19 @@
 </header>
 
     
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/MyBatis.jpeg')">
@@ -465,18 +627,13 @@
                 
 
                 
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
             </div>
         </div>
         <hr class="clearfix">
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/prism/prism.min.css">
         
 
         
@@ -504,7 +661,7 @@
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>当我们执行到这一行时，</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">UserInfoMapper</span> mapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">UserInfoMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>通过调试我们可以看到，这个mapper其实是通过MapperProxy代理执行的。我们拿到的其实就是个动态代理对象。如下图：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314204651483.png"><br>当我们执行查询时，进入MapperProxy动态代理过程。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031420510518.png"><br>最终交由MapperMethod类的execute()方法执行，源代码如下：</p>
+<p>通过调试我们可以看到，这个mapper其实是通过MapperProxy代理执行的。我们拿到的其实就是个动态代理对象。如下图：<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314204651483.png"><br>当我们执行查询时，进入MapperProxy动态代理过程。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/2021031420510518.png"><br>最终交由MapperMethod类的execute()方法执行，源代码如下：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//三步翻译在此完成</span>
 <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token class-name">SqlSession</span> sqlSession<span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
   <span class="token class-name">Object</span> result<span class="token punctuation">;</span>
@@ -558,7 +715,7 @@
   <span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>所以，本章参数解析的过程，我们重点关注这个方法即可，这个方法就是convertArgsToSqlCommandParam。它其实是方法的参数解析器ParamNameResolver的getNamedParams()方法完成的。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314205954450.png"><br>而这个ParamNameResolver则是在MapperProxy获取mapperMethod时（先不说从cache中取）进行初始化的，<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314211304810.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314211424528.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314211600469.png"><br>而ParamNameResolver实例化时，主要工作就是进行初步的映射关系存储，其字段names是一个SortedMap，存储了参数名的顺序映射。</p>
+<p>所以，本章参数解析的过程，我们重点关注这个方法即可，这个方法就是convertArgsToSqlCommandParam。它其实是方法的参数解析器ParamNameResolver的getNamedParams()方法完成的。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314205954450.png"><br>而这个ParamNameResolver则是在MapperProxy获取mapperMethod时（先不说从cache中取）进行初始化的，<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314211304810.png"><br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314211424528.png"><br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210314211600469.png"><br>而ParamNameResolver实例化时，主要工作就是进行初步的映射关系存储，其字段names是一个SortedMap，存储了参数名的顺序映射。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
    * &lt;p>
    * The key is the index and the value is the name of the parameter.&lt;br />
@@ -626,8 +783,8 @@
 <p>我们从方法</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">UserInfo</span><span class="token punctuation">></span></span> list1 <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">getByUsernameAndOpenId</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>开始断点调试。我们看到，进入到了MapperProxy的动态代理过程。直接进入mapperMethod.execute(sqlSession, args);</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315111605602.png"><br>来到MapperMethod中的execute方法中。由于我们的例子是查询操作，故进入Select。又例子的返回类型是List,故进入第二个if语句中。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315111929562.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315112106406.png"><br>进入方法executeForMany(). 没有分页，所以进入else语句中。而convertArgsToSqlCommandParam方法我们在二中已经分析了，这里不再具体梳理。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315112219141.png"><br>进入DefaultSQLSession的selectList方法中。可以看下statement实际形式是namespace+id，就可以从MappedStatement中获取。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315112604497.png"><br>而MappedStatement也有很多信息，主要是<select>标签以及该节点其他重要的属性。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315113216306.png"><br>而sql的实际执行者，则为Executor. 代理对象执行方法被拦截器拦截，执行以下方法。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315113629172.png"><br>先看看getBoundSql干了啥：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315135210374.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315135542105.png"><br>进入RawSqlSource,因例子的sql无${},无动态SQL节点。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315140041749.png"><br>先看看RawSqlSource的构造方法，看看#{}是怎么替换成?的，发现主要是SqlSourceBuilder在干活儿。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315141654652.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315141735671.png"><br>主要看GenericTokenParser.parse().该方法主要完成占位符的定位工作，然后把占位符的替换工作交给与其关联的 TokenHandler 处理.<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315142304221.png"><br>TokenHandler有四个小弟，<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315142425559.png"><br>BindingTokenParser：该对象的handleToken方法会取出占位符中的变量，然后使用该变量作为键去上下文环境中寻找对应的值。之后，会用找到的值替换占位符。因此，该对象可以完成占位符的替换工作；<br>DynamicCheckerTokenParser：该对象的 handleToken 方法会置位成员属性isDynamic。因此该对象可以记录自身是否遇到过占位符。<br>ParameterMappingTokenHandler：将DynamicSqlSource和RawSqlSource中的“#{}”符号替换掉，从而将他们转化为StaticSqlSource；<br>VariableTokenHandler：handleToken方法中传入输入参数后，该方法会以输入参数为键尝试从variables属性中寻找对应的值返回。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315140144135.png"><br>到此BoundSql的解析过程基本结束。getBoundSql方法执行完后，我们再看看一级缓存的key生成策略。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315140541909.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315140853968.png"></select></p>
-<p>可以看出，cacheKey由namespace的id,分页参数，sql语句，入参以及<environment>节点的信息组成。<br>回到查询过程，实际执行的方法为<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315113709359.png"><br>而首次查询不会进入if语句，调用BaseExecutor的方法：<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315113913105.png"><br>本地缓存没有结果，故需要查询数据库，进入queryFromDatabase().<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315114121102.png"><br>doQuery()则调用的为SimpleExecutor的方法。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315114350394.png"><br>看看newStatementHandler()。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315114428448.png"><br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315114501949.png"><br>由于我们的例子当中sql带有#{}，故进入PREPARED，生成PreparedStatementHandler。<br>执行完语句后，放入一级缓存。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315115037492.png"><br>后续就是结果映射执行过程，这里不再赘述，后续跟上。</environment></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315111605602.png"><br>来到MapperMethod中的execute方法中。由于我们的例子是查询操作，故进入Select。又例子的返回类型是List,故进入第二个if语句中。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315111929562.png"><br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315112106406.png"><br>进入方法executeForMany(). 没有分页，所以进入else语句中。而convertArgsToSqlCommandParam方法我们在二中已经分析了，这里不再具体梳理。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315112219141.png"><br>进入DefaultSQLSession的selectList方法中。可以看下statement实际形式是namespace+id，就可以从MappedStatement中获取。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315112604497.png"><br>而MappedStatement也有很多信息，主要是<select>标签以及该节点其他重要的属性。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315113216306.png"><br>而sql的实际执行者，则为Executor. 代理对象执行方法被拦截器拦截，执行以下方法。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315113629172.png"><br>先看看getBoundSql干了啥：<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315135210374.png"><br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315135542105.png"><br>进入RawSqlSource,因例子的sql无${},无动态SQL节点。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315140041749.png"><br>先看看RawSqlSource的构造方法，看看#{}是怎么替换成?的，发现主要是SqlSourceBuilder在干活儿。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315141654652.png"><br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315141735671.png"><br>主要看GenericTokenParser.parse().该方法主要完成占位符的定位工作，然后把占位符的替换工作交给与其关联的 TokenHandler 处理.<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315142304221.png"><br>TokenHandler有四个小弟，<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315142425559.png"><br>BindingTokenParser：该对象的handleToken方法会取出占位符中的变量，然后使用该变量作为键去上下文环境中寻找对应的值。之后，会用找到的值替换占位符。因此，该对象可以完成占位符的替换工作；<br>DynamicCheckerTokenParser：该对象的 handleToken 方法会置位成员属性isDynamic。因此该对象可以记录自身是否遇到过占位符。<br>ParameterMappingTokenHandler：将DynamicSqlSource和RawSqlSource中的“#{}”符号替换掉，从而将他们转化为StaticSqlSource；<br>VariableTokenHandler：handleToken方法中传入输入参数后，该方法会以输入参数为键尝试从variables属性中寻找对应的值返回。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315140144135.png"><br>到此BoundSql的解析过程基本结束。getBoundSql方法执行完后，我们再看看一级缓存的key生成策略。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315140541909.png"><br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315140853968.png"></select></p>
+<p>可以看出，cacheKey由namespace的id,分页参数，sql语句，入参以及<environment>节点的信息组成。<br>回到查询过程，实际执行的方法为<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315113709359.png"><br>而首次查询不会进入if语句，调用BaseExecutor的方法：<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315113913105.png"><br>本地缓存没有结果，故需要查询数据库，进入queryFromDatabase().<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315114121102.png"><br>doQuery()则调用的为SimpleExecutor的方法。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315114350394.png"><br>看看newStatementHandler()。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315114428448.png"><br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315114501949.png"><br>由于我们的例子当中sql带有#{}，故进入PREPARED，生成PreparedStatementHandler。<br>执行完语句后，放入一级缓存。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/csdn/20210315115037492.png"><br>后续就是结果映射执行过程，这里不再赘述，后续跟上。</environment></p>
 <h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><p>本章主要讲述了mybatis参数解析的过程，重点跟踪了执行sql时，变量占位符${}以及参数占位符#{}的替换和解析过程。实际开发过程中，要注意这两者的区别，能用#{}的地方尽量用#。而${}主要用于order by语句、原生jdbc、表名作参数。</p>
 
                 
@@ -709,12 +866,12 @@
                     
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+                    <link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/share/css/share.min.css">
 <div id="article-share">
 
     
     <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/share/js/social-share.min.js"></script>
     
 
     
@@ -739,10 +896,10 @@
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                        <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -778,7 +935,7 @@
                 }
 
                 j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.src = 'https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/embed.dist.js';
                 j.async = true;
 
                 e.parentNode.insertBefore(j, e);
@@ -954,26 +1111,26 @@
 
 
 <!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeBlockFuction.js"></script>
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeLang.js"></script>
 
 
 <!-- 代码块复制 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeCopy.js"></script>
 
 
 <!-- 代码块收缩 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -995,7 +1152,7 @@
 </div>
 
 
-<script src="/libs/tocbot/tocbot.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/tocbot/tocbot.min.js"></script>
 <script>
     $(function () {
         tocbot.init({
@@ -1079,28 +1236,11 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
-                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
-            
             <br>
             
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">118.4k</span>
             
             
             
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
             
             <br>
 
@@ -1167,7 +1307,7 @@
             <br>
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
+        <div class="col s12 m4 l4 social-link ">
     <a href="https://github.com/zyxelva" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
@@ -1192,7 +1332,15 @@
 
 
 
+    <a href="https://www.zhihu.com/people/kezade" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/kezade" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
 
+
+
+    <a href="rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
 
 </div>
     </div>
@@ -1337,58 +1485,30 @@ $(function () {
 </div>
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/materialize/materialize.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/aos/aos.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/js/matery.js"></script>
 
-    
 
-    
-        <script type="text/javascript" src="/js/tw_cn.js"></script>
-        <script type="text/javascript">
-          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
-          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
-          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
-          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
-          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
-          var translateButtonId = "translateLink"; //默认互换id
-          translateInitilization();
-        </script>
-    
-    
-    
-        
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
-            }
-        </script>
-    
 
-    <!-- 雪花特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
-            }
-        </script>
-    
 
-    <!-- 鼠标星星特效 -->
-    
 
-    
 
-    <!-- Baidu Analytics -->
 
-    <!-- Baidu Push -->
+<!-- 雪花特效 -->
+
+
+<!-- 鼠标星星特效 -->
+
+
+
+
+<!-- Baidu Analytics -->
+
+<!-- Baidu Push -->
 
 <script>
     (function () {
@@ -1404,30 +1524,27 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
 
-    
 
-    
 
-    <!--腾讯兔小巢-->
-    
-    
 
-    
 
-    
-    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
-    
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+
+<!--腾讯兔小巢-->
+
+
+
+
+
+
+    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/background/ribbon-dynamic.js"
+            async="async"></script>
+
+
+
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/instantpage/instantpage.js" type="module"></script>
+
 
 </body>
 

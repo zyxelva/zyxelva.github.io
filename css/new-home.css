@@ -1,0 +1,337 @@
+.home #album, .home #goods {
+    padding: 0 1rem;
+    margin-bottom: 2rem
+}
+
+.home .goods-bankuai {
+    width: calc(19.33% - -1px);
+    margin: 0;
+    height: 294px;
+    text-align: left
+}
+
+.home .goods-duiqi {
+    min-height: 120px
+}
+
+.home .memos-photo-wrapper {
+    grid-template-columns:repeat(6, minmax(0, 1fr))
+}
+
+.home .memos-photo {
+    max-height: 160px
+}
+
+@media (max-width: 549px) {
+    .douban .dfdORB {
+        width: 46%
+    }
+
+    .douban .dfdORB:nth-child(n+5) {
+        display: none
+    }
+}
+
+@media (max-width: 899px) {
+    .post-cover {
+        margin: 20px 0;
+        width: 100%
+    }
+
+    .home-1 .post-cover {
+        margin: 0 0 2rem;
+        width: 100%;
+        max-width: 100%;
+        float: none
+    }
+
+    .home-1 .post-title, .home-1 .post-meta, .home-1 .post-content {
+        margin-left: 0
+    }
+
+    .home .memos-photo-wrapper {
+        grid-template-columns:repeat(3, minmax(0, 1fr))
+    }
+
+    .home .memos-photo {
+        max-height: 130px
+    }
+
+    .home .read-more.button {
+        margin-bottom: 1rem
+    }
+
+    .home .goods-bankuai {
+        width: calc(48.33% - -3px);
+        margin: 0 0 .3rem;
+        height: 194px
+    }
+
+    .home .goods-duiqi {
+        min-height: 40px !important;
+        max-height: 6rem !important
+    }
+
+    .home .goods-bankuai:nth-child(n+5) {
+        display: none
+    }
+
+    .douban {
+        padding: 0
+    }
+}
+
+/* goods-------- start*/
+.goods-bankuai {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(25.33% - 16px);
+    height: 326px;
+    margin: 0 8px 12px 0;
+    list-style: none;
+    border-radius: 8px;
+    background: var(--code-bg);
+    padding: 0 16px;
+    overflow: hidden;
+}
+
+.goods-duiqi {
+    min-height: 164px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.goods-duiqi img {
+    width: 80%;
+    margin: 0;
+    transition: transform .2s ease-in-out;
+    cursor: pointer
+}
+
+.goods-duiqi:hover img {
+    transform: translateY(-4px)
+}
+
+.goods-title {
+    font-size: 14px;
+    margin: 0;
+    transition: .5s
+}
+
+.goods-title a {
+    font-size: 14px;
+    text-decoration: none
+}
+
+.goods-jiage {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.4rem
+}
+
+.goods-note {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.3rem
+}
+
+@media (max-width: 700px) {
+    .goods-bankuai {
+        width: 100%;
+        height: 100%;
+        padding: 0 2% 5% 2%
+    }
+
+    .goods-title {
+        font-size: 14px;
+        margin: 0 10px !important;
+        transition: .5s
+    }
+
+    .goods-jiage {
+        margin: 0 10px 0 10px
+    }
+
+    .goods-duiqi img {
+        width: 50%;
+        margin: 0
+    }
+
+    .goods-note {
+        line-height: 1.3rem;
+        margin: 8px 10px 0 10px
+    }
+
+    .goods-title {
+        font-size: 14px;
+        margin: 0 auto;
+        line-height: 1.5rem
+    }
+
+    .goods-title a {
+        font-size: 14px;
+        text-decoration: none;
+        box-shadow: none
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 900px) {
+    .goods-quanju {
+        font-size: 0;
+        width: 106%
+    }
+
+    .goods-bankuai {
+        display: inline-block;
+        vertical-align: top;
+        width: 40%;
+        margin-right: 15px;
+        height: 420px;
+    }
+
+    .goods-title {
+        font-size: 14px;
+        margin: 0 auto;
+        line-height: 1.5rem;
+        transition: .5s
+    }
+
+    .goods-title a {
+        font-size: 14px;
+        text-decoration: none;
+        box-shadow: none
+    }
+}
+
+@media (min-width: 900px) {
+    .goods-quanju {
+        font-size: 0;
+        width: 106%
+    }
+
+    .goods-bankuai {
+        display: inline-block;
+        vertical-align: top;
+        width: calc(25.33% - 16px);
+        height: 312px;
+        margin: 0 8px 12px 0
+    }
+
+    .goods-note {
+        font-size: 14px;
+        line-height: 1.3rem;
+        margin-top: .5rem
+    }
+
+    .goods-duiqi img {
+        width: 80%;
+        margin: 0
+    }
+
+    .goods-bankuai.img-hide img {
+        transition: transform .2s ease-in-out;
+        cursor: pointer
+    }
+
+    .goods-bankuai.img-hide:hover img {
+        transform: translateY(-4px)
+    }
+
+    .goods-title {
+        font-size: 16px;
+        margin: 0 auto;
+        line-height: 1.6rem;
+        transition: .5s
+    }
+
+    .goods-title a {
+        font-size: 16px;
+        text-decoration: none;
+        box-shadow: none;
+        transition: .5s
+    }
+}
+
+/* goods -------- end */
+
+.memos-photo-wrapper {
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+    margin-top: .5rem;
+    display: grid;
+    width: 100%;
+    gap: .5rem
+}
+
+.memos-photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: .25rem;
+    height: 194px
+}
+
+.memos-photo > a > img {
+    min-height: 100%;
+    width: auto;
+    min-width: 100%;
+    cursor: pointer;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: auto;
+    animation: fadeIn 1s;
+    transition: all .4s ease-in-out;
+    border-radius: 4px;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.memos-photo span.photo-time, .memos-photo span.photo-title {
+    background: rgba(0, 0, 0, .3);
+    padding: 0 8px;
+    font-size: .9rem;
+    color: #fff;
+    display: none;
+    animation: fadeIn 1s
+}
+
+.memos-photo span.photo-title {
+    position: absolute;
+    bottom: 4px;
+    left: 4px
+}
+
+.memos-photo span.photo-time {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    font-size: .8rem
+}
+
+.memos-photo:hover span.photo-time, .memos-photo:hover span.photo-title {
+    display: block !important
+}
+
+@media screen and (min-width: 480px) and (max-width: 899px) {
+    .memos-photo-wrapper {
+        grid-template-columns:repeat(3, minmax(0, 1fr))
+    }
+
+    .memos-photo {
+        height: 201px
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .memos-photo-wrapper {
+        grid-template-columns:repeat(2, minmax(0, 1fr))
+    }
+
+    .memos-photo {
+        height: 171px
+    }
+}
+
+
+element.style {
+    min-height: 160px;
+}

@@ -7,8 +7,10 @@
     <meta name="keywords" content="【Netty学习】3.Netty的组件, Back-End Dev Java">
     <meta name="description" content="1 为什么要用 Netty?
 提供了 JAVA NIO但没有提供针对 Protocol Buffer、JSON 这些信息格式的封装。
+
 NIO类库和 API 复杂，网络编程复杂，难度较大。
-提供上层特有服务，如数据格式封装，客户端权限、简单的">
+
+提供上层特有服务，如数据格式封装，客户端权限、简">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,14 +23,15 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
 
 
     <title>【Netty学习】3.Netty的组件 | Kezade</title>
-    <link rel="icon" type="image/png" href="/medias/avatar.png">
+    <link rel="icon" type="image/png" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/avatar.png">
     
     <style>
-        body{
-            background-image: url(https://cdn.jsdelivr.net/gh/zyxelva/picgo/images/wallpaper/43616-105.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
+        body {
+            background-image: url(https://it-ark-dev.oss-cn-shenzhen.aliyuncs.com/464e9ac7a5a729ae67f91f7cf0cf6fe2.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center center;
         }
     </style>
 
@@ -38,33 +41,49 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
 
 
 
-<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-<link rel="stylesheet" type="text/css" href="/css/matery.css">
-<link rel="stylesheet" type="text/css" href="/css/my.css">
-<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/matery.css?v2">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/my.css">
+<link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/dark.css" media="none" onload="if(media!='all')media='all'">
 
 
 
 
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-    <link rel="stylesheet" href="/css/post.css">
+    <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/post.css">
 
 
 
 
     
-        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+        <link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/css/reward.css">
     
 
 
 
-    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
-
-<meta name="generator" content="Hexo 6.3.0"></head>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/jquery/jquery-3.6.0.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/function.js?v3"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/imgStatus.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/waterfall.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/lately.min.js"></script>
+<!-- hexo injector head_end start --><script async defer src="https://kezade-umami.zeabur.app/script.js" data-website-id="38a8a7e4-0745-4f35-91cb-41dc78c52778" data-host-url="https://kezade-umami.zeabur.app" data-domains="zyxelva.github.io"></script><script type="text/javascript">
+            var memos = {
+                host: "https://memos-zyx.zeabur.app/",
+                limit: "10",
+                creatorId: "1",
+                username: "zyxelva",
+                name: "Kezade",
+                domId: '#memos',
+            };
+            var douban = {
+                api: "https://douban-api.edui.fun/",
+            }
+        </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss2.xml" title="Kezade" type="application/rss+xml">
+</head>
 
 
 <body>
@@ -74,7 +93,7 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/avatar.png" class="logo-img" alt="LOGO">
+                    <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/avatar.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">Kezade</span>
                 </a>
@@ -97,24 +116,15 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/archives" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
 
       
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      <i class="fa-solid fa-newspaper" style="zoom: 0.6;"></i>
       
-      <span>归档</span>
+      <span>文章</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/galleries">
-          
-          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>相册</span>
-        </a>
-      </li>
       
       <li>
         <a href="/tags">
@@ -131,6 +141,49 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
           <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
           
           <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fa-solid fa-place-of-worship" style="zoom: 0.6;"></i>
+      
+      <span>我的地盘</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/photos">
+          
+          <i class="fa-solid fa-photo-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Memos</span>
         </a>
       </li>
       
@@ -158,23 +211,53 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/friends" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
+
       
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      <i class="fa-solid fa-circle-info" style="zoom: 0.6;"></i>
       
-      <span>友情链接</span>
+      <span>更多</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
+    <ul class="sub-nav menus_item_child ">
       
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>留言</span>
+        </a>
+      </li>
       
-      <span>关于</span>
-    </a>
+      <li>
+        <a href="/friends">
+          
+          <i class="fa-solid fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友链</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friend-circle">
+          
+          <i class="fa-solid fa-rss" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>朋友圈</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -195,7 +278,7 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/avatar.png" class="logo-img circle responsive-img">
+        <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/avatar.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">Kezade</div>
         <div class="logo-desc">
@@ -222,22 +305,12 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
 	  
 		<a href="javascript:;">
 			
-				<i class="fa-fw fas fa-archive"></i>
+				<i class="fa-fw fa-solid fa-newspaper"></i>
 			
-			归档
+			文章
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
-              
-                <li>
-
-                  <a href="/galleries " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
-			      
-		          <span>相册</span>
-                  </a>
-                </li>
               
                 <li>
 
@@ -256,6 +329,51 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
 				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
 			      
 		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fa-solid fa-place-of-worship"></i>
+			
+			我的地盘
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/photos " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-photo-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Memos</span>
                   </a>
                 </li>
               
@@ -285,23 +403,56 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
         
         <li class="m-nav-item">
 	  
-		<a href="/friends" class="waves-effect waves-light">
+		<a href="javascript:;">
 			
-			    <i class="fa-fw fas fa-address-book"></i>
+				<i class="fa-fw fa-solid fa-circle-info"></i>
 			
-			友情链接
+			更多
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:50px" ></i>
+			      
+		          <span>留言</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/friends " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-link" style="position: absolute;left:50px" ></i>
+			      
+		          <span>友链</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/friend-circle " style="margin-left:75px">
+				  
+				   <i class="fa fa-solid fa-rss" style="position: absolute;left:50px" ></i>
+			      
+		          <span>朋友圈</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -381,6 +532,19 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
 </header>
 
     
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/Netty.png')">
@@ -446,7 +610,7 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.7k
+                    7.6k
                 </div>
                 
 
@@ -458,18 +622,13 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
                 
 
                 
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
             </div>
         </div>
         <hr class="clearfix">
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/prism/prism.min.css">
         
 
         
@@ -477,19 +636,26 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="1-为什么要用-Netty"><a href="#1-为什么要用-Netty" class="headerlink" title="1 为什么要用 Netty?"></a>1 为什么要用 Netty?</h1><ul>
-<li>提供了 <code>JAVA NIO</code>但<code>没有提供</code>针对 <code>Protocol Buffer</code>、<code>JSON</code> 这些信息格式的<code>封装</code>。</li>
-<li>NIO类库和 API <code>复杂</code>，<code>网络编程复杂</code>，<code>难度较大</code>。</li>
-<li>提供上层特有服务，如数据格式封装，客户端权限、简单的数据读取、断连重连、半包读写、心跳等。</li>
-<li><code>JAVA NIO</code> 存在 <code>epoll bug</code>, <code>selector</code> 不能阻塞，CPU 会飚至 100%（只能在 LINUX 内核上重现），Netty 已经解决。<ul>
-<li>原因：<blockquote>
+<li><p>提供了 <code>JAVA NIO</code>但<code>没有提供</code>针对 <code>Protocol Buffer</code>、<code>JSON</code> 这些信息格式的<code>封装</code>。</p>
+</li>
+<li><p>NIO类库和 API <code>复杂</code>，<code>网络编程复杂</code>，<code>难度较大</code>。</p>
+</li>
+<li><p>提供上层特有服务，如数据格式封装，客户端权限、简单的数据读取、断连重连、半包读写、心跳等。</p>
+</li>
+<li><p><code>JAVA NIO</code> 存在 <code>epoll bug</code>, <code>selector</code> 不能阻塞，CPU 会飚至 100%（只能在 LINUX 内核上重现），Netty 已经解决。</p>
+<ul>
+<li><p>原因：</p>
+<blockquote>
 <p>因为<code>poll</code>和<code>epoll</code>对于<strong>突然中断</strong>的连接socket会对返回的<code>eventSet事件集合</code>置为<code>POLLHUP</code>或者<code>POLLERR</code>，<code>eventSet事件集合</code>发生了变化，这就导致<code>Selector</code>会<strong>被唤醒</strong>，进而导致CPU 100%问题。<code>根本原因</code>就是<strong>JDK没有处理好这种情况</strong>。</p>
 </blockquote>
 </li>
-<li>netty 解决办法：<blockquote>
+<li><p>netty 解决办法：</p>
+<blockquote>
 <p>创建一个新的<code>Selector</code>。处理机制就是如果发生了这种情况，并且发生次数超过了<code>SELECTOR_AUTO_REBUILD_THRESHOLD</code>(默认512)，则调用<code>rebuildSelector()</code>进行<code>Selecttor重建</code>，这样就不用管之前发生了异常情况的那个连接了。因为重建也是根据<code>SelectionKey事件</code>对应的<code>连接</code>来<code>重新注册</code>的。</p>
 </blockquote>
 </li>
-<li>NIO <code>epoll bug</code>不是<code>linux epoll</code>的问题，而是<code>JDK</code>自己实现<code>epoll</code>时没有考虑这种情况。</li>
+<li><p>NIO <code>epoll bug</code>不是<code>linux epoll</code>的问题，而是<code>JDK</code>自己实现<code>epoll</code>时没有考虑这种情况。</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -499,9 +665,11 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
 </ul>
 <h1 id="3-为什么不用Netty5"><a href="#3-为什么不用Netty5" class="headerlink" title="3 为什么不用Netty5?"></a>3 为什么不用Netty5?</h1><p>Netty5 已经停止开发。</p>
 <h1 id="4-Netty-组件"><a href="#4-Netty-组件" class="headerlink" title="4 Netty 组件"></a>4 Netty 组件</h1><h2 id="4-1-Channel"><a href="#4-1-Channel" class="headerlink" title="4.1 Channel"></a>4.1 Channel</h2><p>代表一个到<code>实体</code>（如一个硬件设备、一个文件、一个网络套接字或者一个能够执行一个或者多个不同的I&#x2F;O 操作的程序组件）的<code>开放连接</code>，如<code>读操作</code>和<code>写操作</code>。</p>
-<p>目前，可以把Channel看作是<code>传入</code>（入站）或者<code>传出</code>（出站）数据的载体。因此，它可以<code>被打开</code>或者<code>被关闭</code>，<code>连接</code>或者<code>断开连接</code>。<br><img src="https://img-blog.csdn.net/20151005150520638" alt="抽象的Channel"></p>
+<p>目前，可以把Channel看作是<code>传入</code>（入站）或者<code>传出</code>（出站）数据的载体。因此，它可以<code>被打开</code>或者<code>被关闭</code>，<code>连接</code>或者<code>断开连接</code>。</p>
+<p><img src="/images/uploads/abstract-channel.png" alt="抽象的Channel"></p>
 <ul>
-<li>生命周期<ul>
+<li><p>生命周期</p>
+<ul>
 <li>ChannelUnregistered：<code>Channel</code> 已经<code>被创建</code>，但还<code>未注册</code>到<code>EventLoop</code>；</li>
 <li>ChannelRegistered：<code>Channel</code> 已经<code>被注册</code>到了<code>EventLoop</code>；</li>
 <li>ChannelActive：<code>Channel</code>处于<code>活动状态</code>（已经连接到它的远程节点）。它现在可以<code>接收</code>和<code>发送</code>数据了；</li>
@@ -510,21 +678,15 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
 </li>
 </ul>
 <p>当这些状态发生改变时，将会生成对应的事件。这些事件将会被转发给<code>ChannelPipeline</code>中的<code>ChannelHandler</code>，其可以随后对它们做出响应。</p>
-<p><img src="https://img-blog.csdn.net/20151005210409421" alt="Channel生命周期"></p>
+<p><img src="/images/uploads/channel-life.png" alt="Channel生命周期"></p>
 <ul>
 <li>接口</li>
 </ul>
 <p>基本的 <code>I/O 操作</code>(<code>bind()</code>、<code>connect()</code>、<code>read()</code>和 <code>write()</code>)依赖于底层网络传输所提供的<code>原语</code>。在基于 Java 的网络编程中，其基本的构造是<code>类 Socket</code>。Netty 的 <code>Channel 接口</code>所提供的 <code>API</code>，被用于所有的 <code>I/O 操作</code>。大大地降低了直接使用 Socket 类的复杂性。此外，Channel 也是拥有许多<code>预定义的</code>、<code>专门化实现的</code>广泛类层次结构的根。</p>
 <p>由于Channel 是<code>独一无二</code>的，所以为了保证顺序将Channel 声明为<code>java.lang.Comparable</code> 的一个<code>子接口</code>。因此，如果两个不同的 <code>Channel 实例</code>都返回了相同的散列码，那么 <code>AbstractChannel</code> 中的 <code>compareTo()方法</code>的实现将会抛出一个 <code>Error</code>。</p>
 <ul>
-<li>最重要 Channel 的方法<ul>
-<li><code>eventLoop</code>: 返回分配给 Channel 的 EventLoop</li>
-<li><code>pipeline</code>: 返回分配给 Channel 的 ChannelPipeline</li>
-<li><code>isActive</code>: 如果 Channel 是活动的，则返回 true。活动的意义可能依赖于底层的传输。 例如，一个 Socket 传输一旦连接到了远程节点便是活动的，而一个 Datagram 传输一旦被 打开便是活动的。</li>
-<li><code>localAddress</code>: 返回<strong>本地</strong>的 <code>SokcetAddress</code></li>
-<li><code>remoteAddress</code>: 返回<strong>远程</strong>的 <code>SocketAddress</code></li>
-<li><code>write</code>: 将数据写到远程节点。这个数据将被传递给 <code>ChannelPipeline</code>，并且排队直到它被冲刷</li>
-<li><code>flush</code>: 将之前已写的数据冲刷到底层传输，如一个 <code>Socket</code></li>
+<li>最重要 Channel 的方法<br>    + <code>eventLoop</code>: 返回分配给 Channel 的 EventLoop<ul>
+<li><code>pipeline</code>: 返回分配给 Channel 的 ChannelPipeline<br>+ <code>isActive</code>: 如果 Channel 是活动的，则返回 true。活动的意义可能依赖于底层的传输。 例如，一个 Socket 传输一旦连接到了远程节点便是活动的，而一个 Datagram 传输一旦被 打开便是活动的。<br>+ <code>localAddress</code>: 返回<strong>本地</strong>的 <code>SokcetAddress</code><br>+ <code>remoteAddress</code>: 返回<strong>远程</strong>的 <code>SocketAddress</code><br>+ <code>write</code>: 将数据写到远程节点。这个数据将被传递给 <code>ChannelPipeline</code>，并且排队直到它被冲刷<br>+ <code>flush</code>: 将之前已写的数据冲刷到底层传输，如一个 <code>Socket</code></li>
 <li><code>writeAndFlush</code>: 一个简便的方法，等同于调用 <code>write()</code>并接着调用 <code>flush()</code></li>
 </ul>
 </li>
@@ -536,28 +698,24 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
 <p><code>interface io.netty.channel.EventLoop</code> 定义了 Netty 的核心抽象，用于处理网络连接的生命周期中所发生的事件。</p>
 <p>Netty 的 <code>EventLoop</code> 是<code>协同设计</code> 的一部分，它采用了两个基本的 API:<code>并发</code>和<code>网络编程</code>。</p>
 <ul>
-<li><p><code>io.netty.util.concurrent</code> 包构建在 JDK 的 <code>java.util.concurrent</code> 包上，用来提供<code>线程执行器</code>。</p>
-</li>
-<li><p><code>io.netty.channel</code> 包中的类，为了与 <code>Channel</code> 的事件进行交互， 扩展了这些接口&#x2F;类。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/EventLoop.png" alt="EventLoop类层次结构"></p>
-</li>
-<li><p>一个 <code>EventLoop</code> 将由一个<strong>永远都不会改变</strong>的 <code>Thread</code> 驱动，同时<code>任务</code>(Runnable 或者 Callable)可以<strong>直接</strong>提交给 <code>EventLoop</code> 实现，以立即执行或者调度执行。</p>
-</li>
-<li><p>Netty 的 <code>EventLoop</code> 在继承了 <code>ScheduledExecutorService</code> 的同时，只定义了一个方法， <code>parent()</code>。在 <code>Netty 4</code> 中，所有的 <code>I/O 操作和事件</code>都由已经被分配给了 <code>EventLoop</code> 的那个 <code>Thread</code> 来处理。</p>
-</li>
+<li><code>io.netty.util.concurrent</code> 包构建在 JDK 的 <code>java.util.concurrent</code> 包上，用来提供<code>线程执行器</code>。</li>
+<li><code>io.netty.channel</code> 包中的类，为了与 <code>Channel</code> 的事件进行交互， 扩展了这些接口&#x2F;类。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/EventLoop.png" alt="EventLoop类层次结构"></li>
+<li>一个 <code>EventLoop</code> 将由一个<strong>永远都不会改变</strong>的 <code>Thread</code> 驱动，同时<code>任务</code>(Runnable 或者 Callable)可以<strong>直接</strong>提交给 <code>EventLoop</code> 实现，以立即执行或者调度执行。</li>
+<li>Netty 的 <code>EventLoop</code> 在继承了 <code>ScheduledExecutorService</code> 的同时，只定义了一个方法， <code>parent()</code>。在 <code>Netty 4</code> 中，所有的 <code>I/O 操作和事件</code>都由已经被分配给了 <code>EventLoop</code> 的那个 <code>Thread</code> 来处理。</li>
 </ul>
 <p><code>EventLoopGroup</code> 是一组 <code>EventLoop</code>，Channel 一般会调用 <code>EventLoopGroup</code> 的 <code>register</code> 方法来<code>绑定</code>其中一个 <code>EventLoop</code>，后续这个 Channel 上的 <code>IO 事件</code>都由此 <code>EventLoop</code> 来处理（保证了 IO 事件处理时的线程安全）。</p>
 <h3 id="4-2-1-任务调度"><a href="#4-2-1-任务调度" class="headerlink" title="4.2.1 任务调度"></a>4.2.1 任务调度</h3><p>偶尔，你将需要调度一个任务以便稍后(延迟)执行或者周期性地执行。例如，你可能想要注册一个在客户端已经连接了 5 分钟之后触发的任务。一个常见的用例是，发送<code>心跳消息</code>到远程节点，以检查连接是否仍然还活着。如果没有响应，你便知道可以关闭该 <code>Channel</code> 了。</p>
-<h3 id="4-2-2-线程管理"><a href="#4-2-2-线程管理" class="headerlink" title="4.2.2 线程管理"></a>4.2.2 线程管理</h3><p>在内部，当提交任务到如果(当前)调用线程正是支撑 EventLoop 的线程，那么所提交的代码块将会被(直接)执行。否则，EventLoop 将调度该任务以便稍后执行，并将它放入 到内部队列中。当 EventLoop 下次处理它的事件时，它会执行队列中的那些任务&#x2F;事件。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/EventLoop%20Execution%20Logic.png" alt="EventLoop的执行逻辑"></p>
+<h3 id="4-2-2-线程管理"><a href="#4-2-2-线程管理" class="headerlink" title="4.2.2 线程管理"></a>4.2.2 线程管理</h3><p>在内部，当提交任务到如果(当前)调用线程正是支撑 EventLoop 的线程，那么所提交的代码块将会被(直接)执行。否则，EventLoop 将调度该任务以便稍后执行，并将它放入 到内部队列中。当 EventLoop 下次处理它的事件时，它会执行队列中的那些任务&#x2F;事件。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/EventLoop%20Execution%20Logic.png" alt="EventLoop的执行逻辑"></p>
 <h3 id="4-2-3-线程分配"><a href="#4-2-3-线程分配" class="headerlink" title="4.2.3 线程分配"></a>4.2.3 线程分配</h3><p>服务于 Channel 的 <code>I/O</code> 和事件的 <code>EventLoop</code> 包含在 <code>EventLoopGroup</code> 中。根据不同的传输实现，<code>EventLoop</code> 的创建和分配方式也不同。</p>
 <ul>
 <li>异步传输</li>
 </ul>
 <p>异步传输实现只使用了<code>少量的 EventLoop</code>(以及和它们相关联的 <code>Thread</code>)，而且在当前的线程模型中，它们可能会被多个 <code>Channel</code> 所共享。这使得可以通过尽可能少量的 <code>Thread</code> 来支撑大量的 <code>Channel</code>，而不是每个 <code>Channel</code> 分配一个 <code>Thread</code>。<br>下图中显示了一个 <code>EventLoopGroup</code>，它具有 3 个<code>固定大小</code>的 <code>EventLoop</code>(每个 EventLoop 都由一个 Thread 支撑)。在创建 <code>EventLoopGroup</code> 时就直接分配了 <code>EventLoop</code>(以及支撑它们的 <code>Thread</code>)，以确保在需要时它们是可用的。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/NIO%20Dispatch%20Model.png" alt="用于非阻塞传输(如 NIO 和 AIO)的 EventLoop 分配方式"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/NIO%20Dispatch%20Model.png" alt="用于非阻塞传输(如 NIO 和 AIO)的 EventLoop 分配方式"></p>
 <ul>
 <li>阻塞传输</li>
 </ul>
-<p>用于像 <code>OIO</code>(旧的阻塞 I&#x2F;O)这样的其他传输的设计略有不同，如下图所示。这里每一个 <code>Channel</code> 都将被分配给<code>一个 EventLoop</code>(以及它的 Thread)。如果你开发的应用程序使用过 <code>java.io</code> 包中的<code>阻塞 I/O</code> 实现，你可能就遇到过这种模型。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/OIO%20Dispatch%20Model.png" alt="阻塞传输(如 OIO)的 EventLoop 分配方式"></p>
+<p>用于像 <code>OIO</code>(旧的阻塞 I&#x2F;O)这样的其他传输的设计略有不同，如下图所示。这里每一个 <code>Channel</code> 都将被分配给<code>一个 EventLoop</code>(以及它的 Thread)。如果你开发的应用程序使用过 <code>java.io</code> 包中的<code>阻塞 I/O</code> 实现，你可能就遇到过这种模型。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/OIO%20Dispatch%20Model.png" alt="阻塞传输(如 OIO)的 EventLoop 分配方式"></p>
 <p>但是，正如同之前一样，得到的保证是每个 <code>Channel</code> 的 <code>I/O 事件</code>都将只会被<code>一个 Thread</code> (用于支撑该 Channel 的 EventLoop 的那个 Thread)处理。这也是另一个 Netty <code>设计一致性</code>的例子，它(这种设计上的一致性)对 Netty 的<code>可靠性</code>和<code>易用性</code>做出了巨大贡献。</p>
 <h2 id="4-3-ChannelFuture"><a href="#4-3-ChannelFuture" class="headerlink" title="4.3 ChannelFuture"></a>4.3 ChannelFuture</h2><blockquote>
 <p>Netty 中所有的 I&#x2F;O 操作都是<code>异步的</code>。</p>
@@ -570,7 +728,8 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
 <h2 id="4-4-ChannelHandler"><a href="#4-4-ChannelHandler" class="headerlink" title="4.4 ChannelHandler"></a>4.4 ChannelHandler</h2><p>从应用程序开发人员的角度来看，Netty 的主要组件是 <code>ChannelHandler</code>，它充当了所有处理<code>入站</code>和<code>出站</code>数据的应用程序逻辑的<code>容器</code>。</p>
 <p><code>ChannelHandler</code> 的方法是由<code>网络事件</code>触发的。 事实上，<code>ChannelHandler</code> 可专门用于几乎任何类型的动作，例如将数据从一种格式转换为另外一种格式，例如各种编解码，或者处理转换过程中所抛出的异常。</p>
 <ul>
-<li>ChannelHandler 的生命周期：在<code>ChannelHandler</code>被<code>添加</code>到<code>ChannelPipeline</code> 中或者被从<code>ChannelPipeline</code> 中<code>移除</code>时会调用下面这些方法。这些方法中的每一个都接受一个 <code>ChannelHandlerContext</code> 参数。 <ul>
+<li><p>ChannelHandler 的生命周期：在<code>ChannelHandler</code>被<code>添加</code>到<code>ChannelPipeline</code> 中或者被从<code>ChannelPipeline</code> 中<code>移除</code>时会调用下面这些方法。这些方法中的每一个都接受一个 <code>ChannelHandlerContext</code> 参数。 </p>
+<ul>
 <li><code>handlerAdded</code>：当把 <code>ChannelHandler</code> <code>添加</code>到 <code>ChannelPipeline</code> 中时被调用；</li>
 <li><code>handlerRemoved</code>：当从 <code>ChannelPipeline</code> 中<code>移除</code> <code>ChannelHandler</code> 时被调用；</li>
 <li><code>exceptionCaught</code>：当处理过程中在 <code>ChannelPipeline</code> 中<code>有错误产生</code>时被调用。</li>
@@ -627,13 +786,13 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
 <h3 id="4-5-1-ChannelPipeline-中-ChannelHandler"><a href="#4-5-1-ChannelPipeline-中-ChannelHandler" class="headerlink" title="4.5.1 ChannelPipeline 中 ChannelHandler"></a>4.5.1 ChannelPipeline 中 ChannelHandler</h3><p><code>入站</code>和<code>出站</code> <code>ChannelHandler</code> 可以被安装到同一个 <code>ChannelPipeline</code> 中。如果一个消息或者任何其他的入站事件被读取，那么它会从 ChannelPipeline 的<code>头部</code>开始流动，最终，数据将会到达 <code>ChannelPipeline</code> 的<code>尾端</code>，届时，所有处理就都结束了。</p>
 <p>数据的<code>出站运动</code>(即正在被写的数据)在概念上也是一样的。在这种情况下，数据将从 <code>ChannelOutboundHandler</code> 链的<code>尾端</code>开始流动，直到它到达链的<code>头部</code>为止。在这之后，出站数据将会到达<code>网络传输层</code>，这里显示为 Socket。通常情况下，这将触发一个<code>写操作</code>。</p>
 <p>如果将两个类别的<code>ChannelHandler</code>都混合添加到同一个<code>ChannelPipeline</code> 中会发生什么。 虽然 <code>ChannelInboundHandle</code> 和 <code>ChannelOutboundHandle</code> 都扩展自 <code>ChannelHandler</code>，但是 Netty 能区分 <code>ChannelInboundHandler</code> 实现和 <code>ChannelOutboundHandler</code> 实现，并确保数据只会在具有<code>相同定向类型</code>的两个 <code>ChannelHandler</code> 之间传递。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/ChannelPipeline.png" alt="包含入站出站的pipeline"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/ChannelPipeline.png" alt="包含入站出站的pipeline"></p>
 <h2 id="4-6-ChannelHandlerContext"><a href="#4-6-ChannelHandlerContext" class="headerlink" title="4.6 ChannelHandlerContext"></a>4.6 ChannelHandlerContext</h2><p>通过使用作为参数传递到每个方法的 <code>ChannelHandlerContext</code>，事件可以被传递给当前 <code>ChannelHandler</code> 链中的<code>下一个 ChannelHandler</code>。虽然这个对象可以被用于获取底层的 Channel，但是它主要还是被用于<code>写出站数据</code>。</p>
 <p><code>ChannelHandlerContext</code> 代表了<code>ChannelHandler</code> 和 <code>ChannelPipeline</code> 之间的关联，每当有 <code>ChannelHandler</code> <code>添加</code>到 <code>ChannelPipeline</code> 中时，都会创建 <code>ChannelHandlerContext</code>。</p>
 <p><code>ChannelHandlerContext</code> 的主要功能是管理它所关联的 <code>ChannelHandler</code> 和在同一个 <code>ChannelPipeline</code> 中的其他 <code>ChannelHandler</code> 之间的交互。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/ChannelHandler-in-ChannelHandlerContext.png" alt="ChannelHandler与ChannelHandlerContext"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/ChannelHandler-in-ChannelHandlerContext.png" alt="ChannelHandler与ChannelHandlerContext"></p>
 <p><code>ChannelHandlerContext</code> 有很多的方法，其中一些方法也存在于 <code>Channel</code> 和 <code>ChannelPipeline</code> 本身上，但是有一点重要不同。如果调用<code>Channel</code> 或者<code>ChannelPipeline</code> 上的这些方法，它们将沿着<code>整个 ChannelPipeline</code>进行传播。而调用位于 <code>ChannelHandlerContext</code>上的相同方法，则将从<code>当前所关联的 ChannelHandler</code> 开始，并且<code>只会</code>传播给位于该 <code>ChannelPipeline</code> 中的<code>下一个</code>(入站下一个，出站上一个)能够处理该事件的 <code>ChannelHandler</code>。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/ChannelPipeline2.png" alt="ChannelPipeline、ChannelHandler与ChannelHandlerContext"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/ChannelPipeline2.png" alt="ChannelPipeline、ChannelHandler与ChannelHandlerContext"></p>
 <h3 id="4-6-1-ChannelHandlerContext-的-API"><a href="#4-6-1-ChannelHandlerContext-的-API" class="headerlink" title="4.6.1 ChannelHandlerContext 的 API"></a>4.6.1 ChannelHandlerContext 的 API</h3><ul>
 <li><code>alloc</code> 返回和这个实例相关联的 <code>Channel</code> 所配置的 <code>ByteBufAllocator</code></li>
 <li><code>bind</code> 绑定到给定的 <code>SocketAddress</code>，并返回 <code>ChannelFuture</code></li>
@@ -706,18 +865,16 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
 <li>第一组将只包含<code>一个 ServerChannel</code>，代表服务器自身的<code>已绑定</code>到某个<code>本地端口</code>的正在<code>监听</code>的套接字。</li>
 <li>而第二组将包含所有已创建的用来处理传入<code>客户端连接</code>(对于每个服务器已经接受的连接都有一个)的 <code>Channel</code>。</li>
 </ul>
-</blockquote>
-<blockquote>
 <p>实际上，<code>ServerBootstrap类</code>也可以只使用<code>一个EventLoopGroup</code>，此时其将在两个场景下共用<code>同一个EventLoopGroup</code>。</p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Two-EventLoopGroups-of-a-Server.png" alt="具有两个 EventLoopGroup 的服务器"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/Two-EventLoopGroups-of-a-Server.png" alt="具有两个 EventLoopGroup 的服务器"></p>
 <h2 id="4-9-ByteBuf"><a href="#4-9-ByteBuf" class="headerlink" title="4.9 ByteBuf"></a>4.9 ByteBuf</h2><p>网络中的数据，其基本单位是字节，在<code>JAVA NIO</code>中，利用<code>ByteBuffer</code>作为字节的数据载体，但是之所以有Netty，不就是因为原生网络编程复杂，且API较晦涩咩？因而Netty提供了另外的载体—<code>ByteBuf</code>，一个强大的实现，既解决了 <code>JDK API</code> 的局限性， 又为网络应用程序的开发者提供了更好的 API。</p>
 <h3 id="4-9-1-工作原理"><a href="#4-9-1-工作原理" class="headerlink" title="4.9.1 工作原理"></a>4.9.1 工作原理</h3><p><code>ByteBuf</code> 维护了<strong>两个不同的索引</strong>：</p>
 <ul>
 <li>一个用于<code>读取</code></li>
 <li>一个用于<code>写入</code>。</li>
 </ul>
-<p>当你从 <code>ByteBuf</code> <code>读取</code>时， 它的 <code>readerIndex</code> 将会<code>被递增</code>已经被读取的字节数。同样地，当你<code>写入 ByteBuf </code>时，它的 <code>writerIndex</code> 也会<code>被递增</code>。下图展示了一个<code>空 ByteBuf</code> 的布局结构和状态。<br><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/A-Blank-ByteBuf.png" alt="一个读索引和写索引都设置为 0 的 16 字节 ByteBuf"></p>
+<p>当你从 <code>ByteBuf</code> <code>读取</code>时， 它的 <code>readerIndex</code> 将会<code>被递增</code>已经被读取的字节数。同样地，当你<code>写入 ByteBuf</code>时，它的 <code>writerIndex</code> 也会<code>被递增</code>。下图展示了一个<code>空 ByteBuf</code> 的布局结构和状态。<br><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/A-Blank-ByteBuf.png" alt="一个读索引和写索引都设置为 0 的 16 字节 ByteBuf"></p>
 <p>要了解这些索引<code>两两之间</code>的关系，请考虑一下，如果打算<code>读取</code>字节直到 <code>readerIndex</code> 达到和 <code>writerIndex</code> 同样的值时会发生什么。在那时，你将会到达<code>可以读取的</code>数据的末尾。就如同试图读取<code>超出</code>数组末尾的数据一样，试图读取超出该点的数据将会触发一个 <code>IndexOutOfBoundsException</code>。</p>
 <p>名称以 <code>read</code> 或者 <code>write</code> 开头的 <code>ByteBuf</code> 方法，将会推进其对应的索引，而名称以 <code>set</code> 或 者 <code>get</code> 开头的操作则不会。后面的这些方法将在作为一个<code>参数</code>传入的一个<code>相对索引</code>上执行操作。</p>
 <p>可以指定 <code>ByteBuf</code> 的<strong>最大容量</strong>。试图移动<code>写索引</code>(即 <code>writerIndex</code>)超过这个值将会触发一个<code>异常</code>。(默认的限制是 <code>Integer.MAX_VALUE</code>。)</p>
@@ -828,12 +985,10 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
   <td class="xl65"><font class="font8">返回一个用于套接字的</font><font class="font6"> I/O </font><font class="font8">操作的</font><font class="font6"> ByteBuf<span style="mso-spacerun:yes"> </span></font>
   </td>
  </tr>
- <![if supportMisalignedColumns]>
  <tr height="0" style="display:none">
   <td width="429" style="width:322pt"></td>
   <td width="460" style="width:345pt"></td>
  </tr>
- <![endif]>
 </table>
 
 <p>可以通过 <code>Channel</code>(每个都可以有一个不同的 <code>ByteBufAllocator</code> 实例)或者绑定到 <code>ChannelHandler</code> 的 <code>ChannelHandlerContext</code> 获取一个到 <code>ByteBufAllocator</code> 的<code>引用</code>。</p>
@@ -842,8 +997,7 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token class-name">ChannelHandlerContext</span> ctx <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
 <span class="token class-name">ByteBufAllocator</span> allocator2 <span class="token operator">=</span> ctx<span class="token punctuation">.</span><span class="token function">alloc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 从 ChannelHandlerContext 获取一个到 ByteBufAllocator 的引用</span>
- <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p>两种ByteBufAllocator的实现</p>
@@ -853,65 +1007,7 @@ NIO类库和 API 复杂，网络编程复杂，难度较大。
 </ul>
 </blockquote>
 <ul>
-<li>Unpooled 缓冲区<br>Netty 提供了一个简单的称为 Unpooled 的工具类<code>ByteBufUtil</code>，它提供了<code>静态</code>的辅助方法来创建<code>未池化</code>的 ByteBuf 实例。<table border="0" cellpadding="0" cellspacing="0" width="854" style="border-collapse:
- collapse;table-layout:fixed;width:640pt">
- <col width="423" style="mso-width-source:userset;mso-width-alt:13525;width:317pt">
- <col width="431" style="mso-width-source:userset;mso-width-alt:13781;width:323pt">
- <tr height="24" style="height:18.0pt">
-<td height="24" class="xl65" width="423" style="height:18.0pt;width:317pt"><font class="font7">名称</font></td>
-<td class="xl65" width="431" style="width:323pt"><font class="font7">描述</font></td>
- </tr>
- <tr height="24" style="height:18.0pt">
-<td height="24" class="xl65" style="height:18.0pt">
-<div title="Page 91">buffer()</div></td>
-<td rowspan="3" class="xl65">
-<div title="Page 91"><font class="font8">返回一个未池化的基于堆内存存储的</font><font class="font6">ByteBuf</font></div></td>
- </tr>
- <tr height="24" style="height:18.0pt">
-<td height="24" class="xl65" style="height:18.0pt">buffer(int initialCapacity)</td>
- </tr>
- <tr height="24" style="height:18.0pt">
-<td height="24" class="xl65" style="height:18.0pt">buffer(int initialCapacity,
-int maxCapacity)<span style="mso-spacerun:yes"> </span>
-</td>
- </tr>
- <tr height="24" style="height:18.0pt">
-<td height="24" class="xl65" style="height:18.0pt">
-<div title="Page 91">directBuffer()</div></td>
-<td rowspan="3" class="xl65">
-<div title="Page 91"><font class="font8">返回一个未池化的基于直接内存存储的</font><font class="font6">ByteBuf</font></div>
-</td>
- </tr>
- <tr height="24" style="height:18.0pt">
-<td height="24" class="xl65" style="height:18.0pt">directBuffer(int
-initialCapacity)
-</td>
- </tr>
- <tr height="24" style="height:18.0pt">
-<td height="24" class="xl65" style="height:18.0pt">directBuffer(int
-initialCapacity, int maxCapacity)</td>
- </tr>
- <tr height="24" style="height:18.0pt">
-<td height="24" class="xl65" style="height:18.0pt">
-<div title="Page 91">wrappedBuffer()<span style="mso-spacerun:yes"> </span></div>
-</td>
-<td class="xl65">
-<div title="Page 91"><font class="font8">返回一个包装了给定数据的</font><font class="font6">ByteBuf</font></div>
-</td>
- </tr>
- <tr height="24" style="height:18.0pt">
-<td height="24" class="xl65" style="height:18.0pt">
-<div title="Page 91">copiedBuffer()<span style="mso-spacerun:yes"> </span></div>
-</td>
-<td class="xl65"><font class="font7">返回一个复制了给定数据的</font><font class="font6">ByteBuf</font></td>
- </tr>
- <![if supportMisalignedColumns]>
- <tr height="0" style="display:none">
-<td width="423" style="width:317pt"></td>
-<td width="431" style="width:323pt"></td>
- </tr>
- <![endif]>
-</table></li>
+<li>Unpooled 缓冲区<br>Netty 提供了一个简单的称为 Unpooled 的工具类<code>ByteBufUtil</code>，它提供了<code>静态</code>的辅助方法来创建<code>未池化</code>的 ByteBuf 实例。</li>
 </ul>
 <p><code>Unpooled 类</code>还使得 ByteBuf 同样可用于那些并不需要 Netty 的其他组件的<code>非网络项目</code>， 使得其能得益于高性能的可扩展的缓冲区 API。</p>
 <h3 id="4-9-4-字节级操作"><a href="#4-9-4-字节级操作" class="headerlink" title="4.9.4 字节级操作"></a>4.9.4 字节级操作</h3><h4 id="4-9-4-1-随机访问索引"><a href="#4-9-4-1-随机访问索引" class="headerlink" title="4.9.4.1 随机访问索引"></a>4.9.4.1 随机访问索引</h4><p>类似java的字节数组遍历。</p>
@@ -920,14 +1016,15 @@ initialCapacity, int maxCapacity)</td>
   <span class="token keyword">byte</span> b <span class="token operator">=</span> buffer<span class="token punctuation">.</span><span class="token function">getByte</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>需要注意的是，使用那些需要<code>一个索引值参数</code>的方法(的其中)之一来访问数据既<code>不会改变 readerIndex</code> 也<code>不会改变 writerIndex</code>。如果有需要，也可以通过调用 <code>readerIndex(index)</code> 或者 <code>writerIndex(index)</code>来手动移动这两者。</p>
 </blockquote>
 <h4 id="4-9-4-2-顺序访问索引"><a href="#4-9-4-2-顺序访问索引" class="headerlink" title="4.9.4.2 顺序访问索引"></a>4.9.4.2 顺序访问索引</h4><p>虽然 ByteBuf 同时具有<code>读索引</code>和<code>写索引</code>，但是 JDK 的 <code>ByteBuffer</code> 却只有<code>一个索引</code>，这 也就是为什么必须调用 <code>flip()</code>方法来在<code>读模式</code>和<code>写模式</code>之间进行切换的原因。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/ByteBuf-Inner-Segments.png" alt="ByteBuf的内部分段"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/ByteBuf-Inner-Segments.png" alt="ByteBuf的内部分段"></p>
 <h4 id="4-9-4-3-可丢弃字节"><a href="#4-9-4-3-可丢弃字节" class="headerlink" title="4.9.4.3 可丢弃字节"></a>4.9.4.3 可丢弃字节</h4><p><code>可丢弃字节的分段</code>包含了已经<code>被读过</code>的字节。通过调用 <code>discardReadBytes()</code>方法，可以<code>丢弃</code>它们并<code>回收空间</code>。这个分段的初始大小为 0，存储在 <code>readerIndex</code> 中，会随着 <code>read</code> 操作的执行而增加(get*操作不会移动 readerIndex)。</p>
 <p>缓冲区上调用 <code>discardReadBytes()</code>方法后，<code>可丢弃字节分段</code>中的空间已经变为<code>可写</code>的了。 频繁地调用 <code>discardReadBytes()</code>方法以确保可写分段的最大化，但是<strong>请注意</strong>，这将极有可能会导致<code>内存复制</code>，因为<code>可读字节</code>必须被移动到缓冲区的开始位置。建议只在有真正需要的时候才这样做，例如，当内存非常宝贵的时候。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/zyxelva/picgo@main/markdown/discardReadBytes-ByteBuf.png" alt="丢弃已读字节之后的 ByteBuf"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/markdown/discardReadBytes-ByteBuf.png" alt="丢弃已读字节之后的 ByteBuf"></p>
 <h4 id="4-9-4-4-可读字节"><a href="#4-9-4-4-可读字节" class="headerlink" title="4.9.4.4 可读字节"></a>4.9.4.4 可读字节</h4><p>ByteBuf 的可读字节分段存储了实际数据。新分配的、包装的或者复制的缓冲区的默认的 <code>readerIndex</code> 值为 0。</p>
 <h4 id="4-9-4-5-可写字节"><a href="#4-9-4-5-可写字节" class="headerlink" title="4.9.4.5 可写字节"></a>4.9.4.5 可写字节</h4><p>可写字节分段是指一个拥有<code>未定义内容的</code>、<code>写入就绪的</code>内存区域。新分配的缓冲区的 <code>writerIndex</code> 的默认值为 0。任何名称以 <code>write 开头</code>的操作都将从当前的 <code>writerIndex</code> 处开始 写数据，并将它增加已经写入的字节数。</p>
 <h4 id="4-9-4-6-索引管理"><a href="#4-9-4-6-索引管理" class="headerlink" title="4.9.4.6 索引管理"></a>4.9.4.6 索引管理</h4><p>调用 <code>markReaderIndex()</code>、<code>markWriterIndex()</code>、<code>resetWriterIndex()</code>和 <code>resetReaderIndex()</code>来<code>标记</code>和<code>重置</code> ByteBuf 的 <code>readerIndex</code> 和 <code>writerIndex</code>。</p>
@@ -1042,12 +1139,12 @@ initialCapacity, int maxCapacity)</td>
                     
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+                    <link rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/share/css/share.min.css">
 <div id="article-share">
 
     
     <div class="social-share" data-sites="google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/share/js/social-share.min.js"></script>
     
 
     
@@ -1072,10 +1169,10 @@ initialCapacity, int maxCapacity)</td>
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                        <img src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -1111,7 +1208,7 @@ initialCapacity, int maxCapacity)</td>
                 }
 
                 j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.src = 'https://gcore.jsdelivr.net/gh/zyxelva/picgo@main/js/embed.dist.js';
                 j.async = true;
 
                 e.parentNode.insertBefore(j, e);
@@ -1291,26 +1388,26 @@ initialCapacity, int maxCapacity)</td>
 
 
 <!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeBlockFuction.js"></script>
 
 
   <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeLang.js"></script>
 
 
 <!-- 代码块复制 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeCopy.js"></script>
 
 
 <!-- 代码块收缩 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+<script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/codeBlock/codeShrink.js"></script>
 
 
 
@@ -1332,7 +1429,7 @@ initialCapacity, int maxCapacity)</td>
 </div>
 
 
-<script src="/libs/tocbot/tocbot.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/tocbot/tocbot.min.js"></script>
 <script>
     $(function () {
         tocbot.init({
@@ -1416,28 +1513,11 @@ initialCapacity, int maxCapacity)</td>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             
-                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
-            
             <br>
             
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">118.4k</span>
             
             
             
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
             
             <br>
 
@@ -1504,7 +1584,7 @@ initialCapacity, int maxCapacity)</td>
             <br>
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
+        <div class="col s12 m4 l4 social-link ">
     <a href="https://github.com/zyxelva" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
@@ -1529,7 +1609,15 @@ initialCapacity, int maxCapacity)</td>
 
 
 
+    <a href="https://www.zhihu.com/people/kezade" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/kezade" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
 
+
+
+    <a href="rss2.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
 
 </div>
     </div>
@@ -1674,58 +1762,30 @@ $(function () {
 </div>
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/materialize/materialize.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/aos/aos.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/js/matery.js"></script>
 
-    
 
-    
-        <script type="text/javascript" src="/js/tw_cn.js"></script>
-        <script type="text/javascript">
-          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
-          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
-          var cookieDomain = "https://zyxelva.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
-          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
-          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
-          var translateButtonId = "translateLink"; //默认互换id
-          translateInitilization();
-        </script>
-    
-    
-    
-        
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
-            }
-        </script>
-    
 
-    <!-- 雪花特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
-            }
-        </script>
-    
 
-    <!-- 鼠标星星特效 -->
-    
 
-    
 
-    <!-- Baidu Analytics -->
 
-    <!-- Baidu Push -->
+<!-- 雪花特效 -->
+
+
+<!-- 鼠标星星特效 -->
+
+
+
+
+<!-- Baidu Analytics -->
+
+<!-- Baidu Push -->
 
 <script>
     (function () {
@@ -1741,30 +1801,27 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
 
-    
 
-    
 
-    <!--腾讯兔小巢-->
-    
-    
 
-    
 
-    
-    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
-    
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+
+<!--腾讯兔小巢-->
+
+
+
+
+
+
+    <script type="text/javascript" src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/background/ribbon-dynamic.js"
+            async="async"></script>
+
+
+
+    <script src="https://gcore.jsdelivr.net/gh/zyxelva/zyxelva.github.io@main/libs/instantpage/instantpage.js" type="module"></script>
+
 
 </body>
 
