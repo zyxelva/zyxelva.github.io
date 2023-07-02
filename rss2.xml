@@ -9,8 +9,137 @@
     <atom:link href="https://zyxelva.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>7 年 Java 开发经验，其中 3 年以上大型系统架构设计经验，以及 2 年以上的团队管理经验 | 具有分布式、高并发、高可用、大数据量的系统架构设计以及研发经验 | 对 Zookeeper、Netty、Dubbo、Spring Cloud、 Spring 等开源框架源码有过深入研究，并且有一定的框架定制开发经验</description>
-    <pubDate>Mon, 26 Jun 2023 12:15:17 GMT</pubDate>
+    <pubDate>Sat, 01 Jul 2023 03:03:24 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>【LeetCode】117 填充每个节点的下一个右侧节点指针II</title>
+      <link>https://zyxelva.github.io/posts/2012280065.html</link>
+      <guid>https://zyxelva.github.io/posts/2012280065.html</guid>
+      <pubDate>Fri, 30 Jun 2023 09:25:45 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h1&gt;&lt;p&gt;给定一个&lt;code&gt;二叉树&lt;/code&gt;：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/LeetCode/">LeetCode</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      <category domain="https://zyxelva.github.io/tags/BFS/">BFS</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2012280065.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【JVM学习】5.HostSpot的细节</title>
+      <link>https://zyxelva.github.io/posts/514811746.html</link>
+      <guid>https://zyxelva.github.io/posts/514811746.html</guid>
+      <pubDate>Fri, 30 Jun 2023 01:48:37 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1 前言&quot;&gt;&lt;/a&gt;1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/JVM%E5%AD%A6%E4%B9%A0/">JVM学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/JVM/">JVM</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E4%B8%89%E8%89%B2%E6%A0%87%E8%AE%B0/">三色标记</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E5%AE%89%E5%85%A8%E7%82%B9/">安全点</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E8%B7%A8%E4%BB%A3%E5%BC%95%E7%94%A8/">跨代引用</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E5%86%99%E5%B1%8F%E9%9A%9C/">写屏障</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/514811746.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【JVM学习】4.垃圾回收机制及算法</title>
+      <link>https://zyxelva.github.io/posts/1688993497.html</link>
+      <guid>https://zyxelva.github.io/posts/1688993497.html</guid>
+      <pubDate>Wed, 28 Jun 2023 03:12:32 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-定义&quot;&gt;&lt;a href=&quot;#1-定义&quot; class=&quot;headerlink&quot; title=&quot;1 定义&quot;&gt;&lt;/a&gt;1 定义&lt;/h1&gt;&lt;p&gt;&lt;code&gt;垃圾收集器&lt;/code&gt;(Garbage</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/JVM%E5%AD%A6%E4%B9%A0/">JVM学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/JVM/">JVM</category>
+      
+      <category domain="https://zyxelva.github.io/tags/GC%E7%AE%97%E6%B3%95/">GC算法</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1688993497.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【JVM学习】3.JVM中的对象</title>
+      <link>https://zyxelva.github.io/posts/1942558204.html</link>
+      <guid>https://zyxelva.github.io/posts/1942558204.html</guid>
+      <pubDate>Tue, 27 Jun 2023 06:20:13 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-JVM-中对象的创建过程&quot;&gt;&lt;a href=&quot;#1-JVM-中对象的创建过程&quot; class=&quot;headerlink&quot; title=&quot;1 JVM 中对象的创建过程&quot;&gt;&lt;/a&gt;1 JVM</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/JVM%E5%AD%A6%E4%B9%A0/">JVM学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/JVM/">JVM</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E7%B1%BB%E5%8A%A0%E8%BD%BD/">类加载</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/">内存分配</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1942558204.html#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>【LeetCode】116. 填充每个节点的下一个右侧节点指针</title>
@@ -469,128 +598,12 @@
       <category domain="https://zyxelva.github.io/categories/Hexo/">Hexo</category>
       
       
-      <category domain="https://zyxelva.github.io/tags/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</category>
-      
       <category domain="https://zyxelva.github.io/tags/GitHub-Actions/">GitHub Actions</category>
+      
+      <category domain="https://zyxelva.github.io/tags/Hexo%E5%8D%9A%E5%AE%A2/">Hexo博客</category>
       
       
       <comments>https://zyxelva.github.io/posts/2839790799.html#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>【MySQL学习】5.性能优化</title>
-      <link>https://zyxelva.github.io/posts/401728211.html</link>
-      <guid>https://zyxelva.github.io/posts/401728211.html</guid>
-      <pubDate>Tue, 06 Jun 2023 02:22:54 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1 id=&quot;1-调优金字塔&quot;&gt;&lt;a href=&quot;#1-调优金字塔&quot; class=&quot;headerlink&quot; title=&quot;1 调优金字塔&quot;&gt;&lt;/a&gt;1 调优金字塔&lt;/h1&gt;&lt;h2 id=&quot;1-1-架构调优&quot;&gt;&lt;a href=&quot;#1-1-架构调优&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://zyxelva.github.io/categories/MySQL%E5%AD%A6%E4%B9%A0/">MySQL学习</category>
-      
-      
-      <category domain="https://zyxelva.github.io/tags/MySQL/">MySQL</category>
-      
-      <category domain="https://zyxelva.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
-      
-      
-      <comments>https://zyxelva.github.io/posts/401728211.html#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>【Netty学习】6.编解码器</title>
-      <link>https://zyxelva.github.io/posts/3027290853.html</link>
-      <guid>https://zyxelva.github.io/posts/3027290853.html</guid>
-      <pubDate>Mon, 05 Jun 2023 03:12:18 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1 id=&quot;1-定义&quot;&gt;&lt;a href=&quot;#1-定义&quot; class=&quot;headerlink&quot; title=&quot;1 定义&quot;&gt;&lt;/a&gt;1</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://zyxelva.github.io/categories/Netty%E5%AD%A6%E4%B9%A0/">Netty学习</category>
-      
-      
-      <category domain="https://zyxelva.github.io/tags/Netty/">Netty</category>
-      
-      <category domain="https://zyxelva.github.io/tags/%E7%BC%96%E8%A7%A3%E7%A0%81%E5%99%A8/">编解码器</category>
-      
-      
-      <comments>https://zyxelva.github.io/posts/3027290853.html#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>【LeetCode】605.种花问题</title>
-      <link>https://zyxelva.github.io/posts/4089583191.html</link>
-      <guid>https://zyxelva.github.io/posts/4089583191.html</guid>
-      <pubDate>Fri, 02 Jun 2023 07:41:45 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://zyxelva.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
-      
-      
-      <category domain="https://zyxelva.github.io/tags/LeetCode/">LeetCode</category>
-      
-      <category domain="https://zyxelva.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</category>
-      
-      
-      <comments>https://zyxelva.github.io/posts/4089583191.html#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>【Netty学习】5.Netty中的粘包和拆包</title>
-      <link>https://zyxelva.github.io/posts/2516516204.html</link>
-      <guid>https://zyxelva.github.io/posts/2516516204.html</guid>
-      <pubDate>Fri, 02 Jun 2023 02:53:29 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1 id=&quot;1-什么是粘包和半包&quot;&gt;&lt;a href=&quot;#1-什么是粘包和半包&quot; class=&quot;headerlink&quot; title=&quot;1 什么是粘包和半包?&quot;&gt;&lt;/a&gt;1</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://zyxelva.github.io/categories/Netty%E5%AD%A6%E4%B9%A0/">Netty学习</category>
-      
-      
-      <category domain="https://zyxelva.github.io/tags/Netty/">Netty</category>
-      
-      <category domain="https://zyxelva.github.io/tags/%E7%B2%98%E5%8C%85%E5%8D%8A%E5%8C%85%E9%97%AE%E9%A2%98/">粘包半包问题</category>
-      
-      
-      <comments>https://zyxelva.github.io/posts/2516516204.html#disqus_thread</comments>
       
     </item>
     

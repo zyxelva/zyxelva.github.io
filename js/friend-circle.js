@@ -1,1 +1,65 @@
-document.addEventListener("DOMContentLoaded",(()=>{const e=document.querySelector("#circles")||"",i=document.querySelector("#lastUpdated")||"";function r(i){let r=0;var t="";i.forEach((e=>{e.floor;var i=e.title,a=e.created,l=e.link,d=e.author,n=e.avatar;t+=`<div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up"><div class="card friend-card${r%10+1}"><div class="friend-ship"><div class="title"><img src="${n}" alt="img" /><div><a href="${l}"><p class="friend-title">${i}</p></a><p class="friend-name">${d}</p><p>${a}</p></div></div></div></div></div>`,r++})),e&&e.insertAdjacentHTML("beforeend",t)}e&&function(){var e=null;"undefined"!=typeof myFriendCircles&&(e=myFriendCircles.api);var t=localStorage.getItem("friendCircleUpdated")||"",a=JSON.parse(localStorage.getItem("friendCircleData"))||"";i.innerText="最后更新："+t,a?(r(a),console.log("friendCircle 本地数据加载成功")):localStorage.setItem("friendCircleUpdated","");if(null===e||""===e)return void console.warn("friends-circle url is null or blank.");fetch(e).then((e=>e.json())).then((e=>{var a=e.statistical_data.last_updated_time;if(a&&t!=a){var l=e.article_data;i.innerText="最后更新："+a,r(l),localStorage.setItem("friendCircleUpdated",a),localStorage.setItem("friendCircleData",JSON.stringify(l)),console.log("friendCircle 热更新完成")}else console.log("friendCircle API 数据未更新")}))}()}));
+document.addEventListener("DOMContentLoaded", () => {
+    //memos module
+    const circlesDom = document.querySelector('#circles') || '';
+    const lastUpdatedDom = document.querySelector('#lastUpdated') || '';
+    if (circlesDom) {
+        loadCircles();
+    }
+
+    //开始加载json
+    function loadCircles() {
+        var url = null;
+        if (typeof (myFriendCircles) !== "undefined") {
+            url = myFriendCircles.api;
+        }
+        //cache
+        var localCirclesUpdated = localStorage.getItem("friendCircleUpdated") || '';
+        var localCirclesData = JSON.parse(localStorage.getItem("friendCircleData")) || '';
+        lastUpdatedDom.innerText = "最后更新：" + localCirclesUpdated;
+        if (localCirclesData) {
+            loadDoubanBook(localCirclesData)
+            console.log("friendCircle 本地数据加载成功")
+        } else {
+            localStorage.setItem("friendCircleUpdated", "")
+        }
+        //开始加载远端json，可以通过statistical_data.last_updated_time判断是否更新了，若更新了就加载远端，否则，不调用远端接口
+        if (url === null || '' === url) {
+            console.warn("friends-circle url is null or blank.")
+            return;
+        }
+        fetch(url).then(res => res.json()).then(resdata => {
+            var friendCircleUpdated = resdata.statistical_data.last_updated_time
+            if (friendCircleUpdated && localCirclesUpdated != friendCircleUpdated) {
+                var friendCircleData = resdata.article_data;
+                lastUpdatedDom.innerText = "最后更新：" + friendCircleUpdated;
+                //开始布局
+                loadDoubanBook(friendCircleData)
+                localStorage.setItem("friendCircleUpdated", friendCircleUpdated)
+                localStorage.setItem("friendCircleData", JSON.stringify(friendCircleData))
+                console.log("friendCircle 热更新完成")
+            } else {
+                console.log("friendCircle API 数据未更新")
+            }
+        });//end of fetch
+    }
+
+    //loading
+    function loadDoubanBook(friendCircleData) {
+        let cnt = 0;
+        var html = '';
+        friendCircleData.forEach(d => {
+            var floor = d.floor;
+            var title = d.title;
+            var created = d.created;
+            var link = d.link;
+            var author = d.author;
+            var avatar = d.avatar;
+            var sn = (cnt % 10) + 1;
+            html += `<div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up"><div class="card friend-card${sn}"><div class="friend-ship"><div class="title"><img src="${avatar}" alt="img" /><div><a target="_blank" rel="noopener nofollow" href="${link}"><p class="friend-title">${title}</p></a><p class="friend-name">${author}</p><p>${created}</p></div></div></div></div></div>`;
+            cnt++;
+        });
+        if (circlesDom) {
+            circlesDom.insertAdjacentHTML('beforeend', html);
+        }
+    }
+});
