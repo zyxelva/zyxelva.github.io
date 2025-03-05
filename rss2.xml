@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Kezade</title>
+    <link>https://zyxelva.github.io/</link>
+    
+    <atom:link href="https://zyxelva.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>7 年 Java 开发经验，其中 3 年以上大型系统架构设计经验，以及 2 年以上的团队管理经验 | 具有分布式、高并发、高可用、大数据量的系统架构设计以及研发经验 | 对 Zookeeper、Netty、Dubbo、Spring Cloud、 Spring 等开源框架源码有过深入研究，并且有一定的框架定制开发经验</description>
+    <pubDate>Wed, 05 Mar 2025 07:52:29 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>【AP Calculus】极限求解方法总结｜10年真题解析</title>
+      <link>https://zyxelva.github.io/posts/1811442017.html</link>
+      <guid>https://zyxelva.github.io/posts/1811442017.html</guid>
+      <pubDate>Wed, 05 Mar 2025 06:43:04 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;AP-Calculus极限求解方法总结｜10年真题解析&quot;&gt;&lt;a href=&quot;#AP-Calculus极限求解方法总结｜10年真题解析&quot; class=&quot;headerlink&quot; title=&quot;AP Calculus极限求解方法总结｜10年真题解析&quot;&gt;&lt;/a&gt;AP</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/AP-Calculus/">AP Calculus</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%9E%81%E9%99%90/">极限</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1811442017.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【AP Calculus】求极限的常用方法</title>
+      <link>https://zyxelva.github.io/posts/2456662226.html</link>
+      <guid>https://zyxelva.github.io/posts/2456662226.html</guid>
+      <pubDate>Wed, 05 Mar 2025 01:43:04 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;AP-Calculus-极限求解方法总结&quot;&gt;&lt;a href=&quot;#AP-Calculus-极限求解方法总结&quot; class=&quot;headerlink&quot; title=&quot;AP Calculus 极限求解方法总结&quot;&gt;&lt;/a&gt;AP Calculus</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/AP-Calculus/">AP Calculus</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%9E%81%E9%99%90/">极限</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99/">洛必达法则</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2456662226.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【考研数学】9.空间曲线和空间曲面</title>
+      <link>https://zyxelva.github.io/posts/1261667409.html</link>
+      <guid>https://zyxelva.github.io/posts/1261667409.html</guid>
+      <pubDate>Fri, 17 Jan 2025 03:52:13 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;一、空间曲线&quot;&gt;&lt;a href=&quot;#一、空间曲线&quot; class=&quot;headerlink&quot; title=&quot;一、空间曲线&quot;&gt;&lt;/a&gt;一、空间曲线&lt;/h1&gt;&lt;h2 id=&quot;1-1-参数方程及其切线和法平面&quot;&gt;&lt;a href=&quot;#1-1-参数方程及其切线和法平面&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E8%80%83%E7%A0%94/">考研</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E8%80%83%E7%A0%94/">考研</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%95%B0%E5%AD%A6/">数学</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E7%A9%BA%E9%97%B4%E7%9B%B4%E7%BA%BF%E6%96%B9%E7%A8%8B/">空间直线方程</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1261667409.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【AP Calculus】定积分常见公式</title>
+      <link>https://zyxelva.github.io/posts/3117191822.html</link>
+      <guid>https://zyxelva.github.io/posts/3117191822.html</guid>
+      <pubDate>Thu, 16 Jan 2025 05:10:52 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;一、莱布尼茨公式&quot;&gt;&lt;a href=&quot;#一、莱布尼茨公式&quot; class=&quot;headerlink&quot; title=&quot;一、莱布尼茨公式&quot;&gt;&lt;/a&gt;一、莱布尼茨公式&lt;/h1&gt;&lt;script type=&quot;math/tex;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/AP-Calculus/">AP Calculus</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Integration/">Integration</category>
+      
+      <category domain="https://zyxelva.github.io/tags/Defined-Integral/">Defined Integral</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3117191822.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Markdown学习】数学公式整理</title>
+      <link>https://zyxelva.github.io/posts/3752841635.html</link>
+      <guid>https://zyxelva.github.io/posts/3752841635.html</guid>
+      <pubDate>Mon, 13 Jan 2025 04:17:37 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1概述&quot;&gt;&lt;a href=&quot;#1概述&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/markdown%E5%AD%A6%E4%B9%A0/">markdown学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/markdown/">markdown</category>
+      
+      <category domain="https://zyxelva.github.io/tags/math/">math</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3752841635.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【考研数学】8.4空间直线及其方程</title>
+      <link>https://zyxelva.github.io/posts/3652452873.html</link>
+      <guid>https://zyxelva.github.io/posts/3652452873.html</guid>
+      <pubDate>Thu, 09 Jan 2025 03:55:21 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-空间直线的一般方程&quot;&gt;&lt;a href=&quot;#1-空间直线的一般方程&quot; class=&quot;headerlink&quot; title=&quot;1 空间直线的一般方程&quot;&gt;&lt;/a&gt;1 空间直线的一般方程&lt;/h1&gt;&lt;p&gt;两平面的交线&lt;/p&gt;
+&lt;script</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E8%80%83%E7%A0%94/">考研</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E8%80%83%E7%A0%94/">考研</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%95%B0%E5%AD%A6/">数学</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E7%A9%BA%E9%97%B4%E7%9B%B4%E7%BA%BF%E6%96%B9%E7%A8%8B/">空间直线方程</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3652452873.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Docker学习】6.Docker Compose基础</title>
+      <link>https://zyxelva.github.io/posts/2734382372.html</link>
+      <guid>https://zyxelva.github.io/posts/2734382372.html</guid>
+      <pubDate>Wed, 24 Jul 2024 09:38:04 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;一、什么是-Docker-Compose？&quot;&gt;&lt;a href=&quot;#一、什么是-Docker-Compose？&quot; class=&quot;headerlink&quot; title=&quot;一、什么是 Docker Compose？&quot;&gt;&lt;/a&gt;一、什么是 Docker</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Docker%E5%AD%A6%E4%B9%A0/">Docker学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Docker/">Docker</category>
+      
+      <category domain="https://zyxelva.github.io/tags/Docker-Compose/">Docker Compose</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2734382372.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Docker学习】5.集群部署RocketMQ</title>
+      <link>https://zyxelva.github.io/posts/934367677.html</link>
+      <guid>https://zyxelva.github.io/posts/934367677.html</guid>
+      <pubDate>Tue, 23 Jul 2024 06:48:59 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;一、相关配置目录及文件映射&quot;&gt;&lt;a href=&quot;#一、相关配置目录及文件映射&quot; class=&quot;headerlink&quot; title=&quot;一、相关配置目录及文件映射&quot;&gt;&lt;/a&gt;一、相关配置目录及文件映射&lt;/h1&gt;&lt;h2 id=&quot;1-1-映射目录&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Docker%E5%AD%A6%E4%B9%A0/">Docker学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Docker/">Docker</category>
+      
+      <category domain="https://zyxelva.github.io/tags/Docker-Compose/">Docker Compose</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/934367677.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【每日一面】字节面试：百亿级数据存储，怎么设计？</title>
+      <link>https://zyxelva.github.io/posts/2992750620.html</link>
+      <guid>https://zyxelva.github.io/posts/2992750620.html</guid>
+      <pubDate>Tue, 28 May 2024 03:32:15 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;大家都知道，当一个表（比如订单表） 达到500万条或2GB时，需要考虑&lt;code&gt;水平分表&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;这个虽然是常识了，但是面试官不满意。很多的小伙伴来咨询尼恩，为什么？&lt;/p&gt;
+&lt;h1 id=&quot;1-从0到1，百亿级数据存储架构，怎么设计？&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/">每日一面</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97/">阻塞队列</category>
+      
+      <category domain="https://zyxelva.github.io/tags/canal/">canal</category>
+      
+      <category domain="https://zyxelva.github.io/tags/ETL/">ETL</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2992750620.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【LeetCode】7.Reverse Integer</title>
+      <link>https://zyxelva.github.io/posts/2020820214.html</link>
+      <guid>https://zyxelva.github.io/posts/2020820214.html</guid>
+      <pubDate>Tue, 30 Jan 2024 09:09:49 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h1&gt;&lt;p&gt;Given a signed &lt;code&gt;32-bit integer x&lt;/code&gt;, return x with</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/LeetCode/">LeetCode</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">位运算</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2020820214.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【LeetCode】190.Reverse Bits</title>
+      <link>https://zyxelva.github.io/posts/3077276032.html</link>
+      <guid>https://zyxelva.github.io/posts/3077276032.html</guid>
+      <pubDate>Tue, 30 Jan 2024 09:09:15 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h1&gt;&lt;p&gt;Reverse bits of a given &lt;code&gt;32 bits unsigned</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/LeetCode/">LeetCode</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">位运算</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3077276032.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【LeetCode】338.Counting Bits</title>
+      <link>https://zyxelva.github.io/posts/3135658943.html</link>
+      <guid>https://zyxelva.github.io/posts/3135658943.html</guid>
+      <pubDate>Tue, 30 Jan 2024 09:08:30 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h1&gt;&lt;p&gt;Given an integer &lt;code&gt;n&lt;/code&gt;, return an array</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/LeetCode/">LeetCode</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">位运算</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3135658943.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【LeetCode】191.Number of 1 Bits</title>
+      <link>https://zyxelva.github.io/posts/4182842588.html</link>
+      <guid>https://zyxelva.github.io/posts/4182842588.html</guid>
+      <pubDate>Tue, 30 Jan 2024 09:07:57 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h1&gt;&lt;p&gt;Write a function that takes the binary representation of an</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/LeetCode/">LeetCode</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">位运算</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/4182842588.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【每日一面】阿里面试：说说订单超时怎么解决的？</title>
+      <link>https://zyxelva.github.io/posts/511523289.html</link>
+      <guid>https://zyxelva.github.io/posts/511523289.html</guid>
+      <pubDate>Fri, 26 Jan 2024 06:39:11 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1 前言&quot;&gt;&lt;/a&gt;1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/">每日一面</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Redis/">Redis</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%97%B6%E9%97%B4%E8%BD%AE%E7%9B%98/">时间轮盘</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">定时任务</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/511523289.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【LeetCode】20.Valid Parentheses</title>
+      <link>https://zyxelva.github.io/posts/1218993432.html</link>
+      <guid>https://zyxelva.github.io/posts/1218993432.html</guid>
+      <pubDate>Wed, 24 Jan 2024 09:16:56 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h1&gt;&lt;p&gt;Given a string s containing just the characters ‘(‘, ‘)’,</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/LeetCode/">LeetCode</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E5%A0%86%E6%A0%88/">堆栈</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1218993432.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【LeetCode】22.Generate Parentheses</title>
+      <link>https://zyxelva.github.io/posts/3209087998.html</link>
+      <guid>https://zyxelva.github.io/posts/3209087998.html</guid>
+      <pubDate>Wed, 24 Jan 2024 09:16:04 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h1&gt;&lt;p&gt;Given &lt;code&gt;n&lt;/code&gt; pairs of parentheses, write a function</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/LeetCode/">LeetCode</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">回溯算法</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3209087998.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【每日一面】抖音面试：说说二维码登录的原理</title>
+      <link>https://zyxelva.github.io/posts/3035416799.html</link>
+      <guid>https://zyxelva.github.io/posts/3035416799.html</guid>
+      <pubDate>Tue, 23 Jan 2024 08:18:28 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1 前言&quot;&gt;&lt;/a&gt;1 前言&lt;/h1&gt;&lt;p&gt;前几天看了&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/">每日一面</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%99%BB%E5%BD%95/">二维码登录</category>
+      
+      <category domain="https://zyxelva.github.io/tags/token/">token</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3035416799.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Docker学习】4.与Dockerfile优化有关的5个小技巧</title>
+      <link>https://zyxelva.github.io/posts/1784156720.html</link>
+      <guid>https://zyxelva.github.io/posts/1784156720.html</guid>
+      <pubDate>Thu, 18 Jan 2024 09:13:29 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-使用精简的alpine镜像&quot;&gt;&lt;a href=&quot;#1-使用精简的alpine镜像&quot; class=&quot;headerlink&quot; title=&quot;1 使用精简的alpine镜像&quot;&gt;&lt;/a&gt;1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Docker%E5%AD%A6%E4%B9%A0/">Docker学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Docker/">Docker</category>
+      
+      <category domain="https://zyxelva.github.io/tags/Dockerfile/">Dockerfile</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1784156720.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Docker学习】3.Dockerfile</title>
+      <link>https://zyxelva.github.io/posts/342586947.html</link>
+      <guid>https://zyxelva.github.io/posts/342586947.html</guid>
+      <pubDate>Tue, 26 Dec 2023 02:34:07 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1 前言&quot;&gt;&lt;/a&gt;1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Docker%E5%AD%A6%E4%B9%A0/">Docker学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Docker/">Docker</category>
+      
+      <category domain="https://zyxelva.github.io/tags/Dockerfile/">Dockerfile</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/342586947.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Docker学习】2.命令备忘</title>
+      <link>https://zyxelva.github.io/posts/1372686241.html</link>
+      <guid>https://zyxelva.github.io/posts/1372686241.html</guid>
+      <pubDate>Tue, 19 Dec 2023 07:05:27 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-入门&quot;&gt;&lt;a href=&quot;#1-入门&quot; class=&quot;headerlink&quot; title=&quot;1 入门&quot;&gt;&lt;/a&gt;1 入门&lt;/h1&gt;&lt;h2 id=&quot;1-1-在后台创建和运行容器&quot;&gt;&lt;a href=&quot;#1-1-在后台创建和运行容器&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Docker%E5%AD%A6%E4%B9%A0/">Docker学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Docker/">Docker</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1372686241.html#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>
