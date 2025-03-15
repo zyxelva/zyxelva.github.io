@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Kezade</title>
+    <link>https://zyxelva.github.io/</link>
+    
+    <atom:link href="https://zyxelva.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>7 年 Java 开发经验，其中 3 年以上大型系统架构设计经验，以及 2 年以上的团队管理经验 | 具有分布式、高并发、高可用、大数据量的系统架构设计以及研发经验 | 对 Zookeeper、Netty、Dubbo、Spring Cloud、 Spring 等开源框架源码有过深入研究，并且有一定的框架定制开发经验</description>
+    <pubDate>Sat, 15 Mar 2025 11:01:38 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>【AP Calculus】积分及其应用总结及真题解析</title>
+      <link>https://zyxelva.github.io/posts/3676599296.html</link>
+      <guid>https://zyxelva.github.io/posts/3676599296.html</guid>
+      <pubDate>Sat, 15 Mar 2025 10:05:08 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;#基本积分方法&quot;&gt;基本积分方法&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/AP-Calculus/">AP Calculus</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/">不定积分</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E5%AE%9A%E7%A7%AF%E5%88%86/">定积分</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3676599296.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【AP Calculus】无穷级数审敛法总结及真题解析</title>
+      <link>https://zyxelva.github.io/posts/146840189.html</link>
+      <guid>https://zyxelva.github.io/posts/146840189.html</guid>
+      <pubDate>Thu, 13 Mar 2025 13:03:07 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;0-级数的基本概念&quot;&gt;&lt;a href=&quot;#0-级数的基本概念&quot; class=&quot;headerlink&quot; title=&quot;0. 级数的基本概念&quot;&gt;&lt;/a&gt;0. 级数的基本概念&lt;/h2&gt;&lt;h3 id=&quot;知识点&quot;&gt;&lt;a href=&quot;#知识点&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/AP-Calculus/">AP Calculus</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E7%BA%A7%E6%95%B0%E5%AE%A1%E6%95%9B%E6%B3%95%E5%88%99/">级数审敛法则</category>
+      
+      <category domain="https://zyxelva.github.io/tags/p-%E7%BA%A7%E6%95%B0/">p-级数</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%AD%A3%E9%A1%B9%E7%BA%A7%E6%95%B0/">正项级数</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E4%BA%A4%E9%94%99%E7%BA%A7%E6%95%B0/">交错级数</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/146840189.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>AP、A-Level、IGCSE、IB和SAT的区别对比表</title>
+      <link>https://zyxelva.github.io/posts/2085637501.html</link>
+      <guid>https://zyxelva.github.io/posts/2085637501.html</guid>
+      <pubDate>Tue, 11 Mar 2025 06:01:29 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;1-区别&quot;&gt;&lt;a href=&quot;#1-区别&quot; class=&quot;headerlink&quot; title=&quot;1.区别&quot;&gt;&lt;/a&gt;1.区别&lt;/h2&gt;&lt;div</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E5%9B%BD%E9%99%85%E8%AF%BE%E7%A8%8B/">国际课程</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/AP/">AP</category>
+      
+      <category domain="https://zyxelva.github.io/tags/ALevel/">ALevel</category>
+      
+      <category domain="https://zyxelva.github.io/tags/IG/">IG</category>
+      
+      <category domain="https://zyxelva.github.io/tags/IB/">IB</category>
+      
+      <category domain="https://zyxelva.github.io/tags/SAT/">SAT</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2085637501.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【A-Level】P1数列知识点总结及真题解析</title>
+      <link>https://zyxelva.github.io/posts/313103968.html</link>
+      <guid>https://zyxelva.github.io/posts/313103968.html</guid>
+      <pubDate>Tue, 11 Mar 2025 01:16:02 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;1-数列基础概念&quot;&gt;&lt;a href=&quot;#1-数列基础概念&quot; class=&quot;headerlink&quot; title=&quot;1. 数列基础概念&quot;&gt;&lt;/a&gt;1.</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/ALevel/">ALevel</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/CIE/">CIE</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%95%B0%E5%88%97/">数列</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/313103968.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【A-Level】级数知识点总结及真题解析</title>
+      <link>https://zyxelva.github.io/posts/193601306.html</link>
+      <guid>https://zyxelva.github.io/posts/193601306.html</guid>
+      <pubDate>Mon, 10 Mar 2025 01:34:18 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;#知识点总结&quot;&gt;知识点总结&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#11-级数的定义&quot;&gt;1.1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/ALevel/">ALevel</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/CIE-%E7%BA%A7%E6%95%B0-%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97-%E7%AD%89%E6%AF%94%E6%95%B0%E5%88%97/">CIE - 级数 - 等差数列 - 等比数列</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/193601306.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【AP Calculus】微分方程总结及真题解析</title>
+      <link>https://zyxelva.github.io/posts/1271319557.html</link>
+      <guid>https://zyxelva.github.io/posts/1271319557.html</guid>
+      <pubDate>Mon, 10 Mar 2025 01:32:19 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;#微分方程的基本概念&quot;&gt;微分方程的基本概念&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/AP-Calculus/">AP Calculus</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">微分方程</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%96%9C%E7%8E%87%E5%9C%BA/">斜率场</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%AC%A7%E6%8B%89%E6%B3%95/">欧拉法</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1271319557.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【AP Calculus】微分的应用总结及真题解析</title>
+      <link>https://zyxelva.github.io/posts/2470718759.html</link>
+      <guid>https://zyxelva.github.io/posts/2470718759.html</guid>
+      <pubDate>Fri, 07 Mar 2025 06:47:27 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;#切线与法线&quot;&gt;切线与法线&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/AP-Calculus/">AP Calculus</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E5%BE%AE%E5%88%86/">微分</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%9E%81%E5%80%BC/">极值</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98/">最优化问题</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BC%B0%E7%AE%97/">线性估算</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2470718759.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【AP Calculus】求导方法总结及真题解析</title>
+      <link>https://zyxelva.github.io/posts/2475718809.html</link>
+      <guid>https://zyxelva.github.io/posts/2475718809.html</guid>
+      <pubDate>Thu, 06 Mar 2025 02:35:14 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;AP-Calculus-求导方法总结&quot;&gt;&lt;a href=&quot;#AP-Calculus-求导方法总结&quot; class=&quot;headerlink&quot; title=&quot;AP Calculus 求导方法总结&quot;&gt;&lt;/a&gt;AP Calculus 求导方法总结&lt;/h1&gt;&lt;h2</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/AP-Calculus/">AP Calculus</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E5%AF%BC%E6%95%B0/">导数</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99/">链式法则</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E5%8F%82%E6%95%B0%E6%96%B9%E7%A8%8B%E6%B1%82%E5%AF%BC/">参数方程求导</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%9E%81%E5%9D%90%E6%A0%87%E6%B1%82%E5%AF%BC/">极坐标求导</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2475718809.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【AP Calculus】极限求解方法总结｜10年真题解析</title>
+      <link>https://zyxelva.github.io/posts/1811442017.html</link>
+      <guid>https://zyxelva.github.io/posts/1811442017.html</guid>
+      <pubDate>Wed, 05 Mar 2025 06:43:04 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;AP-Calculus极限求解方法总结｜10年真题解析&quot;&gt;&lt;a href=&quot;#AP-Calculus极限求解方法总结｜10年真题解析&quot; class=&quot;headerlink&quot; title=&quot;AP Calculus极限求解方法总结｜10年真题解析&quot;&gt;&lt;/a&gt;AP</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/AP-Calculus/">AP Calculus</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%9E%81%E9%99%90/">极限</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1811442017.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【AP Calculus】求极限的常用方法</title>
+      <link>https://zyxelva.github.io/posts/2456662226.html</link>
+      <guid>https://zyxelva.github.io/posts/2456662226.html</guid>
+      <pubDate>Wed, 05 Mar 2025 01:43:04 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;AP-Calculus-极限求解方法总结&quot;&gt;&lt;a href=&quot;#AP-Calculus-极限求解方法总结&quot; class=&quot;headerlink&quot; title=&quot;AP Calculus 极限求解方法总结&quot;&gt;&lt;/a&gt;AP Calculus</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/AP-Calculus/">AP Calculus</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%9E%81%E9%99%90/">极限</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99/">洛必达法则</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2456662226.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【考研数学】9.空间曲线和空间曲面</title>
+      <link>https://zyxelva.github.io/posts/1261667409.html</link>
+      <guid>https://zyxelva.github.io/posts/1261667409.html</guid>
+      <pubDate>Fri, 17 Jan 2025 03:52:13 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;一、空间曲线&quot;&gt;&lt;a href=&quot;#一、空间曲线&quot; class=&quot;headerlink&quot; title=&quot;一、空间曲线&quot;&gt;&lt;/a&gt;一、空间曲线&lt;/h1&gt;&lt;h2 id=&quot;1-1-参数方程及其切线和法平面&quot;&gt;&lt;a href=&quot;#1-1-参数方程及其切线和法平面&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E8%80%83%E7%A0%94/">考研</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E8%80%83%E7%A0%94/">考研</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%95%B0%E5%AD%A6/">数学</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E7%A9%BA%E9%97%B4%E7%9B%B4%E7%BA%BF%E6%96%B9%E7%A8%8B/">空间直线方程</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/1261667409.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【AP Calculus】定积分常见公式</title>
+      <link>https://zyxelva.github.io/posts/3117191822.html</link>
+      <guid>https://zyxelva.github.io/posts/3117191822.html</guid>
+      <pubDate>Thu, 16 Jan 2025 05:10:52 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;一、莱布尼茨公式&quot;&gt;&lt;a href=&quot;#一、莱布尼茨公式&quot; class=&quot;headerlink&quot; title=&quot;一、莱布尼茨公式&quot;&gt;&lt;/a&gt;一、莱布尼茨公式&lt;/h1&gt;&lt;script type=&quot;math/tex;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/AP-Calculus/">AP Calculus</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Integration/">Integration</category>
+      
+      <category domain="https://zyxelva.github.io/tags/Defined-Integral/">Defined Integral</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3117191822.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Markdown学习】数学公式整理</title>
+      <link>https://zyxelva.github.io/posts/3752841635.html</link>
+      <guid>https://zyxelva.github.io/posts/3752841635.html</guid>
+      <pubDate>Mon, 13 Jan 2025 04:17:37 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1概述&quot;&gt;&lt;a href=&quot;#1概述&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/markdown%E5%AD%A6%E4%B9%A0/">markdown学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/markdown/">markdown</category>
+      
+      <category domain="https://zyxelva.github.io/tags/math/">math</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3752841635.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【考研数学】8.4空间直线及其方程</title>
+      <link>https://zyxelva.github.io/posts/3652452873.html</link>
+      <guid>https://zyxelva.github.io/posts/3652452873.html</guid>
+      <pubDate>Thu, 09 Jan 2025 03:55:21 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-空间直线的一般方程&quot;&gt;&lt;a href=&quot;#1-空间直线的一般方程&quot; class=&quot;headerlink&quot; title=&quot;1 空间直线的一般方程&quot;&gt;&lt;/a&gt;1 空间直线的一般方程&lt;/h1&gt;&lt;p&gt;两平面的交线&lt;/p&gt;
+&lt;script</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E8%80%83%E7%A0%94/">考研</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E8%80%83%E7%A0%94/">考研</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%95%B0%E5%AD%A6/">数学</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E7%A9%BA%E9%97%B4%E7%9B%B4%E7%BA%BF%E6%96%B9%E7%A8%8B/">空间直线方程</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3652452873.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Docker学习】6.Docker Compose基础</title>
+      <link>https://zyxelva.github.io/posts/2734382372.html</link>
+      <guid>https://zyxelva.github.io/posts/2734382372.html</guid>
+      <pubDate>Wed, 24 Jul 2024 09:38:04 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;一、什么是-Docker-Compose？&quot;&gt;&lt;a href=&quot;#一、什么是-Docker-Compose？&quot; class=&quot;headerlink&quot; title=&quot;一、什么是 Docker Compose？&quot;&gt;&lt;/a&gt;一、什么是 Docker</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Docker%E5%AD%A6%E4%B9%A0/">Docker学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Docker/">Docker</category>
+      
+      <category domain="https://zyxelva.github.io/tags/Docker-Compose/">Docker Compose</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2734382372.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【Docker学习】5.集群部署RocketMQ</title>
+      <link>https://zyxelva.github.io/posts/934367677.html</link>
+      <guid>https://zyxelva.github.io/posts/934367677.html</guid>
+      <pubDate>Tue, 23 Jul 2024 06:48:59 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;一、相关配置目录及文件映射&quot;&gt;&lt;a href=&quot;#一、相关配置目录及文件映射&quot; class=&quot;headerlink&quot; title=&quot;一、相关配置目录及文件映射&quot;&gt;&lt;/a&gt;一、相关配置目录及文件映射&lt;/h1&gt;&lt;h2 id=&quot;1-1-映射目录&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/Docker%E5%AD%A6%E4%B9%A0/">Docker学习</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/Docker/">Docker</category>
+      
+      <category domain="https://zyxelva.github.io/tags/Docker-Compose/">Docker Compose</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/934367677.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【每日一面】字节面试：百亿级数据存储，怎么设计？</title>
+      <link>https://zyxelva.github.io/posts/2992750620.html</link>
+      <guid>https://zyxelva.github.io/posts/2992750620.html</guid>
+      <pubDate>Tue, 28 May 2024 03:32:15 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;大家都知道，当一个表（比如订单表） 达到500万条或2GB时，需要考虑&lt;code&gt;水平分表&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;这个虽然是常识了，但是面试官不满意。很多的小伙伴来咨询尼恩，为什么？&lt;/p&gt;
+&lt;h1 id=&quot;1-从0到1，百亿级数据存储架构，怎么设计？&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/">每日一面</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97/">阻塞队列</category>
+      
+      <category domain="https://zyxelva.github.io/tags/canal/">canal</category>
+      
+      <category domain="https://zyxelva.github.io/tags/ETL/">ETL</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2992750620.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【LeetCode】7.Reverse Integer</title>
+      <link>https://zyxelva.github.io/posts/2020820214.html</link>
+      <guid>https://zyxelva.github.io/posts/2020820214.html</guid>
+      <pubDate>Tue, 30 Jan 2024 09:09:49 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h1&gt;&lt;p&gt;Given a signed &lt;code&gt;32-bit integer x&lt;/code&gt;, return x with</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/LeetCode/">LeetCode</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">位运算</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/2020820214.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【LeetCode】190.Reverse Bits</title>
+      <link>https://zyxelva.github.io/posts/3077276032.html</link>
+      <guid>https://zyxelva.github.io/posts/3077276032.html</guid>
+      <pubDate>Tue, 30 Jan 2024 09:09:15 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h1&gt;&lt;p&gt;Reverse bits of a given &lt;code&gt;32 bits unsigned</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/LeetCode/">LeetCode</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">位运算</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3077276032.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【LeetCode】338.Counting Bits</title>
+      <link>https://zyxelva.github.io/posts/3135658943.html</link>
+      <guid>https://zyxelva.github.io/posts/3135658943.html</guid>
+      <pubDate>Tue, 30 Jan 2024 09:08:30 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h1&gt;&lt;p&gt;Given an integer &lt;code&gt;n&lt;/code&gt;, return an array</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://zyxelva.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      <category domain="https://zyxelva.github.io/tags/LeetCode/">LeetCode</category>
+      
+      <category domain="https://zyxelva.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">位运算</category>
+      
+      
+      <comments>https://zyxelva.github.io/posts/3135658943.html#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>
