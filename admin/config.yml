@@ -1,0 +1,50 @@
+# https://decapcms.org/docs/configuration-options/
+backend:
+  name: github
+  repo: zyxelva/hexo
+  branch: matery
+  #auth_type: implicit
+  app_id: 13aef4a22ad6db4d4291
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+media_folder: "/source/images/uploads"
+public_folder: "/images/uploads"
+site_url: "https://zyxelva.github.io"
+logo_url: "https://cdn.jsdelivr.net/gh/zyxelva/zyxelva.github.io/medias/avatar.png"
+locale: "zh_Hans"
+common_col_conf: &common_col_conf
+  create: true
+  slug: "{{fields.title}}"
+  sortable_fields: [ "title","date" ]
+  # https://decapcms.org/docs/widgets/
+  fields:
+    - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+    - { label: "Title", name: "title", widget: "string" }
+    - { label: "Abbrlink", name: "abbrlink", widget: "hidden" }
+    - { label: "Publish Date", name: "date", widget: "datetime" }
+    - { label: "Featured Image", name: "img", widget: "image", required: false }
+    - { label: "Rating (scale of 1-5)", name: "rating", widget: "number", default: 3, required: false }
+    - { label: "Mathjax", name: "mathjax", widget: "boolean", default: true }
+    - { label: "Author", name: "author", widget: "string", default: "Kezade" }
+    - { label: "Toc", name: "toc", widget: "boolean", default: true }
+    - { label: "是否置顶", name: "top", widget: "boolean", default: false }
+    - { label: "是否首页轮播", name: "cover", widget: "boolean", default: false }
+    - { label: "首页轮播图片路径", name: "coverImg", widget: "string", required: false }
+    - { label: "文章密码(SHA256)", name: "password", widget: "string", required: false }
+    - { label: "文章摘要", name: "summary", widget: "string", required: false }
+    - { label: 'Color', name: 'color', widget: 'color', required: false }
+    - { label: "Categories",name: "categories", widget: "select", multiple: true, options: [ "MySQL学习","Netty学习","LeetCode","算法","Hexo" ] }
+    - { label: "Tags",name: "tags", widget: "select", multiple: true, options: [ "MySQL","Netty","LeetCode","动态规划","Hexo", "DFS", "BFS" ] }
+    - { label: "正文", name: "body", widget: "markdown" }
+collections:
+  - name: "posts"
+    label: "我的发布"
+    folder: "source/_posts"
+    preview_path: "posts/{{abbrlink}}.html"
+    <<: *common_col_conf
+  - name: "drafts"
+    label: "我的草稿"
+    folder: "source/_drafts"
+    preview_path: "drafts/{{abbrlink}}.html"
+    <<: *common_col_conf
+
